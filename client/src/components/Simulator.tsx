@@ -115,7 +115,7 @@ export function Simulator() {
           </p>
           <Button className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold text-lg h-14 shadow-lg animate-pulse" asChild>
             <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">
-              正確な見積もりを依頼する（無料）
+              ダイマツの施工事例と価格を見る（公式サイト）
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>

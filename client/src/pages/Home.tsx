@@ -59,7 +59,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
               <Button onClick={() => scrollToSection('problem')} size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold text-lg px-8">
-                なぜ損をするのか？
+                施工のプロが教える「裏側」
               </Button>
               <Button onClick={() => scrollToSection('simulator')} size="lg" className="bg-secondary hover:bg-secondary/90 text-white font-bold text-lg px-8">
                 まずはシミュレーション
@@ -305,7 +305,7 @@ export default function Home() {
         </Button>
         <Button className="flex-1 bg-secondary hover:bg-secondary/90 text-white font-bold" asChild>
           <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">
-            公式サイトへ
+            施工事例と価格を見る
           </a>
         </Button>
       </div>
