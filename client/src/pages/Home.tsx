@@ -249,11 +249,11 @@ export default function Home() {
               <Card className="border-t-4 border-t-secondary shadow-lg hover:shadow-xl transition-shadow">
                 <CardHeader>
                   <div className="text-4xl font-bold text-secondary mb-2">02</div>
-                  <CardTitle>創業50年以上の<br/>地域実績</CardTitle>
+                  <CardTitle>地域密着15年以上の<br/>信頼と実績</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    朝霞市・新座市を中心に、長年地域に根ざして活動。逃げも隠れもしない地元の老舗だからこそ、無理な売り込みは一切ありません。
+                    朝霞市・新座市を中心に、2010年の設立以来、地域に根ざして活動。逃げも隠れもしない地元の施工店だからこそ、無理な売り込みは一切ありません。
                   </p>
                 </CardContent>
               </Card>
