@@ -114,7 +114,7 @@ export function Simulator() {
             屋根の形状や向きによって、さらにメリットが出る可能性があります。
           </p>
           <Button className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold text-lg h-14 shadow-lg animate-pulse" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">
               正確な見積もりを依頼する（無料）
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>

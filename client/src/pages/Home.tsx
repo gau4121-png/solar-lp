@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight } from "lucide-react";
+import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight, Phone } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { useState } from "react";
 
@@ -281,8 +281,8 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white font-bold text-xl px-12 py-8 h-auto shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1" asChild>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
-                    ダイマツ公式サイトへ
+                  <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">
+                    ダイマツの施工事例と価格を見る（公式サイト）
                     <ArrowRight className="ml-2 h-6 w-6" />
                   </a>
                 </Button>
@@ -295,13 +295,28 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-12">
+      {/* Mobile Fixed Footer */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 p-4 flex gap-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <Button className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold" asChild>
+          <a href="tel:0484869274">
+            <Phone className="mr-2 h-4 w-4" />
+            電話で相談
+          </a>
+        </Button>
+        <Button className="flex-1 bg-secondary hover:bg-secondary/90 text-white font-bold" asChild>
+          <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">
+            公式サイトへ
+          </a>
+        </Button>
+      </div>
+
+      <footer className="bg-primary text-white py-12 mb-16 md:mb-0">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
               <h4 className="font-bold text-lg mb-4">朝霞・新座の太陽光・蓄電池 業者選びガイド</h4>
               <p className="text-blue-200 text-sm leading-relaxed max-w-md">
-                当サイトは、太陽光発電・蓄電池の導入を検討されている方へ、中立的な立場から有益な情報を提供することを目的としています。
+                当サイトは、太陽光発電・蓄電池の導入を検討されている方へ、施工のプロの視点から、業界の裏側と有益な情報を提供することを目的としています。
               </p>
             </div>
             <div className="md:text-right">
