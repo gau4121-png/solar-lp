@@ -20,7 +20,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl text-primary">
-            <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm">朝霞・新座エリア限定</span>
+            <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm">埼玉県全域・東京エリア対応</span>
             <span>太陽光・蓄電池 業者選びガイド</span>
           </div>
           <nav className="hidden md:flex gap-6 text-sm font-medium">
@@ -41,13 +41,13 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <img 
               src="/images/hero-bg.jpg" 
-              alt="朝霞・新座エリアの住宅街と太陽光パネル" 
+              alt="埼玉県・東京エリアの住宅街と太陽光パネル" 
               className="w-full h-full object-cover brightness-50"
             />
           </div>
           <div className="container relative z-10 text-white text-center">
             <div className="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              朝霞・新座エリアにお住まいの方へ
+              埼玉県全域・東京エリアにお住まいの方へ
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
               太陽光・蓄電池の業者選び、<br/>
@@ -177,7 +177,7 @@ export default function Home() {
               <h3 className="text-xl font-bold text-primary mb-4">結論：最も賢い選択は「地域密着の自社施工店」です</h3>
               <p className="text-muted-foreground max-w-3xl mx-auto">
                 広告費や紹介料、下請けマージンといった「余計なコスト」をすべてカットできるのが自社施工店。<br/>
-                さらに、地元に根付いているため、施工後のトラブル時もすぐに駆けつけてくれる安心感があります。
+                さらに、地元に根付いているため、施工後のトラブル時もすぐに駆けつけてくれる安心感があります。拠点のある新座市を中心に、埼玉県全域および東京都（練馬区・板橋区・西東京市など）もフットワーク軽く対応します。
               </p>
             </div>
           </div>
