@@ -288,7 +288,7 @@ https://solar-lp.manus.space/`}
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  <a href="#" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
+                  <a href="https://daimatsu.link/wp-admin/edit.php" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
                     <div className="flex items-center justify-between mb-4">
                       <div className="p-3 bg-slate-100 rounded-lg group-hover:bg-slate-200 transition-colors">
                         <PenTool className="h-6 w-6 text-slate-600" />
