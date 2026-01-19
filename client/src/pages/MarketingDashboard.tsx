@@ -109,6 +109,9 @@ export default function MarketingDashboard() {
             <TabsTrigger value="performance" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
               📊 パフォーマンス分析
             </TabsTrigger>
+            <TabsTrigger value="competitors" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              🕵️ 競合モニタリング
+            </TabsTrigger>
           </TabsList>
 
           {/* Action Plan Tab */}
@@ -337,6 +340,135 @@ export default function MarketingDashboard() {
                     <h3 className="font-bold text-lg mb-1 group-hover:text-blue-600 transition-colors">Search Console</h3>
                     <p className="text-sm text-slate-500">検索キーワード、掲載順位、クリック数などのSEO分析</p>
                   </a>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Competitor Monitoring Tab */}
+          <TabsContent value="competitors">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {/* Market Watch */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-blue-500" />
+                    市場定点観測（Googleマップ）
+                  </CardTitle>
+                  <CardDescription>
+                    「地域名 + サービス名」で検索し、自社の順位と競合の動きを確認しましょう。
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="p-4 bg-slate-50 rounded-lg border">
+                    <div className="font-medium mb-2">チェックすべき検索キーワード</div>
+                    <div className="space-y-2">
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+太陽光発電', '_blank')}>
+                        <span>🔍 埼玉 太陽光発電</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+蓄電池', '_blank')}>
+                        <span>🔍 埼玉 蓄電池</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+太陽光+業者', '_blank')}>
+                        <span>🔍 埼玉 太陽光 業者</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="text-sm text-slate-600">
+                    <span className="font-bold">👀 チェックポイント:</span>
+                    <ul className="list-disc list-inside mt-1 space-y-1 text-slate-500">
+                      <li>上位3位（MEO枠）に入っているか？</li>
+                      <li>新しい口コミが増えている競合はいないか？</li>
+                      <li>競合が「キャンペーン」などの投稿をしていないか？</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* SNS Watch */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Instagram className="h-5 w-5 text-pink-500" />
+                    トレンド観測（Instagram）
+                  </CardTitle>
+                  <CardDescription>
+                    ハッシュタグ検索で、今どんな投稿が人気なのか（ユーザーの関心）を探りましょう。
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="p-4 bg-slate-50 rounded-lg border">
+                    <div className="font-medium mb-2">チェックすべきハッシュタグ</div>
+                    <div className="space-y-2">
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/埼玉太陽光/', '_blank')}>
+                        <span>#埼玉太陽光</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/電気代削減/', '_blank')}>
+                        <span>#電気代削減</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/太陽光発電メリット/', '_blank')}>
+                        <span>#太陽光発電メリット</span>
+                        <ExternalLink className="h-4 w-4 text-slate-400" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="text-sm text-slate-600">
+                    <span className="font-bold">👀 チェックポイント:</span>
+                    <ul className="list-disc list-inside mt-1 space-y-1 text-slate-500">
+                      <li>「発見」タブで上位に来ている投稿のデザインは？</li>
+                      <li>競合他社がどんなリール動画を上げているか？</li>
+                      <li>ユーザーがどんな疑問（悩み）を投稿しているか？</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Competitor Comparison Framework */}
+            <Card>
+              <CardHeader>
+                <CardTitle>競合比較フレームワーク</CardTitle>
+                <CardDescription>
+                  競合の強み・弱みを分析し、自社の「勝ち筋」を見つけるためのメモ欄です。
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm text-left">
+                    <thead className="text-xs text-slate-500 uppercase bg-slate-50">
+                      <tr>
+                        <th className="px-4 py-3 rounded-tl-lg">競合タイプ</th>
+                        <th className="px-4 py-3">主な特徴（強み）</th>
+                        <th className="px-4 py-3">弱点（攻めどころ）</th>
+                        <th className="px-4 py-3 rounded-tr-lg">対策アクション</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      <tr className="bg-white">
+                        <td className="px-4 py-3 font-medium text-slate-900">大手家電量販店</td>
+                        <td className="px-4 py-3 text-slate-600">知名度、ポイント還元</td>
+                        <td className="px-4 py-3 text-slate-600">施工が下請け任せ、担当が変わる</td>
+                        <td className="px-4 py-3 text-slate-600">「自社施工」「顔が見える安心感」を強調</td>
+                      </tr>
+                      <tr className="bg-white">
+                        <td className="px-4 py-3 font-medium text-slate-900">訪問販売会社</td>
+                        <td className="px-4 py-3 text-slate-600">営業力、即決させる勢い</td>
+                        <td className="px-4 py-3 text-slate-600">価格が高い、強引な勧誘</td>
+                        <td className="px-4 py-3 text-slate-600">「適正価格」「しつこい営業なし」を訴求</td>
+                      </tr>
+                      <tr className="bg-white">
+                        <td className="px-4 py-3 font-medium text-slate-900">地元のライバル店</td>
+                        <td className="px-4 py-3 text-slate-600">地域密着、OB客の多さ</td>
+                        <td className="px-4 py-3 text-slate-600">Web発信が弱い場合が多い</td>
+                        <td className="px-4 py-3 text-slate-600">Webでの情報量と透明性で差別化</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
             </Card>
