@@ -224,6 +224,85 @@ export default function MarketingDashboard() {
               </Card>
             </div>
 
+            {/* Channel Specific Analysis */}
+            <h3 className="text-xl font-bold text-slate-800 mb-4">チャンネル別パフォーマンス</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              {/* Instagram Stats */}
+              <Card className="border-t-4 border-t-pink-500">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary" className="bg-pink-50 text-pink-600">Instagram</Badge>
+                    <ExternalLink className="h-4 w-4 text-slate-400" />
+                  </div>
+                  <CardTitle className="text-base">見るべき指標</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">プロフィールアクセス数</div>
+                    <p className="text-xs text-slate-400">LPへの入り口となる最重要指標</p>
+                  </div>
+                  <Separator />
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">エンゲージメント率</div>
+                    <p className="text-xs text-slate-400">いいね・保存数 ÷ リーチ数</p>
+                  </div>
+                  <Button variant="outline" className="w-full mt-2 text-pink-600 border-pink-200 hover:bg-pink-50" onClick={() => window.open('https://www.instagram.com/', '_blank')}>
+                    インサイトを確認
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Google Maps Stats */}
+              <Card className="border-t-4 border-t-blue-500">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary" className="bg-blue-50 text-blue-600">Googleマップ</Badge>
+                    <ExternalLink className="h-4 w-4 text-slate-400" />
+                  </div>
+                  <CardTitle className="text-base">見るべき指標</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">ウェブサイトのクリック数</div>
+                    <p className="text-xs text-slate-400">マップ経由でのLP訪問数</p>
+                  </div>
+                  <Separator />
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">ルート検索・通話数</div>
+                    <p className="text-xs text-slate-400">来店や問い合わせへの直結度</p>
+                  </div>
+                  <Button variant="outline" className="w-full mt-2 text-blue-600 border-blue-200 hover:bg-blue-50" onClick={() => window.open('https://business.google.com/', '_blank')}>
+                    ビジネスプロフィールを確認
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Blog/SEO Stats */}
+              <Card className="border-t-4 border-t-green-500">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary" className="bg-green-50 text-green-600">ブログ・SEO</Badge>
+                    <ExternalLink className="h-4 w-4 text-slate-400" />
+                  </div>
+                  <CardTitle className="text-base">見るべき指標</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">検索クリック数</div>
+                    <p className="text-xs text-slate-400">Google検索からの流入数</p>
+                  </div>
+                  <Separator />
+                  <div>
+                    <div className="text-sm font-medium text-slate-600">平均掲載順位</div>
+                    <p className="text-xs text-slate-400">狙ったキーワードでの順位</p>
+                  </div>
+                  <Button variant="outline" className="w-full mt-2 text-green-600 border-green-200 hover:bg-green-50" onClick={() => window.open('https://search.google.com/search-console', '_blank')}>
+                    Search Consoleを確認
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card className="mb-8">
               <CardHeader>
                 <CardTitle>分析ツールへのアクセス</CardTitle>
