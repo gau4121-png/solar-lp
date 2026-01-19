@@ -106,6 +106,9 @@ export default function MarketingDashboard() {
             <TabsTrigger value="resources" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
               🔗 お役立ちリンク
             </TabsTrigger>
+            <TabsTrigger value="performance" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              📊 パフォーマンス分析
+            </TabsTrigger>
           </TabsList>
 
           {/* Action Plan Tab */}
@@ -184,6 +187,77 @@ export default function MarketingDashboard() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Performance Tab */}
+          <TabsContent value="performance">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-slate-500">訪問者数 (Users)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">計測中</div>
+                  <p className="text-xs text-slate-500 mt-1">目標目安: 月間 1,000 PV</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-slate-500">コンバージョン率 (CVR)</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">計測中</div>
+                  <p className="text-xs text-slate-500 mt-1">目標目安: 1.0% 以上</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm font-medium text-slate-500">エンゲージメント</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">計測中</div>
+                  <p className="text-xs text-slate-500 mt-1">滞在時間や読了率など</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle>分析ツールへのアクセス</CardTitle>
+                <CardDescription>
+                  より詳細なデータは、以下の公式ツールから確認してください。
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <a href="https://analytics.google.com/" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-3 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
+                        <svg className="h-6 w-6 text-orange-600" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                        </svg>
+                      </div>
+                      <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-orange-500 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Google Analytics</h3>
+                    <p className="text-sm text-slate-500">アクセス数、ユーザー属性、行動フローなどの詳細分析</p>
+                  </a>
+                  
+                  <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                        <svg className="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
+                      </div>
+                      <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-1 group-hover:text-blue-600 transition-colors">Search Console</h3>
+                    <p className="text-sm text-slate-500">検索キーワード、掲載順位、クリック数などのSEO分析</p>
+                  </a>
                 </div>
               </CardContent>
             </Card>
