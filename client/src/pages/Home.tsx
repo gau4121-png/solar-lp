@@ -1,11 +1,11 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight, Phone } from "lucide-react";
+import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight, Phone, Menu } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { ContactForm } from "@/components/ContactForm";
 import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Home() {
   // The userAuth hooks provides authentication state
@@ -13,36 +13,124 @@ export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
   const [simulatorOpen, setSimulatorOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-  };
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileMenuOpen]);
+
+  const scrollToSection = useCallback((id: string) => {
+    setMobileMenuOpen(false);
+    // Small delay to allow menu close animation before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl text-primary">
-            <span className="bg-gray-600 text-white px-2 py-1 rounded text-sm">完全中立</span>
-            <span>太陽光・蓄電池 失敗しない業者選びガイド</span>
+          {/* Logo */}
+          <div className="flex items-center gap-2 font-bold text-primary">
+            <span className="bg-gray-600 text-white px-2 py-1 rounded text-xs sm:text-sm">完全中立</span>
+            <span className="text-sm sm:text-xl leading-tight">太陽光・蓄電池 失敗しない業者選びガイド</span>
           </div>
-          <nav className="hidden md:flex gap-6 text-sm font-medium">
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex gap-6 text-sm font-medium">
             <button onClick={() => scrollToSection('problem')} className="hover:text-primary transition-colors">業界の裏側</button>
             <button onClick={() => scrollToSection('comparison')} className="hover:text-primary transition-colors">4つの選択肢</button>
             <button onClick={() => scrollToSection('recommend')} className="hover:text-primary transition-colors">推奨業者</button>
             <button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">無料相談</button>
           </nav>
-          <div className="flex items-center gap-2">
+
+          {/* Desktop Right Actions */}
+          <div className="hidden lg:flex items-center gap-2">
             <AdminNotificationBadge />
             <Button onClick={() => scrollToSection('simulator')} variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white font-bold">
               <Calculator className="mr-2 h-4 w-4" />
               無料シミュレーション
             </Button>
           </div>
+
+          {/* Mobile Right Actions */}
+          <div className="flex lg:hidden items-center gap-2">
+            <AdminNotificationBadge />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="flex items-center justify-center h-10 w-10 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label={mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`lg:hidden fixed inset-0 top-16 z-40 bg-black/40 transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+
+        {/* Mobile Menu Panel */}
+        <div
+          className={`lg:hidden fixed top-16 right-0 z-50 w-72 max-w-[85vw] h-[calc(100dvh-4rem)] bg-white shadow-xl transition-transform duration-300 ease-in-out ${
+            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <nav className="flex flex-col p-6 gap-1">
+            <button
+              onClick={() => scrollToSection('problem')}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors text-left"
+            >
+              業界の裏側
+            </button>
+            <button
+              onClick={() => scrollToSection('comparison')}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors text-left"
+            >
+              4つの選択肢
+            </button>
+            <button
+              onClick={() => scrollToSection('recommend')}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors text-left"
+            >
+              推奨業者
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors text-left"
+            >
+              無料相談
+            </button>
+
+            <div className="border-t border-gray-200 my-3" />
+
+            <Button
+              onClick={() => scrollToSection('simulator')}
+              variant="default"
+              size="lg"
+              className="bg-secondary hover:bg-secondary/90 text-white font-bold w-full"
+            >
+              <Calculator className="mr-2 h-5 w-5" />
+              無料シミュレーション
+            </Button>
+          </nav>
         </div>
       </header>
 

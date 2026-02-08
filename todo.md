@@ -14,3 +14,6 @@
 - [x] Add admin notification badge to site header
 - [x] Badge click navigates to /admin/inquiries
 - [x] Write vitest test for unread count procedure
+- [x] Replace desktop-only nav with responsive hamburger menu for mobile
+- [x] Include all nav links, admin badge, and CTA in mobile menu
+- [x] Ensure smooth open/close animation and body scroll lock
