@@ -43,3 +43,9 @@
 - [x] Update Canadian Solar info with 30-year warranty
 - [x] Update Choshu Industry info with unique 10-year rain leak warranty
 - [x] Add comprehensive after-service/warranty section based on Daimatsu flyer (6 services)
+- [x] Add bright solar panel background image to hero section
+- [x] Review Canadian Solar and Choshu Industry catalogs for logos and key info
+- [x] Remove "太陽光発電は60万円〜！" badge (Tainavi-style) and replace with original headline
+- [x] Keep "ローン活用で初期費用0円も可！" badge (original content)
+- [x] Incorporate manufacturer logos from catalogs into maker section
+- [x] Add catalog product details (TOPHiKu6, JAPAN BLACK 364W, warranty info) to descriptions

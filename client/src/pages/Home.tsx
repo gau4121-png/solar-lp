@@ -280,10 +280,16 @@ export default function Home() {
       <main className="flex-1">
 
         {/* ═══════════════════ HERO SECTION ═══════════════════ */}
-        <section className="relative bg-white overflow-hidden">
-          {/* Decorative dots (like Tainavi) */}
-          <div className="absolute top-0 left-0 w-48 h-48 dot-pattern-light opacity-60" />
-          <div className="absolute bottom-0 right-0 w-64 h-64 dot-pattern-light opacity-40" />
+        <section className="relative overflow-hidden">
+          {/* Bright solar panel background image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/LbCMdnEwKLiOykQY.jpg" 
+              alt="明るい太陽光パネルと青空" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
+          </div>
           
           <div className="container relative z-10 py-12 md:py-20">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -291,8 +297,8 @@ export default function Home() {
               <div className="text-center lg:text-left">
                 {/* Badges */}
                 <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
-                  <span className="inline-flex items-center bg-secondary text-white px-4 py-1.5 rounded text-xs sm:text-sm font-bold shadow-sm" style={{ transform: "rotate(-2deg)" }}>
-                    太陽光発電は60万円〜！
+                  <span className="inline-flex items-center bg-primary text-white px-4 py-1.5 rounded text-xs sm:text-sm font-bold shadow-sm" style={{ transform: "rotate(-2deg)" }}>
+                    中間マージン一切なしの自社施工
                   </span>
                   <span className="inline-flex items-center bg-secondary text-white px-4 py-1.5 rounded text-xs sm:text-sm font-bold shadow-sm" style={{ transform: "rotate(1deg)" }}>
                     ローン活用で初期費用0円も可！
@@ -336,30 +342,25 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right: Hero Image */}
-              <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-200">
-                  <img 
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/GiCxXcqQDSejsvOe.jpg" 
-                    alt="埼玉県・東京エリアの住宅街と太陽光パネル" 
-                    className="w-full h-64 sm:h-80 lg:h-96 object-cover"
-                  />
-                  {/* Overlay badge */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="bg-primary rounded-full p-2 shrink-0">
-                        <Phone className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500">お電話でのご相談・お見積り</p>
-                        <p className="text-xl font-bold text-gray-800">048-486-9274</p>
+              {/* Right: Phone CTA card (image is now background) */}
+              <div className="relative hidden lg:flex items-center justify-center">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full">
+                  <div className="text-center">
+                    <div className="bg-primary rounded-full p-4 mx-auto w-fit mb-4">
+                      <Phone className="h-8 w-8 text-white" />
+                    </div>
+                    <p className="text-sm text-gray-500 mb-1">お電話でのご相談・お見積り</p>
+                    <a href="tel:0484869274" className="text-3xl font-black text-gray-800 hover:text-primary transition-colors">048-486-9274</a>
+                    <p className="text-xs text-gray-400 mt-2">受付時間 9:00〜18:00（年中無休）</p>
+                    <div className="border-t border-gray-200 mt-4 pt-4">
+                      <p className="text-sm text-gray-600 font-medium">取扱メーカー</p>
+                      <div className="flex items-center justify-center gap-4 mt-3">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 object-contain" />
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-7 object-contain" />
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* Decorative circle */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full border-4 border-primary/20 hidden lg:block" />
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-primary/10 hidden lg:block" />
               </div>
             </div>
           </div>
@@ -601,8 +602,8 @@ export default function Home() {
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="bg-blue-50 p-3 rounded-xl">
-                        <Globe className="h-8 w-8 text-blue-600" />
+                      <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" />
                       </div>
                       <div>
                         <span className="text-xs text-primary font-bold bg-orange-50 px-2 py-0.5 rounded">海外メーカー No.1</span>
@@ -614,10 +615,10 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    世界トップクラスのシェアを持つカナダ発のメーカー。高い発電効率とコストパフォーマンスのバランスが抜群で、住宅用から産業用まで幅広く対応。業界最長クラスの<span className="font-bold text-primary">30年保証</span>付きで長期的な安心感も抜群です。
+                    世界トップクラスのシェアを持つカナダ発のメーカー。最新の<span className="font-bold text-gray-800">TOPHiKu6シリーズ</span>はN型TOPCon技術採用で最大<span className="font-bold text-gray-800">455W・変換効率22.8%</span>を実現。国内住宅設置実績<span className="font-bold text-primary">20万棟以上</span>。業界最長クラスの<span className="font-bold text-primary">30年出力保証・25年製品保証</span>付きで長期的な安心感も抜群です。
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {["コスパ抜群", "世界シェア上位", "30年保証", "高耐久"].map((tag, i) => (
+                    {["コスパ抜群", "20万棟実績", "30年出力保証", "N型TOPCon"].map((tag, i) => (
                       <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
                     ))}
                   </div>
@@ -630,8 +631,8 @@ export default function Home() {
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="bg-red-50 p-3 rounded-xl">
-                        <Factory className="h-8 w-8 text-red-600" />
+                      <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" />
                       </div>
                       <div>
                         <span className="text-xs text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">国産メーカー No.1</span>
@@ -643,10 +644,10 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    山口県に本社を置く国内トップメーカー。日本の住宅屋根に最適化された製品設計が強み。国内生産による品質管理の徹底と、手厚い保証体制が安心のポイント。さらに、他メーカーにはない<span className="font-bold text-red-600">雨漏り保証10年</span>が付帯しており、屋根への設置に不安がある方にも安心です。
+                    山口県に本社を置く国内トップメーカー。最新の<span className="font-bold text-gray-800">JAPAN BLACK 364W</span>は日本国内生産にこだわった高品質モジュール。<span className="font-bold text-gray-800">25年出力保証・15年構成機器保証</span>に加え、他メーカーにはない<span className="font-bold text-red-600">雨漏り保証10年（施工保証）</span>が付帯。屋根への設置に不安がある方にも安心の、創業20年以上の実績を誇るメーカーです。
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {["国内生産", "日本の屋根に最適", "雨漏り保証10年", "高品質"].map((tag, i) => (
+                    {["MADE IN JAPAN", "JAPAN BLACK", "雨漏り保証10年", "25年出力保証"].map((tag, i) => (
                       <span key={i} className="bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
                     ))}
                   </div>

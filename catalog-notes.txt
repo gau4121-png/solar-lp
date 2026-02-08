@@ -1,0 +1,26 @@
+Canadian Solar Catalog Notes:
+- Logo: Red maple leaf + "CanadianSolar" text in red
+- Product: TOPHiKu6 CS6.2 Series (N-type TOPCon Technology) - NEW
+- Main module: CS6.2-48TM - 455W, 22.8% efficiency
+- Combo models: CS6.2-36TM (340W, 22.5%), CS6.2-32TM (300W, 22.2%)
+- Battery: EP CUBE
+- Warranty: 30年出力保証, 25年製品保証, 15年製品保証
+- 20年延長保証サービス(有償)
+- 国内住宅設置実績 200,000棟 (2024年12月時点)
+- 世界で最も信頼できるグローバル企業 No.1 (米国NEWSWEEK誌)
+- 150GW世界出荷実績, 160国以上
+
+Choshu Industry (長州産業) Catalog Notes:
+- Logo: "CIC 長州産業" in red/white
+- Product: JAPAN BLACK 364W
+- Tagline: "日本の精緻な技が息づいている。"
+- MADE IN JAPAN badge
+- 太陽電池モジュール「ジャパンブラック」は日本国内での生産にこだわっています
+- テクノロジーで豊かな明日のくらしを創ります。
+- 長州産業株式会社
+- Features: 01-04 technical features shown
+- System diagram with house illustration
+- Warranty: 25年モジュール出力保証, 15年構成機器保証, 10年施工保証(雨漏り保証)
+- 20年以上の実績
+- 15年蓄電池保証
+- 防水: detailed waterproofing diagrams for various roof types
