@@ -60,64 +60,7 @@ function SolarIcon({ className = "h-8 w-8" }: { className?: string }) {
   );
 }
 
-/* ─── Cost Structure Diagram ─── */
-function CostDiagram() {
-  return (
-    <div className="flex flex-col sm:flex-row items-end justify-center gap-6 sm:gap-12 py-8">
-      {/* Left: Self-construction (shorter = cheaper) */}
-      <div className="flex flex-col items-center w-full sm:w-48">
-        <div className="relative mb-3 w-full">
-          <div className="bg-white border-2 border-gray-200 rounded-lg px-3 py-2 text-center shadow-sm">
-            <span className="text-primary font-bold text-sm">自社施工</span>だから<br/>
-            <span className="font-bold text-sm">無駄なコストなし</span>
-          </div>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-200" />
-        </div>
-        <div className="w-full rounded-t-lg overflow-hidden border-2 border-primary/30">
-          <div className="bg-primary/90 text-white text-center py-6 px-2">
-            <p className="font-bold text-sm">自社施工</p>
-            <p className="font-bold text-sm">会社の利益</p>
-          </div>
-          <div className="bg-orange-100 text-center py-10 px-2 border-t-2 border-primary/20">
-            <p className="font-bold text-primary text-lg">工事代金</p>
-          </div>
-        </div>
-        <p className="mt-3 font-bold text-primary text-center text-sm">ダイマツ<br/><span className="text-lg">適正価格</span></p>
-      </div>
-
-      {/* Arrow */}
-      <div className="hidden sm:flex flex-col items-center self-center">
-        <div className="text-primary font-bold text-4xl">→</div>
-      </div>
-      <div className="sm:hidden flex justify-center">
-        <div className="text-primary font-bold text-2xl rotate-90">→</div>
-      </div>
-
-      {/* Right: Via intermediary (taller = more expensive) */}
-      <div className="flex flex-col items-center w-full sm:w-48">
-        <div className="relative mb-3 w-full">
-          <div className="bg-white border-2 border-red-200 rounded-lg px-3 py-2 text-center shadow-sm">
-            <span className="text-red-600 font-bold text-sm">2社の利益分、</span><br/>
-            <span className="text-red-600 font-bold text-sm">価格が高く</span>なる
-          </div>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-red-200" />
-        </div>
-        <div className="w-full rounded-t-lg overflow-hidden border-2 border-red-200">
-          <div className="bg-red-500 text-white text-center py-5 px-2">
-            <p className="font-bold text-sm">営業会社の利益</p>
-          </div>
-          <div className="bg-red-300 text-white text-center py-5 px-2 border-t border-red-400">
-            <p className="font-bold text-sm">下請けの利益</p>
-          </div>
-          <div className="bg-orange-100 text-center py-10 px-2 border-t-2 border-red-200">
-            <p className="font-bold text-red-600 text-lg">工事代金</p>
-          </div>
-        </div>
-        <p className="mt-3 font-bold text-red-500 text-center text-sm">紹介サイト経由<br/><span className="text-lg">割高な価格</span></p>
-      </div>
-    </div>
-  );
-}
+/* CostDiagram removed - replaced by 4-way comparison table */
 
 /* ─── Mini Countdown for Hero Banner ─── */
 function MiniCountdown() {
@@ -428,7 +371,7 @@ export default function Home() {
                 </h1>
 
                 <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                  紹介サイトの手数料<span className="text-red-500 font-bold">10〜15%</span>をカット。<br/>
+                  余計な中間マージンを<span className="text-red-500 font-bold">徹底カット</span>。<br/>
                   同じメーカー・同じ工事内容で<span className="font-bold text-primary">最大100万円以上</span>お得に。
                 </p>
 
@@ -515,41 +458,103 @@ export default function Home() {
                 なぜダイマツは<span className="text-primary">安い</span>のか？
               </h2>
               <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-                紹介サイトを通すと、あなたの見積もりに<span className="text-red-500 font-bold">10〜15%の紹介料</span>が上乗せされます。<br/>
-                自社施工のダイマツなら、その分をまるごとカットできます。
+                太陽光・蓄電池の価格は、<span className="text-red-500 font-bold">購入ルートによって大きく変わります</span>。<br/>
+                自社施工のダイマツなら、中間マージンをカットして適正価格を実現します。
               </p>
             </div>
 
-            {/* Cost Diagram */}
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-orange-100">
-              <CostDiagram />
+            {/* 4者比較表 */}
+            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse min-w-[700px]">
+                  <thead>
+                    <tr>
+                      <th className="p-4 text-left bg-gray-50 border-b-2 border-gray-200 w-[18%] text-sm font-bold text-gray-700">比較項目</th>
+                      <th className="p-4 text-center bg-gray-50 border-b-2 border-gray-200 w-[18%] text-sm text-gray-500">
+                        <Building2 className="h-5 w-5 mx-auto mb-1 text-gray-400" />
+                        大手家電量販店
+                      </th>
+                      <th className="p-4 text-center bg-gray-50 border-b-2 border-gray-200 w-[18%] text-sm text-gray-500">
+                        <HomeIcon className="h-5 w-5 mx-auto mb-1 text-gray-400" />
+                        ハウスメーカー
+                      </th>
+                      <th className="p-4 text-center bg-gray-50 border-b-2 border-gray-200 w-[18%] text-sm text-gray-500">
+                        <Globe className="h-5 w-5 mx-auto mb-1 text-gray-400" />
+                        一括見積もりサイト
+                      </th>
+                      <th className="p-4 text-center bg-primary/5 border-b-4 border-primary w-[28%] relative">
+                        <div className="absolute -top-0 left-2 right-2 bg-primary text-white text-xs py-1 rounded-b-lg font-bold">おすすめ</div>
+                        <div className="mt-4">
+                          <Hammer className="h-5 w-5 mx-auto mb-1 text-primary" />
+                          <span className="text-primary font-bold text-sm">地域密着自社施工店</span><br/>
+                          <span className="text-primary font-bold text-base">(ダイマツ)</span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        item: "価格（安さ）",
+                        a: { mark: "△", text: "中間マージンあり", color: "text-gray-500" },
+                        b: { mark: "△", text: "下請けマージン上乗せ", color: "text-gray-500" },
+                        c: { mark: "△", text: "紹介料が上乗せ", color: "text-gray-500" },
+                        d: { mark: "◎", text: "直接施工で最安", color: "text-primary font-bold" },
+                      },
+                      {
+                        item: "施工体制",
+                        a: { mark: "△", text: "下請け業者に丸投げ", color: "text-gray-500" },
+                        b: { mark: "△", text: "下請け業者に丸投げ", color: "text-gray-500" },
+                        c: { mark: "○", text: "登録業者が施工", color: "text-gray-600" },
+                        d: { mark: "◎", text: "自社職人が責任施工", color: "text-primary font-bold" },
+                      },
+                      {
+                        item: "アフターフォロー",
+                        a: { mark: "×", text: "販売店は対応せず", color: "text-red-500" },
+                        b: { mark: "×", text: "引き渡し後は対応外", color: "text-red-500" },
+                        c: { mark: "△", text: "サイトは関与せず", color: "text-gray-500" },
+                        d: { mark: "◎", text: "自社で即対応・駆けつけ", color: "text-primary font-bold" },
+                      },
+                      {
+                        item: "提案力",
+                        a: { mark: "△", text: "マニュアル通り", color: "text-gray-500" },
+                        b: { mark: "△", text: "太陽光は専門外", color: "text-gray-500" },
+                        c: { mark: "○", text: "比較提案あり", color: "text-gray-600" },
+                        d: { mark: "◎", text: "地域特性を熟知", color: "text-primary font-bold" },
+                      },
+                      {
+                        item: "保証・責任",
+                        a: { mark: "△", text: "メーカー保証のみ", color: "text-gray-500" },
+                        b: { mark: "△", text: "メーカー保証のみ", color: "text-gray-500" },
+                        c: { mark: "○", text: "登録基準あり", color: "text-gray-600" },
+                        d: { mark: "◎", text: "自社施工保証3年+メーカー保証", color: "text-primary font-bold" },
+                      },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+                        <td className="p-4 font-bold text-gray-700 text-sm">{row.item}</td>
+                        {[row.a, row.b, row.c, row.d].map((cell, j) => (
+                          <td key={j} className={`p-4 text-center ${j === 3 ? 'bg-primary/5' : ''}`}>
+                            <span className={`text-xl ${cell.color}`}>{cell.mark}</span>
+                            <br/>
+                            <span className="text-xs text-gray-500">{cell.text}</span>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
-            {/* Comparison Numbers */}
-            <div className="grid sm:grid-cols-3 gap-4 mt-10 max-w-3xl mx-auto">
-              {[
-                { label: "紹介サイトの手数料", value: "10〜15%", sub: "契約額に対して", color: "text-red-500", bg: "bg-red-50", border: "border-red-100" },
-                { label: "ダイマツなら削減", value: "最大100万円+", sub: "同じ工事内容で", color: "text-primary", bg: "bg-orange-50", border: "border-orange-100" },
-                { label: "中間マージン", value: "0円", sub: "完全自社施工", color: "text-green-600", bg: "bg-green-50", border: "border-green-100" },
-              ].map((item, i) => (
-                <div key={i} className={`${item.bg} ${item.border} border rounded-xl p-5 text-center`}>
-                  <p className="text-xs text-gray-500 font-medium mb-1">{item.label}</p>
-                  <p className={`text-2xl md:text-3xl font-black ${item.color}`}>{item.value}</p>
-                  <p className="text-xs text-gray-400 mt-1">{item.sub}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* 一般的な販売会社 vs ダイマツ 比較図 */}
-            <div className="mt-12 max-w-3xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 mb-6">一般的な販売会社 vs ダイマツの違い</h3>
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/HcwDjCcCXIWSCBKd.png"
-                alt="一般的な販売会社は施工を丸投げ、ダイマツは直接契約・直接施工で販売・施工・アフターまで全責任"
-                className="w-full rounded-2xl shadow-lg border border-gray-200"
-                loading="lazy"
-              />
-              <p className="text-center text-xs text-gray-500 mt-3">※ダイマツは販売・施工・アフターまで全て自社対応。中間マージンなしで迅速対応。</p>
+            {/* 結論ボックス */}
+            <div className="mt-10 max-w-3xl mx-auto bg-orange-50 rounded-2xl p-6 md:p-8 border border-orange-200 text-center">
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">
+                結論：コストと安心のバランスが良いのは<span className="text-primary">「地域密着の自社施工店」</span>
+              </h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                下請けマージンや紹介料といった「余計なコスト」をカットできるのが自社施工店の強み。<br/>
+                さらに、地元に根付いているため、施工後のトラブル時もすぐに駆けつけてくれる安心感があります。
+              </p>
             </div>
           </div>
         </section>
@@ -566,7 +571,7 @@ export default function Home() {
                 <span className="text-primary">本当の自社施工</span>だからできる<br/>安心の工事保証
               </h2>
               <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-                紹介サイトの「工事完了保証」は、業者が倒産した場合に別の業者を手配するだけ。<br/>
+                下請け施工では、工事後のトラブル時に責任の所在が曖昧になりがちです。<br/>
                 ダイマツは<strong>最初から最後まで同じ職人が責任を持って施工</strong>します。
               </p>
             </div>
@@ -578,13 +583,13 @@ export default function Home() {
                   <div className="bg-red-100 p-2 rounded-full">
                     <AlertTriangle className="h-6 w-6 text-red-500" />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-700">紹介サイトの「工事完了保証」</h3>
+                  <h3 className="text-lg font-bold text-gray-700">下請け施工の場合</h3>
                 </div>
                 <ul className="space-y-4">
                   {[
-                    "業者が倒産した場合のみ適用",
-                    "別の知らない業者が工事を引き継ぐ",
-                    "施工品質の一貫性は保証されない",
+                    "営業・施工・アフターが別々の会社",
+                    "トラブル時に責任のたらい回しになりやすい",
+                    "施工品質の一貫性が保たれにくい",
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <X className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />

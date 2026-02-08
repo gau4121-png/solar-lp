@@ -97,3 +97,8 @@
 - [x] Fix Fujimino city subsidy: 各上限7万円 (not flat rate)
 - [x] Extract and add EP CUBE product photos from catalog
 - [x] Final quality check and polish
+- [x] Remove direct criticism of 紹介サイト (avoid looking like attacking Solar Partners)
+- [x] Restore 4-way comparison table (大手家電量販店・ハウスメーカー・一括見積もりサイト・ダイマツ)
+- [x] Update comparison details: 大手家電=下請け工事・アフターなし, ハウスメーカー=下請け・アフターなし, 見積サイト=紹介料上乗せ
+- [x] Neutralize 安心保証 section (remove 紹介サイト批判, make it about ダイマツ自社施工の強み)
+- [x] Remove uploaded cost comparison image (販売会社vsダイマツ diagram)
