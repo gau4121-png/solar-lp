@@ -88,3 +88,12 @@
 - [x] Add Nichicon T5/T6 product photos to the recommended battery section
 - [x] Source product images from catalog PDF and web search
 - [x] Integrate images into T5 and T6 cards for visual impact
+- [x] Fix Fujimino city subsidy: change from 各7万円 to 各上限7万円 (not flat rate)
+- [x] Extract EP CUBE product photos from catalog PDF
+- [x] Add EP CUBE product images to battery section for visual balance
+- [x] COMPREHENSIVE REDESIGN: Review entire LP structure, design, and information flow
+- [x] Optimize section ordering for maximum conversion (AIDMA/AISAS flow)
+- [x] Improve visual consistency and design polish across all sections
+- [x] Fix Fujimino city subsidy: 各上限7万円 (not flat rate)
+- [x] Extract and add EP CUBE product photos from catalog
+- [x] Final quality check and polish

@@ -862,6 +862,14 @@ export default function Home() {
                 {/* EP CUBE */}
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden bg-white">
                   <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-400" />
+                  <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/jItEswMBiAPMQEyd.png"
+                      alt="EP CUBE 蓄電池ラインナップ 6.6kWh・9.9kWh・13.3kWh"
+                      className="w-full h-full object-contain p-4"
+                    />
+                    <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-0.5 rounded text-xs font-bold">iF DESIGN AWARD</div>
+                  </div>
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
@@ -985,6 +993,18 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+
+              {/* ─── EP CUBE Detail Gallery ─── */}
+              <div className="mt-8 max-w-4xl mx-auto">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
+                  <img
+                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/poLqkHmmKUsngjvZ.png"
+                    alt="EP CUBE 製品詳細 ― パワコン・蓄電池一体型、15年製品保証"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <p className="text-center text-xs text-gray-500 mt-3">※ 画像出典：カナディアンソーラー製品カタログより</p>
               </div>
 
               {/* ─── EP CUBE vs Choshu Multi Comparison ─── */}
@@ -1654,15 +1674,15 @@ export default function Home() {
                       </tr>
                       <tr className="border-b hover:bg-gray-50">
                         <td className="py-3 px-4 font-medium">ふじみ野市</td>
-                        <td className="py-3 px-4 text-center">7万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center">7万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各７万円</td>
+                        <td className="py-3 px-4 text-center">上限7万円</td>
+                        <td className="py-3 px-4 text-center">上限7万円</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各上限7万円</td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50">
                         <td className="py-3 px-4 font-medium">富士見市</td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各５万円</td>
+                        <td className="py-3 px-4 text-center">上限5万円</td>
+                        <td className="py-3 px-4 text-center">上限5万円</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各上限5万円</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1674,7 +1694,7 @@ export default function Home() {
                   </p>
                   <p className="text-xs text-amber-700 leading-relaxed">
                     新座市・所沢市など、<strong>財源が国の補助金を使っている市区町村の補助金は、埼玉県の補助金と併用できません</strong>（どちらか一方を選択）。また、<strong>新座市は国DR補助金とも併用不可</strong>のため、市補助金のみの適用となります。
-                    一方、朝霞市など市独自の財源の補助金は県補助金との併用が可能です。ふじみ野市・富士見市のように市の補助金制度自体がない自治体もあり、<strong>新座市・所沢市にお住まいの方は非常に恵まれた補助金環境</strong>です。
+                    一方、朝霞市・ふじみ野市・富士見市など市独自の財源の補助金は県補助金との併用が可能です。<strong>新座市・所沢市にお住まいの方は非常に恵まれた補助金環境</strong>です。
                     どの組み合わせが最もお得になるかは、ダイマツが最適なプランをご提案いたします。
                   </p>
                 </div>
