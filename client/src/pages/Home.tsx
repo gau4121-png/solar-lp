@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight, Phone } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
+import { ContactForm } from "@/components/ContactForm";
 import { useState } from "react";
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
             <button onClick={() => scrollToSection('problem')} className="hover:text-primary transition-colors">業界の裏側</button>
             <button onClick={() => scrollToSection('comparison')} className="hover:text-primary transition-colors">4つの選択肢</button>
             <button onClick={() => scrollToSection('recommend')} className="hover:text-primary transition-colors">推奨業者</button>
+            <button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">無料相談</button>
           </nav>
           <Button onClick={() => scrollToSection('simulator')} variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white font-bold">
             <Calculator className="mr-2 h-4 w-4" />
@@ -313,7 +315,21 @@ export default function Home() {
         </Button>
       </div>
 
-      <footer className="bg-primary text-white py-12 mb-16 md:mb-0">
+      {/* Contact Section */}
+        <section id="contact" className="py-20 bg-blue-50">
+          <div className="container">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">匿名で無料相談</h2>
+              <p className="text-muted-foreground">
+                「この見積もり高い？」「うちの屋根に乗る？」など、<br className="hidden sm:block" />
+                ちょっとした疑問でもお気軽にご相談ください。
+              </p>
+            </div>
+            <ContactForm />
+          </div>
+        </section>
+
+        <footer className="bg-primary text-white py-12 mb-16 md:mb-0">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
