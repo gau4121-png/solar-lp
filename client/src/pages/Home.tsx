@@ -119,6 +119,84 @@ function CostDiagram() {
   );
 }
 
+/* ─── Subsidy Countdown Timer & Urgency Banner ─── */
+function SubsidyCountdown() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    // DR補助金の申請期限（年度末 3月31日を想定）
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    // 4月以降なら翌年3月末、3月以前なら今年3月末
+    const deadlineYear = currentMonth >= 3 ? currentYear + 1 : currentYear;
+    const deadline = new Date(deadlineYear, 2, 31, 23, 59, 59); // March 31
+
+    const timer = setInterval(() => {
+      const now = new Date();
+      const diff = deadline.getTime() - now.getTime();
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((diff % (1000 * 60)) / 1000),
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="mb-10">
+      {/* Urgency Banner */}
+      <div className="bg-gradient-to-r from-red-600 to-red-500 text-white rounded-2xl p-6 md:p-8 shadow-lg mb-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="bg-white/20 px-3 py-1 rounded-full text-sm font-bold animate-pulse">
+              残り予算わずか
+            </div>
+            <AlertTriangle className="h-5 w-5" />
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold mb-2">
+            DR補助金は毎年早期終了しています
+          </h3>
+          <p className="text-red-100 text-sm md:text-base mb-6">
+            2025年度は受付開始からわずか約2ヶ月で予算満了。お早めの申請をおすすめします。
+          </p>
+
+          {/* Countdown Timer */}
+          <div className="flex items-center gap-2 md:gap-4 justify-center">
+            <p className="text-sm font-medium text-red-100 mr-2 hidden sm:block">年度末まで</p>
+            {[
+              { value: timeLeft.days, label: "日" },
+              { value: timeLeft.hours, label: "時間" },
+              { value: timeLeft.minutes, label: "分" },
+              { value: timeLeft.seconds, label: "秒" },
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <div className="bg-white/20 backdrop-blur rounded-lg px-3 md:px-5 py-2 md:py-3 min-w-[56px] md:min-w-[72px] text-center">
+                  <span className="text-2xl md:text-4xl font-bold font-mono">
+                    {String(item.value).padStart(2, "0")}
+                  </span>
+                </div>
+                <span className="text-xs text-red-200 mt-1">{item.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-red-200 mt-4 text-center">
+            ※年度末の申請期限までのカウントダウンです。予算消化により早期終了する場合があります。
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   let { user, loading, error, isAuthenticated, logout } = useAuth();
 
@@ -851,6 +929,9 @@ export default function Home() {
               </p>
             </div>
 
+            {/* ─── Urgency Banner + Countdown ─── */}
+            <SubsidyCountdown />
+
             {/* ─── National DR Subsidy ─── */}
             <div className="mb-10">
               <div className="bg-white rounded-2xl shadow-lg border border-green-100 overflow-hidden">
@@ -1028,30 +1109,50 @@ export default function Home() {
                         <td className="py-3 px-4 font-medium">朝霞市</td>
                         <td className="py-3 px-4 text-center">3.5万円/kW<br /><span className="text-xs text-gray-500">上限10万円</span></td>
                         <td className="py-3 px-4 text-center">10万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">既存住宅のみ</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">既存住宅のみ<br />県補助金と併用可</td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50 bg-green-50">
                         <td className="py-3 px-4 font-medium">新座市</td>
                         <td className="py-3 px-4 text-center font-bold text-green-600">9万円/kW<br /><span className="text-xs font-normal text-gray-500">上限45万円</span></td>
                         <td className="py-3 px-4 text-center font-bold text-green-600">上限45万円</td>
                         <td className="py-3 px-4 text-center">
-                          <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-medium">特にお得</span>
+                          <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-medium">金額大</span><br />
+                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">県と併用不可</span>
+                        </td>
+                      </tr>
+                      <tr className="border-b hover:bg-gray-50 bg-amber-50">
+                        <td className="py-3 px-4 font-medium">所沢市</td>
+                        <td className="py-3 px-4 text-center">要確認</td>
+                        <td className="py-3 px-4 text-center">要確認</td>
+                        <td className="py-3 px-4 text-center">
+                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium">県と併用不可</span>
                         </td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50">
                         <td className="py-3 px-4 font-medium">志木市</td>
                         <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
                         <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">要確認</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">県補助金と併用可</td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50">
                         <td className="py-3 px-4 font-medium">和光市</td>
                         <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
                         <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">要確認</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">県補助金と併用可</td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+                <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <p className="text-sm text-amber-800 font-medium mb-2">
+                    <AlertTriangle className="h-4 w-4 inline mr-1" />
+                    補助金の併用ルールについて
+                  </p>
+                  <p className="text-xs text-amber-700 leading-relaxed">
+                    新座市・所沢市など、<strong>財源が国の補助金を使っている市区町村の補助金は、埼玉県の補助金と併用できません</strong>（どちらか一方を選択）。
+                    一方、朝霞市・志木市・和光市など、市独自の財源または県が財源の補助金は県補助金との併用が可能です。
+                    どの組み合わせが最もお得になるかは、ダイマツが最適なプランをご提案いたします。
+                  </p>
                 </div>
                 <p className="text-xs text-gray-500 mt-3">※補助金の金額・条件は年度により変更される場合があります。最新情報はお問い合わせください。</p>
               </div>
@@ -1073,17 +1174,18 @@ export default function Home() {
                   <p className="text-sm text-green-100 mb-3">太陽光 5kW + EP CUBE 9.9kWh を導入</p>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>埼玉県補助金（太陽光+蓄電池）</span>
-                      <span className="font-bold">45万円</span>
-                    </div>
-                    <div className="flex justify-between">
                       <span>新座市補助金（太陽光+蓄電池）</span>
                       <span className="font-bold">最大90万円</span>
                     </div>
+                    <div className="flex justify-between">
+                      <span>国 DR補助金（蓄電池）</span>
+                      <span className="font-bold">約39.5万円</span>
+                    </div>
                     <div className="border-t border-white/30 pt-2 flex justify-between items-center">
                       <span className="font-medium">合計補助金額</span>
-                      <span className="text-2xl font-bold text-secondary">最大135万円</span>
+                      <span className="text-2xl font-bold text-secondary">最大129.5万円</span>
                     </div>
+                    <p className="text-xs text-green-200 mt-1">※新座市は県補助金と併用不可のため、市補助金+国DR補助金の組み合わせ</p>
                   </div>
                 </div>
 

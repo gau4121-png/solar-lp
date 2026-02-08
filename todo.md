@@ -57,3 +57,8 @@
 - [x] Add subsidy information section to the site (between battery and simulator sections)
 - [x] Include national subsidy (DR補助金 etc.), prefectural subsidies, and key municipal subsidies
 - [x] Add CTA messaging about Daimatsu handling subsidy applications
+- [x] Fix Niiza city subsidy: mark as NOT combinable with Saitama prefecture subsidy (national funding source)
+- [x] Add Tokorozawa city to municipal subsidy table with same non-combinable rule
+- [x] Add explanation about subsidy combination rules (national-funded municipal subsidies cannot combine with prefecture)
+- [x] Add application deadline countdown timer to subsidy section
+- [x] Add "残り予算わずか" urgency banner to subsidy section

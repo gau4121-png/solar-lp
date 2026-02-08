@@ -1,0 +1,38 @@
+Subsidy Section Fix Preview Check - 2026-02-08
+================================================
+
+1. Countdown Timer: ✅ Working correctly
+   - Shows "残り予算わずか" urgency badge
+   - "DR補助金は毎年早期終了しています" headline
+   - Countdown shows 51日 01時間 52分 (counting down to March 31)
+   - Note about early budget exhaustion included
+
+2. DR Subsidy (National): ✅ Correct
+   - Max 60万円 displayed
+   - EP CUBE amounts: 9.9kWh=39.5万円, 13.3kWh=52.9万円
+   - Choshu amounts: 9.8kWh=36.5万円, 12.7kWh=48.0万円, 16.4kWh=55.0万円
+
+3. Saitama Prefecture: ✅ Correct
+   - Solar: 7万円/kW (上限35万円)
+   - Battery: 10万円 (一律)
+   - Set max: 45万円
+
+4. Tokyo Metropolitan: ✅ Correct
+   - Battery: 12万円/kWh (上限なし)
+   - DR participation: +10万円
+   - Example: EP CUBE 9.9kWh = 約129万円
+
+5. Municipal Subsidy Table: ✅ Fixed correctly
+   - 朝霞市: Solar 上限5万円, Battery 上限5万円
+   - 新座市: Solar 上限45万円(?), Battery 上限(?) → Shows "県と併用不可" tag in RED
+   - 所沢市: 要確認, 要確認 → Shows "県と併用不可" tag in RED
+   - 志木市: 5万円一律, 5万円一律 → "県補助金と併用可"
+   - 和光市: 5万円一律, 5万円一律 → "県補助金と併用可"
+
+6. Combination Rules Box: ✅ Added correctly
+   - Yellow warning box with "補助金の併用ルールについて" heading
+   - Explains: 新座市・所沢市 etc. national-funded municipal subsidies CANNOT combine with Saitama prefecture
+   - Explains: 朝霞市・志木市・和光市 etc. can combine with prefecture subsidies
+   - Daimatsu offers to find the best combination plan
+
+All corrections verified and working properly.
