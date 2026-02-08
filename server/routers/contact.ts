@@ -1,6 +1,13 @@
 import { z } from "zod";
-import { publicProcedure, router } from "../_core/trpc";
-import { createContactInquiry, createContactAttachment } from "../db";
+import { publicProcedure, adminProcedure, router } from "../_core/trpc";
+import {
+  createContactInquiry,
+  createContactAttachment,
+  getContactInquiries,
+  getInquiryById,
+  getAttachmentsByInquiryId,
+  updateInquiryStatus,
+} from "../db";
 import { storagePut } from "../storage";
 import { notifyOwner } from "../_core/notification";
 import { nanoid } from "nanoid";
@@ -13,10 +20,11 @@ const TOPIC_LABELS: Record<string, string> = {
   other: "その他",
 };
 
+export { TOPIC_LABELS };
+
 export const contactRouter = router({
   /**
    * Submit a contact inquiry (public, no auth required).
-   * Accepts topic, message, optional email, and optional file attachments (base64).
    */
   submit: publicProcedure
     .input(
@@ -53,13 +61,9 @@ export const contactRouter = router({
           const ext = attachment.fileName.split(".").pop() || "bin";
           const fileKey = `contact-attachments/${inquiryId}/${suffix}.${ext}`;
 
-          // Decode base64 to buffer
           const buffer = Buffer.from(attachment.base64, "base64");
-
-          // Upload to S3
           const { url } = await storagePut(fileKey, buffer, attachment.mimeType);
 
-          // Save attachment metadata to DB
           await createContactAttachment({
             inquiryId,
             fileName: attachment.fileName,
@@ -88,5 +92,56 @@ export const contactRouter = router({
       });
 
       return { success: true, inquiryId };
+    }),
+
+  /**
+   * List all contact inquiries (admin only).
+   */
+  list: adminProcedure.query(async () => {
+    const inquiries = await getContactInquiries();
+    return inquiries.map((inquiry) => ({
+      ...inquiry,
+      topicLabel: TOPIC_LABELS[inquiry.topic] || inquiry.topic,
+    }));
+  }),
+
+  /**
+   * Get a single inquiry with its attachments (admin only).
+   */
+  detail: adminProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input }) => {
+      const inquiry = await getInquiryById(input.id);
+      if (!inquiry) {
+        return null;
+      }
+
+      const attachments = await getAttachmentsByInquiryId(input.id);
+
+      // Auto-mark as "read" if currently "new"
+      if (inquiry.status === "new") {
+        await updateInquiryStatus(input.id, "read");
+      }
+
+      return {
+        ...inquiry,
+        topicLabel: TOPIC_LABELS[inquiry.topic] || inquiry.topic,
+        attachments,
+      };
+    }),
+
+  /**
+   * Update the status of an inquiry (admin only).
+   */
+  updateStatus: adminProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        status: z.enum(["new", "read", "replied"]),
+      })
+    )
+    .mutation(async ({ input }) => {
+      await updateInquiryStatus(input.id, input.status);
+      return { success: true };
     }),
 });

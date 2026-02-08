@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, contactInquiries, contactAttachments, InsertContactInquiry, InsertContactAttachment } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -124,7 +124,7 @@ export async function getContactInquiries() {
     return [];
   }
 
-  return db.select().from(contactInquiries).orderBy(contactInquiries.createdAt);
+  return db.select().from(contactInquiries).orderBy(desc(contactInquiries.createdAt));
 }
 
 /**
@@ -137,4 +137,30 @@ export async function getAttachmentsByInquiryId(inquiryId: number) {
   }
 
   return db.select().from(contactAttachments).where(eq(contactAttachments.inquiryId, inquiryId));
+}
+
+/**
+ * Get a single contact inquiry by ID.
+ */
+export async function getInquiryById(id: number) {
+  const db = await getDb();
+  if (!db) {
+    return undefined;
+  }
+
+  const result = await db.select().from(contactInquiries).where(eq(contactInquiries.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+/**
+ * Update the status of a contact inquiry.
+ */
+export async function updateInquiryStatus(id: number, status: "new" | "read" | "replied"): Promise<boolean> {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  await db.update(contactInquiries).set({ status }).where(eq(contactInquiries.id, id));
+  return true;
 }

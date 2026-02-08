@@ -4,3 +4,9 @@
 - [x] Send owner notification on new inquiry
 - [x] Connect frontend ContactForm to backend API
 - [x] Write vitest tests for contact form submission
+- [x] Add tRPC procedures for listing inquiries with attachments (admin only)
+- [x] Add tRPC procedure for updating inquiry status (admin only)
+- [x] Create admin dashboard page with inquiry list
+- [x] Create inquiry detail view with attachments
+- [x] Add admin route and navigation in App.tsx
+- [x] Write vitest tests for admin inquiry procedures
