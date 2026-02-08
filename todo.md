@@ -1,0 +1,6 @@
+- [x] Create contact_inquiries and contact_attachments database tables
+- [x] Implement file upload API endpoint (POST /api/upload)
+- [x] Implement contact form submission tRPC procedure
+- [x] Send owner notification on new inquiry
+- [x] Connect frontend ContactForm to backend API
+- [x] Write vitest tests for contact form submission
