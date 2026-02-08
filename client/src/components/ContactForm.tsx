@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, Paperclip } from "lucide-react";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -105,6 +105,24 @@ export function ContactForm() {
               placeholder="ここに相談したい内容を自由にお書きください。&#13;&#10;例：&#13;&#10;・他社で〇〇万円と言われたが適正か？&#13;&#10;・築15年の屋根でも大丈夫？&#13;&#10;・とりあえず話だけ聞いてみたい" 
               className="min-h-[160px] text-base"
             />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="file" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              資料や写真を添付（任意）
+            </label>
+            <div className="flex items-center gap-2">
+              <Input 
+                id="file" 
+                name="file"
+                type="file" 
+                className="cursor-pointer file:cursor-pointer file:text-primary file:font-medium"
+                accept="image/*,.pdf"
+              />
+            </div>
+            <p className="text-xs text-muted-foreground">
+              ※見積書や屋根の写真などがあれば、より具体的な回答が可能です。
+            </p>
           </div>
 
           <div className="space-y-2">
