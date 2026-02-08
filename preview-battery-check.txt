@@ -1,0 +1,10 @@
+Battery Section Preview Check:
+- Battery section header "蓄電池をセットで、電気代をさらに削減" displays correctly
+- Green gradient set proposal banner with 昼間/夜間/停電時 cards looks good
+- "工事費お得" CTA badge visible on the right
+- EP CUBE card: Canadian Solar logo, description with specs, capacity lineup (6.6/9.9/13.3 kWh), tags
+- Choshu battery card: Logo, description, "長州産業セットの強み" box with 雨漏り保証10年 and 15年蓄電池保証
+- Tags for both cards display properly
+- Smartphone icon with app/HEMS info at bottom of each card
+- All content renders without errors
+- Navigation does not yet have "蓄電池" link (battery section is within makers section, uses id="battery")

@@ -1,7 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ChevronRight, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf } from "lucide-react";
+import { Check, ChevronRight, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { ContactForm } from "@/components/ContactForm";
 import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
@@ -660,6 +660,175 @@ export default function Home() {
                 ※お客様の屋根の形状・向き・ご予算に合わせて最適なメーカーをご提案します。上記以外のメーカーも取り扱いがございます。
               </p>
             </div>
+
+            {/* ─── Battery / Storage Section ─── */}
+            <div id="battery" className="mt-16 md:mt-20 scroll-mt-24">
+              <div className="text-center mb-10">
+                <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+                  <BatteryCharging className="h-4 w-4" />
+                  太陽光 + 蓄電池セット
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-3">
+                  蓄電池をセットで、<br className="sm:hidden" /><span className="text-green-600">電気代をさらに削減</span>
+                </h3>
+                <p className="text-gray-600 text-base max-w-2xl mx-auto">
+                  太陽光で作った電気を蓄電池に貯めて、夜間や停電時にも活用。自家消費率を最大化し、光熱費を大幅にカットできます。
+                </p>
+              </div>
+
+              {/* Set Proposal Banner */}
+              <div className="bg-gradient-to-r from-green-600 to-emerald-500 rounded-2xl p-6 md:p-8 mb-8 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+                  <div>
+                    <h4 className="text-xl md:text-2xl font-black mb-3">
+                      <Sun className="inline h-6 w-6 mr-2 text-yellow-300" />
+                      太陽光 + 蓄電池セットで、光熱費を最大限削減
+                    </h4>
+                    <div className="grid sm:grid-cols-3 gap-4 mb-4">
+                      <div className="bg-white/15 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <Sun className="h-6 w-6 mx-auto mb-1 text-yellow-300" />
+                        <p className="text-xs text-green-100">昼間</p>
+                        <p className="font-bold text-sm">太陽光で発電＆蓄電</p>
+                      </div>
+                      <div className="bg-white/15 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <HomeIcon className="h-6 w-6 mx-auto mb-1 text-blue-200" />
+                        <p className="text-xs text-green-100">夜間</p>
+                        <p className="font-bold text-sm">蓄電池から電力供給</p>
+                      </div>
+                      <div className="bg-white/15 backdrop-blur-sm rounded-lg p-3 text-center">
+                        <CloudLightning className="h-6 w-6 mx-auto mb-1 text-yellow-200" />
+                        <p className="text-xs text-green-100">停電時</p>
+                        <p className="font-bold text-sm">最大約56時間使用可</p>
+                      </div>
+                    </div>
+                    <p className="text-green-100 text-sm">
+                      自社施工だから、太陽光パネルと蓄電池をまとめて導入することで、工事費も大幅にお得に。
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
+                      <p className="text-green-100 text-xs mb-1">セット導入なら</p>
+                      <p className="text-3xl font-black">工事費お得</p>
+                      <p className="text-green-100 text-xs mt-1">まとめて施工でコスト削減</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+                {/* EP CUBE */}
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden bg-white">
+                  <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-400" />
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
+                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" />
+                        </div>
+                        <div>
+                          <span className="text-xs text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded">ハイブリッド蓄電池</span>
+                          <CardTitle className="text-xl mt-1">EP CUBE</CardTitle>
+                        </div>
+                      </div>
+                      <Battery className="h-8 w-8 text-green-500" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      カナディアンソーラーの<span className="font-bold text-gray-800">パワコン・蓄電池一体型</span>ハイブリッドシステム。安全性の高い<span className="font-bold text-gray-800">リン酸鉄系リチウムイオン電池</span>を採用。容量は<span className="font-bold text-green-600">6.6kWh・9.9kWh・13.3kWh</span>の3タイプから選択可能。停電時も全負荷200V対応で、最大<span className="font-bold text-green-600">約56時間</span>の電力供給が可能です。
+                    </p>
+                    
+                    {/* EP CUBE Capacity Options */}
+                    <div className="bg-green-50 rounded-lg p-3 mb-4">
+                      <p className="text-xs font-bold text-green-700 mb-2">容量ラインナップ（停電時使用可能時間）</p>
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="bg-white rounded-md p-2 text-center">
+                          <p className="text-lg font-black text-green-600">6.6<span className="text-xs">kWh</span></p>
+                          <p className="text-xs text-gray-500">約27時間</p>
+                        </div>
+                        <div className="bg-white rounded-md p-2 text-center">
+                          <p className="text-lg font-black text-green-600">9.9<span className="text-xs">kWh</span></p>
+                          <p className="text-xs text-gray-500">約41時間</p>
+                        </div>
+                        <div className="bg-white rounded-md p-2 text-center border-2 border-green-300">
+                          <p className="text-lg font-black text-green-600">13.3<span className="text-xs">kWh</span></p>
+                          <p className="text-xs text-gray-500">約56時間</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {["リン酸鉄系電池", "15年製品保証", "全負荷200V", "iF DESIGN AWARD"].map((tag, i) => (
+                        <span key={i} className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Smartphone className="h-3.5 w-3.5" />
+                      <span>専用アプリでリモートモニタリング対応・HEMS対応</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Choshu Battery */}
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden bg-white">
+                  <div className="h-2 bg-gradient-to-r from-red-500 to-green-500" />
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
+                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" />
+                        </div>
+                        <div>
+                          <span className="text-xs text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">国産蓄電池</span>
+                          <CardTitle className="text-xl mt-1">長州産業 蓄電システム</CardTitle>
+                        </div>
+                      </div>
+                      <Battery className="h-8 w-8 text-red-500" />
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      長州産業の蓄電システムは、同社の太陽光パネルとの<span className="font-bold text-gray-800">セット導入に最適化</span>された設計。パワーコンディショナと蓄電池ユニットの組み合わせで、効率的に電力を管理。<span className="font-bold text-red-600">15年蓄電池保証</span>付きで長期運用も安心。<span className="font-bold text-gray-800">天気予報連動</span>で悪天候前に自動で充電するインテリジェント機能も搭載しています。
+                    </p>
+
+                    {/* Choshu Battery Features */}
+                    <div className="bg-red-50 rounded-lg p-3 mb-4">
+                      <p className="text-xs font-bold text-red-700 mb-2">長州産業セットの強み</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="bg-white rounded-md p-2 text-center">
+                          <ShieldCheck className="h-5 w-5 mx-auto mb-1 text-red-500" />
+                          <p className="text-xs font-bold text-gray-800">雨漏り保証10年</p>
+                          <p className="text-[10px] text-gray-500">太陽光+蓄電池まとめて</p>
+                        </div>
+                        <div className="bg-white rounded-md p-2 text-center">
+                          <Shield className="h-5 w-5 mx-auto mb-1 text-red-500" />
+                          <p className="text-xs font-bold text-gray-800">15年蓄電池保証</p>
+                          <p className="text-[10px] text-gray-500">長期運用も安心</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {["国産セット", "15年蓄電池保証", "天気予報連動", "カラーモニタ"].map((tag, i) => (
+                        <span key={i} className="bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Smartphone className="h-3.5 w-3.5" />
+                      <span>カラーモニタで発電・消費をリアルタイム表示</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Bottom CTA */}
+              <div className="text-center mt-8">
+                <p className="text-gray-500 text-sm mb-4">
+                  ※お客様の電気使用量・ライフスタイルに合わせて、最適な蓄電池容量をご提案します。
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -897,8 +1066,8 @@ export default function Home() {
                   { id: "cost", label: "なぜ安い？" },
                   { id: "guarantee", label: "安心の保証" },
                   { id: "afterservice", label: "アフターサービス" },
-                  { id: "makers", label: "おすすめメーカー" },
-                  { id: "simulator", label: "簡易シミュレーション" },
+{ id: "makers", label: "おすすめメーカー" },
+                   { id: "simulator", label: "簡易シミュレーション" },
                   { id: "recommend", label: "推奨業者" },
                   { id: "voice", label: "お客様の声" },
                   { id: "contact", label: "無料相談" },

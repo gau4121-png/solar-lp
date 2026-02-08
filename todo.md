@@ -49,3 +49,7 @@
 - [x] Keep "ローン活用で初期費用0円も可！" badge (original content)
 - [x] Incorporate manufacturer logos from catalogs into maker section
 - [x] Add catalog product details (TOPHiKu6, JAPAN BLACK 364W, warranty info) to descriptions
+- [x] Research EP CUBE and other battery products from catalogs
+- [x] Add battery/storage section to maker area (EP CUBE, Choshu battery)
+- [x] Add solar+battery set proposal messaging/CTA
+- [x] Update navigation if needed for battery section
