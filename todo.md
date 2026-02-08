@@ -85,3 +85,6 @@
 - [x] Fix Fujimi city: 太陽光・蓄電池 各5万円
 - [x] Add 新座市 condition: 非FIT
 - [x] Add 埼玉県 condition: 創蓄（セット条件）
+- [x] Add Nichicon T5/T6 product photos to the recommended battery section
+- [x] Source product images from catalog PDF and web search
+- [x] Integrate images into T5 and T6 cards for visual impact

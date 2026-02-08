@@ -1083,6 +1083,22 @@ export default function Home() {
               ))}
             </div>
 
+            {/* Product Hero Image - パワコン */}
+            <div className="max-w-5xl mx-auto mb-12">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/QZWglCQSqmBdvUCV.png"
+                  alt="ニチコン トライブリッドパワコン® 設置イメージ"
+                  className="w-full h-64 md:h-80 object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white font-bold text-lg md:text-xl">トライブリッドパワコン®</p>
+                  <p className="text-gray-300 text-sm">この1台で、太陽光発電と蓄電池とEVをコントロール。通常時も停電時も安心のパワフル出力。</p>
+                </div>
+              </div>
+            </div>
+
             {/* T5 vs T6 Comparison */}
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-6">
@@ -1172,6 +1188,34 @@ export default function Home() {
                     {["全負荷200V", "9.9kW連系", "EV倍速充電", "最大19.9kWh"].map((tag, i) => (
                       <span key={i} className="bg-yellow-400/20 text-yellow-200 px-2.5 py-1 rounded-full text-xs font-medium">{tag}</span>
                     ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Battery Unit & Install Gallery */}
+              <div className="mt-10 grid md:grid-cols-2 gap-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-white/10">
+                  <img
+                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/uLxBVlgbKzPuMGkn.png"
+                    alt="ニチコン 蓄電池ユニット／増設ユニット"
+                    className="w-full h-56 md:h-64 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white font-bold">蓄電池ユニット／増設ユニット</p>
+                    <p className="text-gray-300 text-xs">屋内・屋外どちらでも設置可能。家庭用として業界最大級の19.9kWh。</p>
+                  </div>
+                </div>
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-white/10">
+                  <img
+                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/aYFQeDCmbioBwdAX.png"
+                    alt="トライブリッド蓄電システム 設置イメージ"
+                    className="w-full h-56 md:h-64 object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white font-bold">システム設置イメージ</p>
+                    <p className="text-gray-300 text-xs">太陽光パネル・パワコン・蓄電池・V2Hを一括接続。</p>
                   </div>
                 </div>
               </div>
