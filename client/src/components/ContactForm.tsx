@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { Send, CheckCircle2 } from "lucide-react";
 
 export function ContactForm() {
@@ -64,10 +66,38 @@ export function ContactForm() {
           data-netlify="true"
         >
           <input type="hidden" name="form-name" value="contact" />
+
+          <div className="space-y-3">
+            <label className="text-sm font-medium leading-none">
+              ご相談のテーマ <span className="text-red-500">*</span>
+            </label>
+            <RadioGroup defaultValue="estimate" name="topic" className="grid grid-cols-1 gap-2">
+              <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-gray-50 cursor-pointer">
+                <RadioGroupItem value="estimate" id="r1" />
+                <Label htmlFor="r1" className="cursor-pointer flex-1">他社の見積もりが適正か知りたい</Label>
+              </div>
+              <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-gray-50 cursor-pointer">
+                <RadioGroupItem value="roof" id="r2" />
+                <Label htmlFor="r2" className="cursor-pointer flex-1">自宅の屋根に設置できるか知りたい</Label>
+              </div>
+              <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-gray-50 cursor-pointer">
+                <RadioGroupItem value="subsidy" id="r3" />
+                <Label htmlFor="r3" className="cursor-pointer flex-1">補助金について聞きたい</Label>
+              </div>
+              <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-gray-50 cursor-pointer">
+                <RadioGroupItem value="battery" id="r4" />
+                <Label htmlFor="r4" className="cursor-pointer flex-1">蓄電池の導入を検討している</Label>
+              </div>
+              <div className="flex items-center space-x-2 border p-3 rounded-md hover:bg-gray-50 cursor-pointer">
+                <RadioGroupItem value="other" id="r5" />
+                <Label htmlFor="r5" className="cursor-pointer flex-1">その他</Label>
+              </div>
+            </RadioGroup>
+          </div>
           
           <div className="space-y-2">
             <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              ご相談・ご質問内容 <span className="text-red-500">*</span>
+              詳細（任意）
             </label>
             <Textarea 
               id="message" 
