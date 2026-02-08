@@ -1,0 +1,47 @@
+Design Review Notes - Current State
+====================================
+
+Header:
+- Logo text is plain text, no icon/logo mark
+- "完全中立" badge is gray, not very distinctive
+- Desktop nav works well, hamburger menu added for mobile
+
+Hero Section:
+- Background image with dark overlay - decent but generic
+- Text hierarchy is OK but could be more impactful
+- CTA buttons are functional but could stand out more
+- Missing trust indicators (numbers, badges, certifications)
+
+Problem Section:
+- Gray background (#f9fafb) - very plain
+- Alert icons are good but section feels sparse
+- Right side image is a stock photo - could be more relevant
+- "重要なのは..." overlay box is good design element
+
+Comparison Table:
+- Clean and functional
+- "おすすめ" badge on recommended column is good
+- Could use more visual differentiation for the recommended column
+
+Simulator Section:
+- Dark blue background with image overlay - good contrast
+- Slider and results are functional
+
+Recommend Section:
+- Three cards with numbered headers (01, 02, 03)
+- Clean but could be more visually engaging
+
+Contact Form:
+- Simple and functional
+
+Footer:
+- Basic two-column layout
+- Could be more comprehensive
+
+Overall Assessment:
+- The site is functional but looks like a template/generic site
+- Lacks the "専門サイト" (specialist site) feel
+- Missing: trust badges, statistics counters, gradient accents, 
+  professional typography, section dividers, micro-animations
+- Color palette is basic (primary blue + orange secondary)
+- Could benefit from more visual texture and depth
