@@ -68,3 +68,10 @@
 - [x] Emphasize Niiza/Tokorozawa subsidy advantage in UI design
 - [x] Add construction case studies / customer testimonials section (already exists in voice section)
 - [x] Add manufacturer warranty & after-service comparison table
+- [x] URGENT: Fix Niiza city - DR subsidy also NOT combinable (市のみ、DR・県いずれも併用不可)
+- [x] Update combination rules explanation to reflect Niiza DR non-combinable
+- [x] Update simulation example for Niiza if DR amount was included
+- [x] Add Choshu battery capacity lineup table (Multi series from catalog)
+- [x] Add mini DR countdown timer to hero section area
+- [x] Update warranty comparison table: Choshu battery type = 三元系 (寒さに強い)
+- [x] Create 2026 recommended battery corner (ニチコン T5/T6 series)

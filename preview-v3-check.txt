@@ -1,0 +1,28 @@
+## Preview Check v3 - 2026-02-08
+
+### 1. Mini DR Countdown Banner (Hero area)
+- ✅ Red banner visible between hero and cost section
+- ✅ Shows "DR補助金（最大60万円）申請受付中" with countdown (51日1時間1分)
+- ✅ "詳しく見る →" link to subsidy section
+- ✅ Good visual impact
+
+### 2. Choshu Battery Capacity Lineup
+- ✅ Smart PV Multi lineup table added: 6.5kWh, 9.8kWh (人気), 16.4kWh
+- ✅ Tags include "三元系（寒さに強い）"
+- ✅ Strength boxes: 雨漏り保証10年, 15年蓄電池保証
+
+### 3. 2026 Recommended Battery Corner (Nichicon T5/T6)
+- ✅ Dark gradient background with yellow accents - very impactful
+- ✅ "2026年度 注目の蓄電池" badge with Crown icon
+- ✅ "今年度のイチオシはこれ。ニチコン T5・T6シリーズ" headline
+- ✅ 4 stat badges: 20万台+, No.1, 約90%, 15年
+- ✅ T5 card (スタンダード): 7.4/9.9/14.9kWh lineup
+- ✅ T6 card (ハイパワー, ★おすすめ): 9.9/19.9kWh, EV倍速充電
+- ✅ T6 has "EVオーナーならさらにお得" box
+- ✅ Tribrid explanation section (太陽光/蓄電池/EV)
+- ✅ CTA button for Nichicon quote
+
+### 4. Niiza DR Non-combinable Fix
+- ✅ Already fixed in previous session
+
+### All tests passing: 23/23

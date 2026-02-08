@@ -119,6 +119,43 @@ function CostDiagram() {
   );
 }
 
+/* ─── Mini Countdown for Hero Banner ─── */
+function MiniCountdown() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
+
+  useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const deadlineYear = currentMonth >= 3 ? currentYear + 1 : currentYear;
+    const deadline = new Date(deadlineYear, 2, 31, 23, 59, 59);
+
+    const update = () => {
+      const diff = deadline.getTime() - Date.now();
+      if (diff <= 0) return;
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+      });
+    };
+    update();
+    const timer = setInterval(update, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-1.5 text-sm font-mono">
+      <span className="text-yellow-300">残り</span>
+      <span className="bg-white/20 rounded px-1.5 py-0.5 font-bold">{timeLeft.days}</span>
+      <span className="text-xs">日</span>
+      <span className="bg-white/20 rounded px-1.5 py-0.5 font-bold">{timeLeft.hours}</span>
+      <span className="text-xs">時間</span>
+      <span className="bg-white/20 rounded px-1.5 py-0.5 font-bold">{timeLeft.minutes}</span>
+      <span className="text-xs">分</span>
+    </div>
+  );
+}
+
 /* ─── Subsidy Countdown Timer & Urgency Banner ─── */
 function SubsidyCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -451,6 +488,20 @@ export default function Home() {
             </svg>
           </div>
         </section>
+
+        {/* ═══ MINI DR COUNTDOWN BANNER ═══ */}
+        <div className="bg-red-600 text-white py-3">
+          <div className="container">
+            <button onClick={() => scrollToSection('subsidy')} className="w-full flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 hover:opacity-90 transition-opacity cursor-pointer">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="h-4 w-4 animate-pulse" />
+                <span className="font-bold text-sm sm:text-base">DR補助金（最大<span className="text-yellow-300">60万円</span>）申請受付中</span>
+              </div>
+              <MiniCountdown />
+              <span className="text-xs sm:text-sm text-red-200 underline underline-offset-2">詳しく見る →</span>
+            </button>
+          </div>
+        </div>
 
         {/* ═══════════════════ COST STRUCTURE SECTION ═══════════════════ */}
         <section id="cost" className="py-16 md:py-24 bg-gradient-warm">
@@ -871,6 +922,25 @@ export default function Home() {
                       長州産業の蓄電システムは、同社の太陽光パネルとの<span className="font-bold text-gray-800">セット導入に最適化</span>された設計。パワーコンディショナと蓄電池ユニットの組み合わせで、効率的に電力を管理。<span className="font-bold text-red-600">15年蓄電池保証</span>付きで長期運用も安心。<span className="font-bold text-gray-800">天気予報連動</span>で悪天候前に自動で充電するインテリジェント機能も搭載しています。
                     </p>
 
+                    {/* Choshu Battery Capacity Lineup */}
+                    <div className="bg-red-50 rounded-lg p-3 mb-4">
+                      <p className="text-xs font-bold text-red-700 mb-2">容量ラインナップ（Smart PV Multi）</p>
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between bg-white rounded-md px-3 py-1.5">
+                          <span className="text-xs font-bold text-gray-800">6.5kWh</span>
+                          <span className="text-[10px] text-gray-500">2人世帯向け｜屋内外設置OK</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-white rounded-md px-3 py-1.5 ring-1 ring-red-200">
+                          <span className="text-xs font-bold text-red-600">9.8kWh <span className="text-[10px] text-red-400">人気</span></span>
+                          <span className="text-[10px] text-gray-500">3〜4人世帯向け｜屋内外設置OK</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-white rounded-md px-3 py-1.5">
+                          <span className="text-xs font-bold text-gray-800">16.4kWh</span>
+                          <span className="text-[10px] text-gray-500">5人以上世帯向け｜大容量</span>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Choshu Battery Features */}
                     <div className="bg-red-50 rounded-lg p-3 mb-4">
                       <p className="text-xs font-bold text-red-700 mb-2">長州産業セットの強み</p>
@@ -889,7 +959,7 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {["国産セット", "15年蓄電池保証", "天気予報連動", "カラーモニタ"].map((tag, i) => (
+                      {["国産セット", "三元系（寒さに強い）", "15年蓄電池保証", "天気予報連動"].map((tag, i) => (
                         <span key={i} className="bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
                       ))}
                     </div>
@@ -906,6 +976,154 @@ export default function Home() {
                 <p className="text-gray-500 text-sm mb-4">
                   ※お客様の電気使用量・ライフスタイルに合わせて、最適な蓄電池容量をご提案します。
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════ 2026 RECOMMENDED BATTERY ═══════════════════ */}
+        <section id="recommended-battery" className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-gray-800 text-white relative overflow-hidden">
+          <div className="absolute inset-0 z-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
+          </div>
+          <div className="container relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-yellow-400/20 text-yellow-300 px-5 py-2 rounded-full text-sm font-bold mb-4 border border-yellow-400/30">
+                <Crown className="h-5 w-5" />
+                2026年度 注目の蓄電池
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black mb-3">
+                今年度のイチオシはこれ。<br />
+                <span className="text-yellow-300">ニチコン T5・T6シリーズ</span>
+              </h2>
+              <p className="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto">
+                家庭用蓄電システム累計販売台数<span className="text-yellow-300 font-bold">国内No.1</span>のニチコンが送る、<br className="hidden sm:block" />
+                太陽光×蓄電池×EVを一括制御する「トライブリッド蓄電システム®」。今年度はこれが<span className="text-yellow-300 font-bold">一強</span>です。
+              </p>
+            </div>
+
+            {/* Why No.1 badges */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+              {[
+                { value: "20万台+", label: "累計販売台数", sub: "2025年1月時点" },
+                { value: "No.1", label: "家庭用蓄電システム", sub: "国内シェア" },
+                { value: "約90%", label: "V2Hシステムシェア", sub: "圧倒的実績" },
+                { value: "15年", label: "蓄電池保証", sub: "Web申請で適用" },
+              ].map((item, i) => (
+                <div key={i} className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/10">
+                  <p className="text-2xl md:text-3xl font-black text-yellow-300">{item.value}</p>
+                  <p className="text-sm font-bold text-white mt-1">{item.label}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{item.sub}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* T5 vs T6 Comparison */}
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* T5 Card */}
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 hover:border-yellow-400/30 transition-all">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <span className="text-xs bg-blue-500/30 text-blue-200 px-2 py-0.5 rounded font-medium">スタンダード</span>
+                      <h3 className="text-2xl font-black mt-1">ESS-T5シリーズ</h3>
+                    </div>
+                    <BatteryCharging className="h-10 w-10 text-yellow-300" />
+                  </div>
+                  <p className="text-gray-300 text-sm mb-4">
+                    4回路対応・連系出力5.9kW。一般的な住宅に最適なサイズ感。停電時も全負荷200V対応で、エアコンやIHもそのまま使えます。
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
+                      <span className="text-sm">蓄電池 7.4kWh</span>
+                      <span className="text-xs text-gray-400">停電時約14時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2 ring-1 ring-yellow-400/30">
+                      <span className="text-sm font-bold text-yellow-300">9.9kWh <span className="text-xs text-yellow-400">人気</span></span>
+                      <span className="text-xs text-gray-400">停電時約20時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
+                      <span className="text-sm">蓄電池 14.9kWh</span>
+                      <span className="text-xs text-gray-400">停電時約29時間</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {["全負荷200V", "AI運転", "EV連携", "屋内外設置OK"].map((tag, i) => (
+                      <span key={i} className="bg-white/10 text-gray-200 px-2.5 py-1 rounded-full text-xs font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* T6 Card */}
+                <div className="bg-white/10 backdrop-blur rounded-2xl p-6 border border-yellow-400/30 relative hover:border-yellow-400/50 transition-all">
+                  <div className="absolute -top-3 left-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-black">
+                    ★ おすすめ
+                  </div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <span className="text-xs bg-yellow-400/30 text-yellow-200 px-2 py-0.5 rounded font-medium">ハイパワー</span>
+                      <h3 className="text-2xl font-black mt-1">ESS-T6シリーズ</h3>
+                    </div>
+                    <BatteryCharging className="h-10 w-10 text-yellow-300" />
+                  </div>
+                  <p className="text-gray-300 text-sm mb-4">
+                    5回路対応・連系出力<span className="text-yellow-300 font-bold">9.9kW</span>。大容量太陽光パネルとの組み合わせに最適。ハイスピード拡張充電でEVも<span className="text-yellow-300 font-bold">倍速充電</span>。
+                  </p>
+                  <div className="space-y-2 mb-4">
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
+                      <span className="text-sm">蓄電池 9.9kWh</span>
+                      <span className="text-xs text-gray-400">停電時約20時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2 ring-1 ring-yellow-400/30">
+                      <span className="text-sm font-bold text-yellow-300">19.9kWh <span className="text-xs text-yellow-400">最大</span></span>
+                      <span className="text-xs text-gray-400">停電時約40時間（約3日分）</span>
+                    </div>
+                  </div>
+                  <div className="bg-yellow-400/10 rounded-lg p-3 mb-4 border border-yellow-400/20">
+                    <p className="text-xs font-bold text-yellow-300 mb-1">★ EVオーナーならさらにお得</p>
+                    <p className="text-xs text-gray-300">EVの60kWh電池も合わせると、停電時<span className="text-yellow-300 font-bold">約70時間（約3日分）</span>のバックアップが可能。ガソリン代年間約10.7万円削減も。</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {["全負荷200V", "9.9kW連系", "EV倍速充電", "最大19.9kWh"].map((tag, i) => (
+                      <span key={i} className="bg-yellow-400/20 text-yellow-200 px-2.5 py-1 rounded-full text-xs font-medium">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Tribrid Explanation */}
+              <div className="mt-10 bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8 border border-white/10">
+                <h3 className="text-xl font-bold text-center mb-6">
+                  「トライブリッド」とは？ ― 3つのエネルギーを一括制御
+                </h3>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  {[
+                    { icon: <Sun className="h-8 w-8 text-yellow-400" />, title: "太陽光発電", desc: "昼間の発電を最大活用。自家消費で電気代を削減。" },
+                    { icon: <Battery className="h-8 w-8 text-green-400" />, title: "蓄電池", desc: "余った電気を蓄めて夜間や停電時に使用。" },
+                    { icon: <Zap className="h-8 w-8 text-blue-400" />, title: "EV（電気自動車）", desc: "EVを大容量蓄電池として活用。V2Hで家に給電も。" },
+                  ].map((item, i) => (
+                    <div key={i} className="text-center">
+                      <div className="mx-auto mb-3">{item.icon}</div>
+                      <p className="font-bold text-lg mb-1">{item.title}</p>
+                      <p className="text-sm text-gray-400">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-center text-xs text-gray-500 mt-4">
+                  ※ ニチコンが世界で初めて開発したシステムです。複数の環境大臣賞・グッドデザイン賞を受賞。
+                </p>
+              </div>
+
+              {/* Nichicon CTA */}
+              <div className="mt-8 text-center">
+                <p className="text-gray-400 text-sm mb-4">
+                  ※ ダイマツはニチコン（長府工産）の正規取扱店です。お客様のライフスタイルに合わせて最適なプランをご提案します。
+                </p>
+                <Button onClick={() => scrollToSection('contact')} size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold text-lg px-10 h-14 shadow-lg">
+                  ニチコン T5・T6の見積もりを依頼
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </div>
             </div>
           </div>
@@ -997,8 +1215,9 @@ export default function Home() {
                       <br /><span className="text-xs text-gray-500">高安全性・長寿命</span>
                     </td>
                     <td className="p-4 text-center">
-                      <span className="text-sm font-medium">リン酸鉄リチウム</span>
-                      <br /><span className="text-xs text-gray-500">熱安定性・安全性◎</span>
+                      <span className="text-sm font-medium text-red-600">三元系リチウム</span>
+                      <br /><span className="text-xs text-red-500 font-medium">寒さに強い（低温性能◎）</span>
+                      <br /><span className="text-[10px] text-gray-400">オムロン製パワコン搭載</span>
                     </td>
                   </tr>
                   <tr className="border-b hover:bg-gray-50">
@@ -1260,7 +1479,8 @@ export default function Home() {
                         <td className="py-3 px-4 text-center font-bold text-green-600">上限45万円</td>
                         <td className="py-3 px-4 text-center">
                           <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-medium">金額大</span><br />
-                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">県と併用不可</span>
+                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">県と併用不可</span><br />
+                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">DRと併用不可</span>
                         </td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50 bg-amber-50">
@@ -1293,7 +1513,7 @@ export default function Home() {
                     補助金の併用ルールについて
                   </p>
                   <p className="text-xs text-amber-700 leading-relaxed">
-                    新座市・所沢市など、<strong>財源が国の補助金を使っている市区町村の補助金は、埼玉県の補助金と併用できません</strong>（どちらか一方を選択）。
+                    新座市・所沢市など、<strong>財源が国の補助金を使っている市区町村の補助金は、埼玉県の補助金と併用できません</strong>（どちらか一方を選択）。また、<strong>新座市は国DR補助金とも併用不可</strong>のため、市補助金のみの適用となります。
                     一方、朝霞市など市独自の財源の補助金は県補助金との併用が可能です。ふじみ野市・富士見市のように市の補助金制度自体がない自治体もあり、<strong>新座市・所沢市にお住まいの方は非常に恵まれた補助金環境</strong>です。
                     どの組み合わせが最もお得になるかは、ダイマツが最適なプランをご提案いたします。
                   </p>
@@ -1321,15 +1541,11 @@ export default function Home() {
                       <span>新座市補助金（太陽光+蓄電池）</span>
                       <span className="font-bold">最大90万円</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>国 DR補助金（蓄電池）</span>
-                      <span className="font-bold">約39.5万円</span>
-                    </div>
                     <div className="border-t border-white/30 pt-2 flex justify-between items-center">
                       <span className="font-medium">合計補助金額</span>
-                      <span className="text-2xl font-bold text-secondary">最大129.5万円</span>
+                      <span className="text-2xl font-bold text-secondary">最大90万円</span>
                     </div>
-                    <p className="text-xs text-green-200 mt-1">※新座市は県補助金と併用不可のため、市補助金+国DR補助金の組み合わせ</p>
+                    <p className="text-xs text-green-200 mt-1">※新座市は県補助金・DR補助金いずれも併用不可のため、市補助金のみ適用</p>
                   </div>
                 </div>
 
