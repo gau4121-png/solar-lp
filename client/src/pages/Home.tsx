@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check, ChevronRight, AlertTriangle, X, Info, Calculator, ArrowRight, Phone } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { ContactForm } from "@/components/ContactForm";
+import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
 import { useState } from "react";
 
 export default function Home() {
@@ -35,10 +36,13 @@ export default function Home() {
             <button onClick={() => scrollToSection('recommend')} className="hover:text-primary transition-colors">推奨業者</button>
             <button onClick={() => scrollToSection('contact')} className="hover:text-primary transition-colors">無料相談</button>
           </nav>
-          <Button onClick={() => scrollToSection('simulator')} variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white font-bold">
-            <Calculator className="mr-2 h-4 w-4" />
-            無料シミュレーション
-          </Button>
+          <div className="flex items-center gap-2">
+            <AdminNotificationBadge />
+            <Button onClick={() => scrollToSection('simulator')} variant="default" size="sm" className="bg-secondary hover:bg-secondary/90 text-white font-bold">
+              <Calculator className="mr-2 h-4 w-4" />
+              無料シミュレーション
+            </Button>
+          </div>
         </div>
       </header>
 

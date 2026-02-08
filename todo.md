@@ -10,3 +10,7 @@
 - [x] Create inquiry detail view with attachments
 - [x] Add admin route and navigation in App.tsx
 - [x] Write vitest tests for admin inquiry procedures
+- [x] Add unread count tRPC procedure for admin
+- [x] Add admin notification badge to site header
+- [x] Badge click navigates to /admin/inquiries
+- [x] Write vitest test for unread count procedure

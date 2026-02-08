@@ -7,6 +7,7 @@ import {
   getInquiryById,
   getAttachmentsByInquiryId,
   updateInquiryStatus,
+  getUnreadInquiryCount,
 } from "../db";
 import { storagePut } from "../storage";
 import { notifyOwner } from "../_core/notification";
@@ -129,6 +130,14 @@ export const contactRouter = router({
         attachments,
       };
     }),
+
+  /**
+   * Get the count of unread inquiries (admin only).
+   */
+  unreadCount: adminProcedure.query(async () => {
+    const count = await getUnreadInquiryCount();
+    return { count };
+  }),
 
   /**
    * Update the status of an inquiry (admin only).

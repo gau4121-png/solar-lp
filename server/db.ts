@@ -1,4 +1,4 @@
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, count } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, contactInquiries, contactAttachments, InsertContactInquiry, InsertContactAttachment } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -163,4 +163,21 @@ export async function updateInquiryStatus(id: number, status: "new" | "read" | "
 
   await db.update(contactInquiries).set({ status }).where(eq(contactInquiries.id, id));
   return true;
+}
+
+/**
+ * Get the count of unread (status = 'new') contact inquiries.
+ */
+export async function getUnreadInquiryCount(): Promise<number> {
+  const db = await getDb();
+  if (!db) {
+    return 0;
+  }
+
+  const result = await db
+    .select({ value: count() })
+    .from(contactInquiries)
+    .where(eq(contactInquiries.status, "new"));
+
+  return result[0]?.value ?? 0;
 }

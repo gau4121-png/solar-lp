@@ -42,6 +42,7 @@ vi.mock("./db", () => ({
   getInquiryById: vi.fn().mockResolvedValue(undefined),
   getAttachmentsByInquiryId: vi.fn().mockResolvedValue([]),
   updateInquiryStatus: vi.fn().mockResolvedValue(true),
+  getUnreadInquiryCount: vi.fn().mockResolvedValue(0),
 }));
 
 vi.mock("./storage", () => ({
@@ -58,6 +59,7 @@ import {
   getInquiryById,
   getAttachmentsByInquiryId,
   updateInquiryStatus,
+  getUnreadInquiryCount,
 } from "./db";
 
 function createAdminContext(): TrpcContext {
@@ -239,5 +241,42 @@ describe("contact.updateStatus (admin only)", () => {
     await expect(
       caller.contact.updateStatus({ id: 1, status: "read" })
     ).rejects.toThrow();
+  });
+});
+
+describe("contact.unreadCount (admin only)", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("returns unread count for admin", async () => {
+    vi.mocked(getUnreadInquiryCount).mockResolvedValueOnce(5);
+
+    const caller = appRouter.createCaller(createAdminContext());
+    const result = await caller.contact.unreadCount();
+
+    expect(result).toEqual({ count: 5 });
+    expect(getUnreadInquiryCount).toHaveBeenCalledTimes(1);
+  });
+
+  it("returns zero when no unread inquiries", async () => {
+    vi.mocked(getUnreadInquiryCount).mockResolvedValueOnce(0);
+
+    const caller = appRouter.createCaller(createAdminContext());
+    const result = await caller.contact.unreadCount();
+
+    expect(result).toEqual({ count: 0 });
+  });
+
+  it("rejects non-admin users", async () => {
+    const caller = appRouter.createCaller(createUserContext());
+
+    await expect(caller.contact.unreadCount()).rejects.toThrow();
+  });
+
+  it("rejects unauthenticated users", async () => {
+    const caller = appRouter.createCaller(createPublicContext());
+
+    await expect(caller.contact.unreadCount()).rejects.toThrow();
   });
 });
