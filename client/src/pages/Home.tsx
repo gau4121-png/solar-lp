@@ -20,8 +20,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl text-primary">
-            <span className="bg-primary text-primary-foreground px-2 py-1 rounded text-sm">埼玉県全域・東京エリア対応</span>
-            <span>太陽光・蓄電池 業者選びガイド</span>
+            <span className="bg-gray-600 text-white px-2 py-1 rounded text-sm">完全中立</span>
+            <span>太陽光・蓄電池 失敗しない業者選びガイド</span>
           </div>
           <nav className="hidden md:flex gap-6 text-sm font-medium">
             <button onClick={() => scrollToSection('problem')} className="hover:text-primary transition-colors">業界の裏側</button>
@@ -40,7 +40,7 @@ export default function Home() {
         <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="/images/hero-bg.jpg" 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/GiCxXcqQDSejsvOe.jpg" 
               alt="埼玉県・東京エリアの住宅街と太陽光パネル" 
               className="w-full h-full object-cover brightness-50"
             />
@@ -50,12 +50,12 @@ export default function Home() {
               埼玉県全域・東京エリアにお住まいの方へ
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-              太陽光・蓄電池の業者選び、<br/>
-              <span className="text-secondary border-b-4 border-secondary">損していませんか？</span>
+              太陽光・蓄電池の見積もり、<br/>
+              <span className="text-secondary border-b-4 border-secondary">その金額は適正ですか？</span>
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-gray-100 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-              「一括見積もりサイト」や「訪問販売」には、見えないコストが隠されています。<br/>
-              賢い選択をするための「第三の選択肢」をお教えします。
+              業者によって100万円以上の差が出ることも。<br/>
+              業界の仕組みを知り、後悔しない選択をするための「中立的な判断基準」を公開します。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
               <Button onClick={() => scrollToSection('problem')} size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold text-lg px-8">
@@ -105,7 +105,7 @@ export default function Home() {
               
               <div className="relative">
                 <img 
-                  src="/images/comparison-icon.jpg" 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/GwWlPRqmzmGcrULu.jpg" 
                   alt="コスト構造の比較" 
                   className="rounded-xl shadow-xl w-full"
                 />
@@ -174,10 +174,13 @@ export default function Home() {
             </div>
 
             <div className="mt-12 bg-blue-50 p-8 rounded-xl border border-blue-100 text-center">
-              <h3 className="text-xl font-bold text-primary mb-4">結論：最も賢い選択は「地域密着の自社施工店」です</h3>
+              <h3 className="text-xl font-bold text-primary mb-4">結論：コストと安心のバランスが良いのは「地域密着の自社施工店」</h3>
               <p className="text-muted-foreground max-w-3xl mx-auto">
-                広告費や紹介料、下請けマージンといった「余計なコスト」をすべてカットできるのが自社施工店。<br/>
-                さらに、地元に根付いているため、施工後のトラブル時もすぐに駆けつけてくれる安心感があります。拠点のある新座市を中心に、埼玉県全域および東京都（練馬区・板橋区・西東京市など）もフットワーク軽く対応します。
+                広告費や紹介料、下請けマージンといった「余計なコスト」をカットできるのが自社施工店の強み。<br/>
+                さらに、地元に根付いているため、施工後のトラブル時もすぐに駆けつけてくれる安心感があります。<br/>
+                <br/>
+                <strong>では、具体的にどの業者がおすすめなのか？</strong><br/>
+                当サイトが独自に調査した、埼玉県・東京エリアの優良施工店をご紹介します。
               </p>
             </div>
           </div>
@@ -186,7 +189,7 @@ export default function Home() {
         {/* Simulator Placeholder */}
         <section id="simulator" className="py-20 bg-primary text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-20">
-            <img src="/images/simulator-bg.jpg" alt="Simulation Background" className="w-full h-full object-cover" />
+            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/PonDGGtMRvWKIfcR.jpg" alt="Simulation Background" className="w-full h-full object-cover" />
           </div>
           <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
