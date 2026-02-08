@@ -97,14 +97,13 @@ export function ContactForm() {
           
           <div className="space-y-2">
             <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              詳細（任意）
+              具体的なご相談内容（自由入力）
             </label>
             <Textarea 
               id="message" 
               name="message"
-              placeholder="例：見積もりが適正か見てほしい、補助金について知りたい..." 
-              className="min-h-[120px]"
-              required
+              placeholder="ここに相談したい内容を自由にお書きください。&#13;&#10;例：&#13;&#10;・他社で〇〇万円と言われたが適正か？&#13;&#10;・築15年の屋根でも大丈夫？&#13;&#10;・とりあえず話だけ聞いてみたい" 
+              className="min-h-[160px] text-base"
             />
           </div>
 
