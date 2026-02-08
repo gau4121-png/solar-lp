@@ -1,0 +1,14 @@
+Design Review V4 - Bright Orange Redesign
+==========================================
+
+Header: Orange top bar with stats, white header with solar icon, nav links, phone number, CTA - looks professional and clean.
+
+Hero: White background with orange dot pattern decoration, large bold headline "自社施工だからどこよりも安い。", trust badges, two CTAs, hero image with phone overlay card. Very similar to Tainavi/Solar Partners style.
+
+Cost Structure Diagram: Shows two stacked bar charts side by side - left (ダイマツ/適正価格) in orange with just "自社施工 会社の利益" + "工事代金", right (紹介サイト経由/割高な価格) in red/pink with "営業会社の利益" + "下請けの利益" + "工事代金". Arrow between them. Speech bubbles above. Very similar to Solar Partners' cost comparison diagram.
+
+Below diagram: Three stat cards showing 紹介サイトの手数料 10〜15%, ダイマツなら削減 最大100万円+, 中間マージン 0円.
+
+All sections rendering correctly with bright white/orange theme. Content extracted from markdown confirms all sections are present: cost structure, warranty comparison, manufacturer recommendations, simulator, recommend section, testimonials, contact form.
+
+Status: Looking great, professional solar specialist site feel achieved.

@@ -26,3 +26,16 @@
 - [x] Redesign footer with 3-column layout and more info
 - [x] Polish overall color scheme and typography for professional look
 - [x] Add CSS animations and micro-interactions
+- [x] Switch to bright white-base + orange design (like Tainavi/Solar Partners)
+- [x] Redesign header with brighter, friendlier look
+- [x] Redesign hero section - bright, energetic, clear value proposition
+- [x] Add cost structure diagram section (自社施工 vs 紹介サイト経由)
+- [x] Add "本当の自社施工" appeal section with guarantees
+- [x] Add recommended manufacturer section (Canadian Solar + 長州産業)
+- [x] Update comparison table with brighter design
+- [x] Update simulator section with brighter design
+- [x] Update recommend/ダイマツ section
+- [x] Update testimonials section with brighter design
+- [x] Update contact form section with brighter design
+- [x] Update footer with brighter design
+- [x] Add celebrity/media placeholder section for future use

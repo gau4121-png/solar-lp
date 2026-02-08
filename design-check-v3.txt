@@ -1,0 +1,13 @@
+Design Check V3 - After Major Redesign
+=======================================
+Screenshot shows:
+- Orange top bar with stats (施工実績500件以上 | 顧客満足度98% | 埼玉・東京エリア対応)
+- Clean white header with solar icon, nav items, phone number, CTA button
+- Hero section: bright white background with orange dot pattern
+- "自社施工だからどこよりも安い。" headline - large and impactful
+- Trust badges (完全自社施工, 地域密着15年, 施工実績500件+)
+- Two CTA buttons (orange + outline)
+- Right side: hero image with phone overlay card
+- Overall: bright, professional, similar to Tainavi/Solar Partners style
+- No TypeScript errors
+- Need to scroll down to check remaining sections

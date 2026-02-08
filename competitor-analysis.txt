@@ -1,0 +1,37 @@
+Competitor Analysis - Tainavi & Solar Partners
+==============================================
+
+TAINAVI DESIGN:
+- Top bar: Orange gradient with stats "累計20万人利用実績！顧客満足度驚異の98%"
+- Header: White bg, logo with sun icon, green dotted nav links
+- Hero: White/light bg with celebrity photo (man in blue suit, thumbs up)
+  - Orange accent text for prices "60万円〜！"
+  - Dark navy badges "太陽光発電は60万円〜！" "ローン活用で初期費用0円も可！"
+  - Illustration of house with solar panels + family
+  - Orange circle frame around illustration
+  - Main text: 太陽光発電 無料一括見積り (huge bold text)
+  - Sub: タイナビなら全国270社以上の厳選優良企業の中から5社まで見積りOK!
+- Color scheme: White base, orange (#F7931E-ish) accent, dark navy for badges
+- Overall feel: Bright, trustworthy, friendly, professional
+
+SOLAR PARTNERS DESIGN:
+- Blue (#0066CC) as primary, orange as accent
+- "完全無料" badge prominent
+- TV appearance prominently displayed (TOKYOMX)
+- Cost structure diagram: 自社施工 vs 営業会社+下請け (stacked bar chart)
+  - Left (shorter): 工事代金 + 自社施工会社の利益
+  - Right (taller): 工事代金 + 下請けの利益 + 営業会社の利益
+  - Arrow showing "2社の利益分、価格が高くなる"
+- "無料の工事完了保証" section
+- Manufacturer recommendation with crown icon (ハンファジャパン Re.RISE, Qセルズ)
+- Free phone number prominently displayed
+
+KEY TAKEAWAYS FOR OUR REDESIGN:
+1. White/light background is essential - feels modern and trustworthy
+2. Orange as main accent color for energy/warmth
+3. Big bold numbers and stats in hero
+4. Cost comparison diagram is very effective visual
+5. Celebrity/media section builds trust
+6. Manufacturer recommendations with crown/ranking feel authoritative
+7. Phone number should be prominent
+8. "完全無料" and guarantee badges build trust
