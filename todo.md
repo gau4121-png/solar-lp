@@ -102,3 +102,4 @@
 - [x] Update comparison details: 大手家電=下請け工事・アフターなし, ハウスメーカー=下請け・アフターなし, 見積サイト=紹介料上乗せ
 - [x] Neutralize 安心保証 section (remove 紹介サイト批判, make it about ダイマツ自社施工の強み)
 - [x] Remove uploaded cost comparison image (販売会社vsダイマツ diagram)
+- [x] Add mobile swipe hint (icon + text) to 4-way comparison table for better UX

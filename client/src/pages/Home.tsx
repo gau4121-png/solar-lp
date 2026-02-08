@@ -1,7 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ChevronRight, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
+import { Check, ChevronRight, ChevronLeft, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { ContactForm } from "@/components/ContactForm";
 import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
@@ -464,7 +464,14 @@ export default function Home() {
             </div>
 
             {/* 4者比較表 */}
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+            <div className="max-w-5xl mx-auto">
+              {/* モバイル用スワイプヒント */}
+              <div className="flex items-center justify-center gap-2 text-sm text-gray-400 mb-3 md:hidden">
+                <ChevronLeft className="h-4 w-4 animate-pulse" />
+                <span>左右にスワイプして比較</span>
+                <ChevronRight className="h-4 w-4 animate-pulse" />
+              </div>
+              <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse min-w-[700px]">
                   <thead>
@@ -544,6 +551,7 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
+            </div>
             </div>
 
             {/* 結論ボックス */}
