@@ -911,6 +911,149 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ═══════════════════ WARRANTY COMPARISON TABLE ═══════════════════ */}
+        <section id="warranty-compare" className="py-16 md:py-24 bg-white">
+          <div className="container">
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+                <Shield className="h-4 w-4" />
+                保証比較
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3">
+                メーカー保証・アフターサービス<br/><span className="text-primary">徹底比較</span>
+              </h2>
+              <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
+                カナディアンソーラーと長州産業、それぞれの保証内容を一覧で比較。お客様のニーズに合ったメーカー選びをサポートします。
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto overflow-x-auto">
+              <table className="w-full border-collapse min-w-[700px]">
+                <thead>
+                  <tr>
+                    <th className="p-4 text-left bg-gray-50 border-b-2 border-gray-200 w-1/4 font-bold text-gray-700">比較項目</th>
+                    <th className="p-4 text-center border-b-2 border-primary/30 w-[37.5%]">
+                      <div className="flex items-center justify-center gap-2">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 w-auto" />
+                        <span className="font-bold text-gray-800">カナディアンソーラー</span>
+                      </div>
+                    </th>
+                    <th className="p-4 text-center border-b-2 border-red-300 w-[37.5%]">
+                      <div className="flex items-center justify-center gap-2">
+                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-6 w-auto" />
+                        <span className="font-bold text-gray-800">長州産業</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">出力保証</td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-primary text-lg">30年</span>
+                      <br /><span className="text-xs text-gray-500">業界最長クラス</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-red-600 text-lg">25年</span>
+                      <br /><span className="text-xs text-gray-500">国内トップクラス</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">製品保証</td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-primary text-lg">25年</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-red-600 text-lg">15年</span>
+                      <br /><span className="text-xs text-gray-500">構成機器保証</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50 bg-red-50/30">
+                    <td className="p-4 font-bold text-gray-700">
+                      雨漏り保証
+                      <br /><span className="text-xs text-red-500 font-normal">★長州産業だけ！</span>
+                    </td>
+                    <td className="p-4 text-center text-gray-400">―</td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-red-600 text-lg">10年</span>
+                      <br /><span className="text-xs text-red-500 font-medium">他メーカーにない独自保証</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">蓄電池保証</td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-primary">15年</span>
+                      <br /><span className="text-xs text-gray-500">EP CUBE</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="font-bold text-red-600">15年</span>
+                      <br /><span className="text-xs text-gray-500">Smart PV Multi</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">電池タイプ</td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm font-medium">リン酸鉄系</span>
+                      <br /><span className="text-xs text-gray-500">高安全性・長寿命</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm font-medium">リン酸鉄リチウム</span>
+                      <br /><span className="text-xs text-gray-500">熱安定性・安全性◎</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">停電時対応</td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm font-medium">全負荷200V対応</span>
+                      <br /><span className="text-xs text-gray-500">エアコン・IHも使用可</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm font-medium">全負荷 / 特定負荷 選択可</span>
+                      <br /><span className="text-xs text-gray-500">全負荷型は200V対応</span>
+                    </td>
+                  </tr>
+                  <tr className="border-b hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">生産国</td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm">海外生産</span>
+                      <br /><span className="text-xs text-gray-500">カナダ本社・世界展開</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm font-medium text-red-600">国内生産</span>
+                      <br /><span className="text-xs text-gray-500">山口県本社工場</span>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="p-4 font-bold text-gray-700">おすすめポイント</td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm text-primary font-medium">コスパ重視の方</span>
+                      <br /><span className="text-xs text-gray-500">30年保証で長期安心</span>
+                    </td>
+                    <td className="p-4 text-center">
+                      <span className="text-sm text-red-600 font-medium">品質・安心重視の方</span>
+                      <br /><span className="text-xs text-gray-500">雨漏り保証は長州だけ</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-8 max-w-3xl mx-auto bg-blue-50 rounded-xl p-6 border border-blue-100">
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-100 p-2 rounded-full shrink-0 mt-0.5">
+                  <ThumbsUp className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-800 mb-1">どちらを選んでも、ダイマツの自社施工保証がプラスされます</p>
+                  <p className="text-gray-600 text-sm">
+                    メーカー保証に加えて、ダイマツ独自の<span className="font-bold">施工保証3年（最大1,000万円）</span>、<span className="font-bold">工事中保証（最大1億円）</span>、<span className="font-bold">自然災害補償</span>、<span className="font-bold">24時間監視システム</span>が付帯。メーカー保証とダイマツ保証の「ダブル保証」で、長期運用も安心です。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ═══════════════════ SUBSIDY SECTION ═══════════════════ */}
         <section id="subsidy" className="py-16 md:py-24 bg-gradient-to-b from-green-50 to-white">
           <div className="container">
@@ -1121,24 +1264,25 @@ export default function Home() {
                         </td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50 bg-amber-50">
-                        <td className="py-3 px-4 font-medium">所沢市</td>
-                        <td className="py-3 px-4 text-center">要確認</td>
-                        <td className="py-3 px-4 text-center">要確認</td>
+                        <td className="py-3 px-4 font-medium">所沢市<br /><span className="text-xs text-amber-600 font-normal">非FIT</span></td>
+                        <td className="py-3 px-4 text-center font-bold text-amber-700">10万円/kW<br /><span className="text-xs font-normal text-gray-500">上限50万円</span></td>
+                        <td className="py-3 px-4 text-center font-bold text-amber-700">3万円/kWh+対象経費1/3<br /><span className="text-xs font-normal text-gray-500">上限61.6万円</span></td>
                         <td className="py-3 px-4 text-center">
-                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium">県と併用不可</span>
+                          <span className="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-xs font-medium">金額大</span><br />
+                          <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">県と併用不可</span>
                         </td>
                       </tr>
-                      <tr className="border-b hover:bg-gray-50">
-                        <td className="py-3 px-4 font-medium">志木市</td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">県補助金と併用可</td>
+                      <tr className="border-b hover:bg-gray-50 bg-gray-100">
+                        <td className="py-3 px-4 font-medium text-gray-400">ふじみ野市</td>
+                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
+                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-400">2025年度補助金なし</td>
                       </tr>
-                      <tr className="border-b hover:bg-gray-50">
-                        <td className="py-3 px-4 font-medium">和光市</td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-500">県補助金と併用可</td>
+                      <tr className="border-b hover:bg-gray-50 bg-gray-100">
+                        <td className="py-3 px-4 font-medium text-gray-400">富士見市</td>
+                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
+                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-400">2025年度補助金なし</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1150,7 +1294,7 @@ export default function Home() {
                   </p>
                   <p className="text-xs text-amber-700 leading-relaxed">
                     新座市・所沢市など、<strong>財源が国の補助金を使っている市区町村の補助金は、埼玉県の補助金と併用できません</strong>（どちらか一方を選択）。
-                    一方、朝霞市・志木市・和光市など、市独自の財源または県が財源の補助金は県補助金との併用が可能です。
+                    一方、朝霞市など市独自の財源の補助金は県補助金との併用が可能です。ふじみ野市・富士見市のように市の補助金制度自体がない自治体もあり、<strong>新座市・所沢市にお住まいの方は非常に恵まれた補助金環境</strong>です。
                     どの組み合わせが最もお得になるかは、ダイマツが最適なプランをご提案いたします。
                   </p>
                 </div>
@@ -1379,7 +1523,7 @@ export default function Home() {
                 },
                 {
                   name: "Y.A. 様",
-                  area: "志木市",
+                  area: "所沢市",
                   rating: 5,
                   text: "設置後のアフターフォローが素晴らしいです。ちょっとした質問にもすぐ対応してくれて、地元の業者さんにして本当に良かったです。",
                   detail: "5kW太陽光",
@@ -1498,8 +1642,8 @@ export default function Home() {
                   048-486-9274
                 </p>
                 <p>
-                  対応エリア：朝霞市、新座市、志木市、和光市、<br/>
-                  その他埼玉県全域・東京エリア
+対応エリア：朝霞市、新座市、所沢市、ふじみ野市、富士見市、<br/>
+                   その他埼玉県全域・東京エリア
                 </p>
                 <Button size="sm" variant="outline" className="mt-2 border-gray-600 text-gray-300 hover:bg-white/10 hover:text-white" asChild>
                   <a href="http://daimatsu.link/" target="_blank" rel="noopener noreferrer">

@@ -1,0 +1,16 @@
+Preview check - Subsidy section v2 (2026-02-08)
+
+Municipal subsidy table:
+- 朝霞市: 5万円/件 (太陽光), 上限45万円 (蓄電池) - 県と併用可
+- 新座市: 上限45万円 - 県と併用不可 (red tag)
+- 所沢市: 10万円/kW 上限50万円 (太陽光), 3万円/kWh+対象経費1/3 上限61.6万円 (蓄電池) - 非FIT, 金額大, 県と併用不可 (red tag)
+- ふじみ野市: 制度なし - 2025年度補助金なし (gray)
+- 富士見市: 制度なし - 2025年度補助金なし (gray)
+
+Combination rules box (yellow warning):
+- 新座市・所沢市 = 国が財源 → 県と併用不可
+- 朝霞 = 市独自財源 → 県と併用可能
+- ふじみ野・富士見 = 制度なし
+- 新座・所沢が恵まれた補助金環境であることを強調
+
+All changes look correct and match user requirements.

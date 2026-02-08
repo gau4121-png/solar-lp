@@ -1,0 +1,30 @@
+Tokorozawa City Subsidy Details (令和7年度)
+==========================================
+Name: 所沢市スマートハウス化推進補助金
+
+Categories:
+1. 創エネ・蓄エネ (regular):
+   - Solar: 3万円/kW, upper limit 15万円
+   - Battery: 3万円/kWh, upper limit 24万円
+
+2. 非FIT (環境省補助上乗せ) - KEY CATEGORY:
+   - Solar: 10万円/kW, upper limit 50万円
+   - Battery: 3万円/kWh + 1/3 of subsidy-eligible cost, upper limit 61.6万円
+   - Condition: Must NOT receive FIT certification
+   - Must be installed simultaneously (solar + battery)
+   - Application: BEFORE contract and construction
+
+加算措置 (up to 33% additional):
+   - 18歳未満の子を含む三世代同居: +10%
+   - 小規模事業者利用: +3%
+   - 再生可能エネルギー比率50%以上の電力プラン: +20%
+
+Application period: R7/4/1 ~ R8/3/19
+Budget-based, first-come-first-served, ends when budget exhausted.
+
+Contact: 所沢市 環境クリーン部マチごとエコタウン推進課
+Phone: 04-2998-9133
+
+KEY POINT: Non-FIT solar+battery can get up to 50万+61.6万 = 111.6万円 from city alone!
+This is very generous compared to other cities.
+Cannot combine with Saitama prefecture subsidy (national funding source).

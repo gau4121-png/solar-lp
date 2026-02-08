@@ -1,0 +1,16 @@
+Preview Check - Warranty Comparison Table & Subsidy Section
+============================================================
+
+WARRANTY COMPARISON TABLE:
+- Section displays correctly with "保証比較" badge and "メーカー保証・アフターサービス 徹底比較" heading
+- Table has 3 columns: 比較項目, カナディアンソーラー (with logo), 長州産業 (with logo)
+- Rows: 出力保証 (30年 vs 25年), 製品保証 (25年 vs 15年), 雨漏り保証 (― vs 10年, highlighted), 蓄電池保証 (15年 vs 15年), 電池タイプ, 停電時対応, 生産国, おすすめポイント
+- "★長州産業だけ！" highlight on rain leak warranty row works well
+- "ダブル保証" box at bottom correctly shows Daimatsu's additional guarantees
+- Flows naturally into the subsidy section below
+
+SUBSIDY SECTION:
+- "蓄電池の補助金で 実質負担を大幅に削減" heading visible
+- Need to verify municipal table has been updated (志木・和光 removed, ふじみ野・富士見 added, 所沢 detailed)
+
+All sections render correctly and flow well together.

@@ -1,0 +1,37 @@
+Choshu Smart PV Multi 12.7kWh Catalog Notes
+=============================================
+Product: Smart PV Multi (スマートPVマルチ)
+Manufacturer: 長州産業 (CIC)
+
+Battery Types:
+- 6.3kWh (CB-LMP63A) - compact slim design
+- 12.7kWh (CB-LMP127A) - larger capacity
+
+Key Features:
+- リン酸鉄リチウム採用 (LFP - safe chemistry)
+- スリムデザイン - fits various locations
+- 全負荷対応型 or 特定負荷対応型 options
+- 停電時5秒後に自動切替で電力供給
+- グリーンモードで蓄電残量100%まで夜間充電可能
+- 最大入力6.6kW
+
+Full-load type (全負荷対応型):
+- 自立運転時の最大出力 4.0kVA
+- 200V家電製品も使用可能 (エアコン、IH等)
+- 6.3kWh: ¥4,854,300 (税込)
+- 12.7kWh: ¥6,916,800 (税込)
+
+Specific-load type (特定負荷対応型):
+- 自立運転時の最大出力 2.0kVA
+- 100V機器のみ対応
+- 6.3kWh: ¥3,878,600 (税込)
+- 12.7kWh: ¥5,941,100 (税込)
+
+Usage time estimates (12.7kWh):
+- TV (160W): 5 hours
+- PC (100W): 5 hours
+- Lighting 3x60W (180W): 20 hours
+- Fridge (100W): 45 hours
+- Phone charger (15W): 7 hours
+
+Warranty: 15年蓄電池保証

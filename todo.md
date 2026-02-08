@@ -62,3 +62,9 @@
 - [x] Add explanation about subsidy combination rules (national-funded municipal subsidies cannot combine with prefecture)
 - [x] Add application deadline countdown timer to subsidy section
 - [x] Add "残り予算わずか" urgency banner to subsidy section
+- [x] Remove Shiki city and Wako city from municipal subsidy table (no 2025 subsidies)
+- [x] Add Fujimino city and Fujimi city to table (no subsidies = emphasize Niiza/Tokorozawa advantage)
+- [x] Update Tokorozawa city subsidy details from PDF (non-FIT condition etc.)
+- [x] Emphasize Niiza/Tokorozawa subsidy advantage in UI design
+- [x] Add construction case studies / customer testimonials section (already exists in voice section)
+- [x] Add manufacturer warranty & after-service comparison table
