@@ -53,3 +53,7 @@
 - [x] Add battery/storage section to maker area (EP CUBE, Choshu battery)
 - [x] Add solar+battery set proposal messaging/CTA
 - [x] Update navigation if needed for battery section
+- [x] Research latest battery/solar subsidies (national, Saitama, Tokyo, municipal)
+- [x] Add subsidy information section to the site (between battery and simulator sections)
+- [x] Include national subsidy (DR補助金 etc.), prefectural subsidies, and key municipal subsidies
+- [x] Add CTA messaging about Daimatsu handling subsidy applications

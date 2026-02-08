@@ -1,7 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ChevronRight, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone } from "lucide-react";
+import { Check, ChevronRight, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 import { ContactForm } from "@/components/ContactForm";
 import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
@@ -155,6 +155,7 @@ export default function Home() {
     { id: "guarantee", label: "安心保証" },
     { id: "afterservice", label: "アフター" },
     { id: "makers", label: "おすすめメーカー" },
+    { id: "subsidy", label: "補助金" },
     { id: "recommend", label: "推奨業者" },
     { id: "voice", label: "お客様の声" },
     { id: "contact", label: "無料相談" },
@@ -828,6 +829,303 @@ export default function Home() {
                   ※お客様の電気使用量・ライフスタイルに合わせて、最適な蓄電池容量をご提案します。
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════ SUBSIDY SECTION ═══════════════════ */}
+        <section id="subsidy" className="py-16 md:py-24 bg-gradient-to-b from-green-50 to-white">
+          <div className="container">
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+                <Banknote className="h-4 w-4" />
+                お得な制度を活用
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                蓄電池の補助金で<br />
+                <span className="text-green-600">実質負担を大幅に削減</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                国・都県・市区町村の補助金を賢く活用すれば、蓄電池の導入費用を大幅に抑えられます。<br />
+                ダイマツなら申請手続きも完全サポートいたします。
+              </p>
+            </div>
+
+            {/* ─── National DR Subsidy ─── */}
+            <div className="mb-10">
+              <div className="bg-white rounded-2xl shadow-lg border border-green-100 overflow-hidden">
+                <div className="bg-primary text-white px-6 py-4 flex items-center gap-3">
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <Globe className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold">国の補助金：DR補助金</h3>
+                    <p className="text-sm text-blue-100">蓄電池の導入を支援する国の制度</p>
+                  </div>
+                  <div className="ml-auto bg-secondary text-white px-4 py-2 rounded-lg text-center">
+                    <p className="text-xs">最大</p>
+                    <p className="text-2xl font-bold">60<span className="text-sm">万円</span></p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-bold text-primary mb-3 flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        EP CUBE（カナディアンソーラー）の補助金額
+                      </h4>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between bg-blue-50 rounded-lg px-4 py-3">
+                          <div>
+                            <span className="font-medium">EP CUBE 9.9kWh</span>
+                            <span className="text-xs text-gray-500 ml-2">初期実効 9.4kWh</span>
+                          </div>
+                          <span className="font-bold text-green-600 text-lg">39.5万円</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-blue-50 rounded-lg px-4 py-3">
+                          <div>
+                            <span className="font-medium">EP CUBE 13.3kWh</span>
+                            <span className="text-xs text-gray-500 ml-2">初期実効 12.6kWh</span>
+                          </div>
+                          <span className="font-bold text-green-600 text-lg">52.9万円</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-primary mb-3 flex items-center gap-2">
+                        <FileText className="h-4 w-4" />
+                        長州産業 SPVマルチの補助金額
+                      </h4>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between bg-red-50 rounded-lg px-4 py-3">
+                          <div>
+                            <span className="font-medium">9.8kWh</span>
+                            <span className="text-xs text-gray-500 ml-2">初期実効 8.3kWh</span>
+                          </div>
+                          <span className="font-bold text-green-600 text-lg">36.5万円</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-red-50 rounded-lg px-4 py-3">
+                          <div>
+                            <span className="font-medium">12.7kWh</span>
+                            <span className="text-xs text-gray-500 ml-2">初期実効 10.9kWh</span>
+                          </div>
+                          <span className="font-bold text-green-600 text-lg">48.0万円</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-red-50 rounded-lg px-4 py-3">
+                          <div>
+                            <span className="font-medium">16.4kWh</span>
+                            <span className="text-xs text-gray-500 ml-2">初期実効 14.1kWh</span>
+                          </div>
+                          <span className="font-bold text-green-600 text-lg">55.0万円</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
+                    <p className="text-sm text-amber-800">
+                      <AlertTriangle className="h-4 w-4 inline mr-1" />
+                      <strong>注意：</strong>DR補助金は人気が高く、予算が早期に終了します。2025年度は約<strong>2ヶ月</strong>で予算満了。お早めのご相談をおすすめします。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ─── Regional Subsidies Grid ─── */}
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {/* Saitama Prefecture */}
+              <div className="bg-white rounded-2xl shadow-lg border border-green-100 overflow-hidden">
+                <div className="bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-4 flex items-center gap-3">
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <MapPin className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold">埼玉県の補助金</h3>
+                    <p className="text-xs text-green-100">家庭における省エネ・再エネ活用設備導入補助金</p>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">太陽光発電</span>
+                      <span className="font-bold text-primary">7万円/kW（上限35万円）</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">蓄電池</span>
+                      <span className="font-bold text-primary">10万円（一律）</span>
+                    </div>
+                    <div className="border-t pt-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">セット導入で最大</span>
+                        <span className="font-bold text-green-600 text-xl">45万円</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-3">※既存住宅が対象。FIT認定不可、発電量30%以上自家消費が条件。</p>
+                </div>
+              </div>
+
+              {/* Tokyo Metropolitan */}
+              <div className="bg-white rounded-2xl shadow-lg border border-green-100 overflow-hidden">
+                <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-6 py-4 flex items-center gap-3">
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <Building2 className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold">東京都の補助金</h3>
+                    <p className="text-xs text-purple-100">災害にも強く健康にも資する断熱・太陽光住宅普及拡大事業</p>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">蓄電池</span>
+                      <span className="font-bold text-purple-600">12万円/kWh（上限なし）</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">DR実証参加</span>
+                      <span className="font-bold text-purple-600">+10万円</span>
+                    </div>
+                    <div className="border-t pt-3">
+                      <p className="text-xs text-gray-600 mb-2">例：EP CUBE 9.9kWhを導入した場合</p>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">12万×9.9kWh + DR10万</span>
+                        <span className="font-bold text-green-600 text-xl">約129万円</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 bg-purple-50 rounded-lg p-3">
+                    <p className="text-xs text-purple-700 font-medium">
+                      <Crown className="h-3.5 w-3.5 inline mr-1" />
+                      東京都は全国で最も手厚い蓄電池補助金制度です
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ─── Municipal Subsidies ─── */}
+            <div className="bg-white rounded-2xl shadow-lg border border-green-100 overflow-hidden mb-10">
+              <div className="bg-gradient-to-r from-teal-600 to-teal-500 text-white px-6 py-4 flex items-center gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <HomeIcon className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold">対応エリアの市区町村補助金</h3>
+              </div>
+              <div className="p-5">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b-2 border-gray-200">
+                        <th className="text-left py-3 px-4 font-bold text-gray-700">自治体</th>
+                        <th className="text-center py-3 px-4 font-bold text-gray-700">太陽光発電</th>
+                        <th className="text-center py-3 px-4 font-bold text-gray-700">蓄電池</th>
+                        <th className="text-center py-3 px-4 font-bold text-gray-700">備考</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b hover:bg-gray-50">
+                        <td className="py-3 px-4 font-medium">朝霞市</td>
+                        <td className="py-3 px-4 text-center">3.5万円/kW<br /><span className="text-xs text-gray-500">上限10万円</span></td>
+                        <td className="py-3 px-4 text-center">10万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">既存住宅のみ</td>
+                      </tr>
+                      <tr className="border-b hover:bg-gray-50 bg-green-50">
+                        <td className="py-3 px-4 font-medium">新座市</td>
+                        <td className="py-3 px-4 text-center font-bold text-green-600">9万円/kW<br /><span className="text-xs font-normal text-gray-500">上限45万円</span></td>
+                        <td className="py-3 px-4 text-center font-bold text-green-600">上限45万円</td>
+                        <td className="py-3 px-4 text-center">
+                          <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-medium">特にお得</span>
+                        </td>
+                      </tr>
+                      <tr className="border-b hover:bg-gray-50">
+                        <td className="py-3 px-4 font-medium">志木市</td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">要確認</td>
+                      </tr>
+                      <tr className="border-b hover:bg-gray-50">
+                        <td className="py-3 px-4 font-medium">和光市</td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">要確認</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs text-gray-500 mt-3">※補助金の金額・条件は年度により変更される場合があります。最新情報はお問い合わせください。</p>
+              </div>
+            </div>
+
+            {/* ─── Simulation Example ─── */}
+            <div className="bg-gradient-to-r from-green-600 to-teal-600 rounded-2xl p-8 md:p-10 text-white">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 text-center">
+                <Gift className="h-6 w-6 inline mr-2" />
+                補助金活用シミュレーション例
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Saitama Example */}
+                <div className="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+                  <h4 className="font-bold text-lg mb-4">
+                    <MapPin className="h-4 w-4 inline mr-1" />
+                    埼玉県新座市の場合
+                  </h4>
+                  <p className="text-sm text-green-100 mb-3">太陽光 5kW + EP CUBE 9.9kWh を導入</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>埼玉県補助金（太陽光+蓄電池）</span>
+                      <span className="font-bold">45万円</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>新座市補助金（太陽光+蓄電池）</span>
+                      <span className="font-bold">最大90万円</span>
+                    </div>
+                    <div className="border-t border-white/30 pt-2 flex justify-between items-center">
+                      <span className="font-medium">合計補助金額</span>
+                      <span className="text-2xl font-bold text-secondary">最大135万円</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tokyo Example */}
+                <div className="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20">
+                  <h4 className="font-bold text-lg mb-4">
+                    <Building2 className="h-4 w-4 inline mr-1" />
+                    東京都の場合
+                  </h4>
+                  <p className="text-sm text-green-100 mb-3">太陽光 5kW + EP CUBE 9.9kWh を導入</p>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>東京都補助金（蓄電池）</span>
+                      <span className="font-bold">約119万円</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>国 DR補助金（蓄電池）</span>
+                      <span className="font-bold">約39.5万円</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>DR実証上乗せ</span>
+                      <span className="font-bold">10万円</span>
+                    </div>
+                    <div className="border-t border-white/30 pt-2 flex justify-between items-center">
+                      <span className="font-medium">合計補助金額</span>
+                      <span className="text-2xl font-bold text-secondary">最大168.5万円</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-xs text-green-200 mt-4 text-center">
+                ※上記は概算です。実際の補助金額は申請時期・条件により異なります。詳しくは無料相談でお問い合わせください。
+              </p>
+            </div>
+
+            {/* ─── CTA ─── */}
+            <div className="text-center mt-10">
+              <p className="text-muted-foreground mb-4">補助金の申請手続きもダイマツが完全サポート。お気軽にご相談ください。</p>
+              <Button onClick={() => scrollToSection('contact')} size="lg" className="bg-secondary hover:bg-secondary/90 text-white font-bold text-lg px-10 py-6 h-auto shadow-lg hover:shadow-xl transition-all">
+                補助金について無料相談する
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
           </div>
         </section>
