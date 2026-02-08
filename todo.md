@@ -75,3 +75,13 @@
 - [x] Add mini DR countdown timer to hero section area
 - [x] Update warranty comparison table: Choshu battery type = 三元系 (寒さに強い)
 - [x] Create 2026 recommended battery corner (ニチコン T5/T6 series)
+- [x] Add "販売会社vsダイマツ" comparison diagram (from user image) to LP
+- [x] Add Multi 12.7kWh to Choshu battery lineup (mark as 注目)
+- [x] Comparison table: Multi needs 3 devices for 全負荷 vs EP has built-in パワコン (超スリム)
+- [x] Fix T5/T6: both have same capacities (7.4/9.9/14.9/19.9kWh), add 19.9kWh to T5
+- [x] Add circuit explanation: T5=4回路5.9kW, T6=5回路9.9kW
+- [x] Add Nichicon AI feature prominently (天気予報連動・生活パターン学習・電気代最小化)
+- [x] Fix Fujimino city: 太陽光・蓄電池 各7万円
+- [x] Fix Fujimi city: 太陽光・蓄電池 各5万円
+- [x] Add 新座市 condition: 非FIT
+- [x] Add 埼玉県 condition: 創蓄（セット条件）

@@ -539,6 +539,18 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* 一般的な販売会社 vs ダイマツ 比較図 */}
+            <div className="mt-12 max-w-3xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 mb-6">一般的な販売会社 vs ダイマツの違い</h3>
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/HcwDjCcCXIWSCBKd.png"
+                alt="一般的な販売会社は施工を丸投げ、ダイマツは直接契約・直接施工で販売・施工・アフターまで全責任"
+                className="w-full rounded-2xl shadow-lg border border-gray-200"
+                loading="lazy"
+              />
+              <p className="text-center text-xs text-gray-500 mt-3">※ダイマツは販売・施工・アフターまで全て自社対応。中間マージンなしで迅速対応。</p>
+            </div>
           </div>
         </section>
 
@@ -934,6 +946,10 @@ export default function Home() {
                           <span className="text-xs font-bold text-red-600">9.8kWh <span className="text-[10px] text-red-400">人気</span></span>
                           <span className="text-[10px] text-gray-500">3〜4人世帯向け｜屋内外設置OK</span>
                         </div>
+                        <div className="flex items-center justify-between bg-white rounded-md px-3 py-1.5 ring-1 ring-yellow-300 bg-yellow-50">
+                          <span className="text-xs font-bold text-amber-700">12.7kWh <span className="text-[10px] text-amber-500">注目</span></span>
+                          <span className="text-[10px] text-gray-500">3〜5人世帯向け｜大人気モデル</span>
+                        </div>
                         <div className="flex items-center justify-between bg-white rounded-md px-3 py-1.5">
                           <span className="text-xs font-bold text-gray-800">16.4kWh</span>
                           <span className="text-[10px] text-gray-500">5人以上世帯向け｜大容量</span>
@@ -969,6 +985,54 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
+              </div>
+
+              {/* ─── EP CUBE vs Choshu Multi Comparison ─── */}
+              <div className="mt-8 bg-gradient-to-r from-green-50 to-red-50 rounded-2xl p-5 md:p-8 border border-gray-200">
+                <h3 className="text-lg font-bold text-center text-gray-800 mb-6">EP CUBE vs 長州マルチ ― 設置スタイルの違い</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white rounded-xl p-4 border border-green-200">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">EP CUBE</span>
+                      <span className="text-xs text-gray-500">カナディアンソーラー</span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700"><span className="font-bold">パワコン内蔵</span>の一体型 ― 設置機器が少なく<span className="font-bold text-green-600">超スリム</span></p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700">全負荷200V対応</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700">設置スペースが限られるご家庭に最適</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-red-200">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold">Smart PV Multi</span>
+                      <span className="text-xs text-gray-500">長州産業</span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700"><span className="font-bold">全負荷型</span>でパワコン・蓄電池ユニット・トランスユニットの<span className="font-bold text-red-600">3機器構成</span></p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700">全負荷200V対応・天気予報連動</p>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-gray-700">太陽光パネルとのセットで雨漏り保証10年が付く安心感</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center text-xs text-gray-500 mt-4">※どちらもダイマツの自社施工保証が付帯します。お客様のご自宅の設置条件に合わせてご提案します。</p>
               </div>
 
               {/* Bottom CTA */}
@@ -1031,6 +1095,10 @@ export default function Home() {
                     </div>
                     <BatteryCharging className="h-10 w-10 text-yellow-300" />
                   </div>
+                  <div className="flex gap-2 mb-3">
+                    <span className="bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded text-xs font-bold">4回路</span>
+                    <span className="bg-blue-500/20 text-blue-200 px-2 py-0.5 rounded text-xs font-bold">5.9kW連系</span>
+                  </div>
                   <p className="text-gray-300 text-sm mb-4">
                     4回路対応・連系出力5.9kW。一般的な住宅に最適なサイズ感。停電時も全負荷200V対応で、エアコンやIHもそのまま使えます。
                   </p>
@@ -1046,6 +1114,10 @@ export default function Home() {
                     <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
                       <span className="text-sm">蓄電池 14.9kWh</span>
                       <span className="text-xs text-gray-400">停電時約29時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
+                      <span className="text-sm">蓄電池 19.9kWh</span>
+                      <span className="text-xs text-gray-400">停電時約40時間</span>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -1067,15 +1139,27 @@ export default function Home() {
                     </div>
                     <BatteryCharging className="h-10 w-10 text-yellow-300" />
                   </div>
+                  <div className="flex gap-2 mb-3">
+                    <span className="bg-yellow-400/20 text-yellow-200 px-2 py-0.5 rounded text-xs font-bold">5回路</span>
+                    <span className="bg-yellow-400/20 text-yellow-200 px-2 py-0.5 rounded text-xs font-bold">9.9kW連系</span>
+                  </div>
                   <p className="text-gray-300 text-sm mb-4">
                     5回路対応・連系出力<span className="text-yellow-300 font-bold">9.9kW</span>。大容量太陽光パネルとの組み合わせに最適。ハイスピード拡張充電でEVも<span className="text-yellow-300 font-bold">倍速充電</span>。
                   </p>
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
+                      <span className="text-sm">蓄電池 7.4kWh</span>
+                      <span className="text-xs text-gray-400">停電時約14時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
                       <span className="text-sm">蓄電池 9.9kWh</span>
                       <span className="text-xs text-gray-400">停電時約20時間</span>
                     </div>
                     <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2 ring-1 ring-yellow-400/30">
+                      <span className="text-sm font-bold text-yellow-300">14.9kWh <span className="text-xs text-yellow-400">人気</span></span>
+                      <span className="text-xs text-gray-400">停電時約29時間</span>
+                    </div>
+                    <div className="flex justify-between items-center bg-white/5 rounded-lg px-3 py-2">
                       <span className="text-sm font-bold text-yellow-300">19.9kWh <span className="text-xs text-yellow-400">最大</span></span>
                       <span className="text-xs text-gray-400">停電時約40時間（約3日分）</span>
                     </div>
@@ -1113,6 +1197,38 @@ export default function Home() {
                 <p className="text-center text-xs text-gray-500 mt-4">
                   ※ ニチコンが世界で初めて開発したシステムです。複数の環境大臣賞・グッドデザイン賞を受賞。
                 </p>
+              </div>
+
+              {/* ─── AI Feature Highlight ─── */}
+              <div className="mt-10 bg-gradient-to-r from-yellow-400/10 to-blue-400/10 backdrop-blur rounded-2xl p-6 md:p-8 border border-yellow-400/20 relative">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 px-5 py-1.5 rounded-full text-sm font-black whitespace-nowrap">
+                  ✨ 最大の売り：AI自動制御
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-xl md:text-2xl font-black text-center mb-6">
+                    AIが電気代を<span className="text-yellow-300">自動で最適化</span>
+                  </h3>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                      <div className="text-3xl mb-2">🌤️</div>
+                      <p className="font-bold text-sm mb-1">天気予報連動</p>
+                      <p className="text-xs text-gray-400">AIが翌日の天気を予測し、曇りの日は前日のうちに充電を完了させます</p>
+                    </div>
+                    <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                      <div className="text-3xl mb-2">📊</div>
+                      <p className="font-bold text-sm mb-1">生活パターン学習</p>
+                      <p className="text-xs text-gray-400">AIがご家庭の電気使用パターンを学習し、充放電タイミングを自動最適化</p>
+                    </div>
+                    <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
+                      <div className="text-3xl mb-2">💰</div>
+                      <p className="font-bold text-sm mb-1">電気代最小化</p>
+                      <p className="text-xs text-gray-400">安い時間帯に充電・高い時間帯に放電。売電と自家消費のバランスもAIが判断</p>
+                    </div>
+                  </div>
+                  <p className="text-center text-sm text-gray-300 mt-4">
+                    ※ 設定不要。設置後、AIが自動で学習を開始します。手動での充放電管理は一切不要です。
+                  </p>
+                </div>
               </div>
 
               {/* Nichicon CTA */}
@@ -1404,7 +1520,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-500 mt-3">※既存住宅が対象。FIT認定不可、発電量30%以上自家消費が条件。</p>
+                  <p className="text-xs text-gray-500 mt-3">※既存住宅が対象。FIT認定不可、発電量30%以上自家消費が条件。<br /><span className="font-bold text-primary">※「創蓄」（太陽光+蓄電池セット導入）が条件です。</span></p>
                 </div>
               </div>
 
@@ -1474,7 +1590,7 @@ export default function Home() {
                         <td className="py-3 px-4 text-center text-xs text-gray-500">既存住宅のみ<br />県補助金と併用可</td>
                       </tr>
                       <tr className="border-b hover:bg-gray-50 bg-green-50">
-                        <td className="py-3 px-4 font-medium">新座市</td>
+                        <td className="py-3 px-4 font-medium">新座市<br /><span className="text-xs text-amber-600 font-normal">非FIT</span></td>
                         <td className="py-3 px-4 text-center font-bold text-green-600">9万円/kW<br /><span className="text-xs font-normal text-gray-500">上限45万円</span></td>
                         <td className="py-3 px-4 text-center font-bold text-green-600">上限45万円</td>
                         <td className="py-3 px-4 text-center">
@@ -1492,17 +1608,17 @@ export default function Home() {
                           <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded text-xs font-medium mt-1 inline-block">県と併用不可</span>
                         </td>
                       </tr>
-                      <tr className="border-b hover:bg-gray-50 bg-gray-100">
-                        <td className="py-3 px-4 font-medium text-gray-400">ふじみ野市</td>
-                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
-                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-400">2025年度補助金なし</td>
+                      <tr className="border-b hover:bg-gray-50">
+                        <td className="py-3 px-4 font-medium">ふじみ野市</td>
+                        <td className="py-3 px-4 text-center">7万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center">7万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各７万円</td>
                       </tr>
-                      <tr className="border-b hover:bg-gray-50 bg-gray-100">
-                        <td className="py-3 px-4 font-medium text-gray-400">富士見市</td>
-                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
-                        <td className="py-3 px-4 text-center text-gray-400">制度なし</td>
-                        <td className="py-3 px-4 text-center text-xs text-gray-400">2025年度補助金なし</td>
+                      <tr className="border-b hover:bg-gray-50">
+                        <td className="py-3 px-4 font-medium">富士見市</td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center">5万円<br /><span className="text-xs text-gray-500">一律</span></td>
+                        <td className="py-3 px-4 text-center text-xs text-gray-500">太陽光・蓄電池 各５万円</td>
                       </tr>
                     </tbody>
                   </table>
