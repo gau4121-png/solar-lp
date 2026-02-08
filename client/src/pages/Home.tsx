@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, ChevronRight, ChevronLeft, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
-import { ContactForm } from "@/components/ContactForm";
+// ContactForm removed - using simple phone/email buttons instead
 import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
 import { useState, useEffect, useCallback, useRef } from "react";
 
@@ -551,7 +551,7 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
-            </div>
+              </div>
             </div>
 
             {/* 結論ボックス */}
@@ -1971,12 +1971,25 @@ export default function Home() {
                 無料相談
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-4">匿名で無料相談</h2>
-              <p className="text-gray-600 text-lg">
+              <p className="text-gray-600 text-lg mb-8">
                 「この見積もり高い？」「うちの屋根に乗る？」など、<br className="hidden sm:block" />
                 ちょっとした疑問でもお気軽にご相談ください。
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white font-bold flex-1" asChild>
+                  <a href="tel:0484869274">
+                    <Phone className="mr-2 h-5 w-5" />
+                    電話で相談
+                  </a>
+                </Button>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold flex-1" asChild>
+                  <a href="mailto:info@daimatsu.link">
+                    <FileText className="mr-2 h-5 w-5" />
+                    メールで相談
+                  </a>
+                </Button>
+              </div>
             </div>
-            <ContactForm />
           </div>
         </section>
       </main>

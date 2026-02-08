@@ -103,3 +103,8 @@
 - [x] Neutralize 安心保証 section (remove 紹介サイト批判, make it about ダイマツ自社施工の強み)
 - [x] Remove uploaded cost comparison image (販売会社vsダイマツ diagram)
 - [x] Add mobile swipe hint (icon + text) to 4-way comparison table for better UX
+- [x] Build frontend-only static version for Netlify drop deployment
+- [x] Create dist.zip for download
+- [x] Remove ContactForm component and replace with phone/email buttons
+- [x] Rebuild static dist folder for Netlify
+- [x] Create new dist.zip for download (v2 with phone/email buttons)
