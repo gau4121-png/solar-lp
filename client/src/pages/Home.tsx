@@ -153,6 +153,7 @@ export default function Home() {
   const navItems = [
     { id: "cost", label: "なぜ安い？" },
     { id: "guarantee", label: "安心保証" },
+    { id: "afterservice", label: "アフター" },
     { id: "makers", label: "おすすめメーカー" },
     { id: "recommend", label: "推奨業者" },
     { id: "voice", label: "お客様の声" },
@@ -441,7 +442,6 @@ export default function Home() {
                     "業者が倒産した場合のみ適用",
                     "別の知らない業者が工事を引き継ぐ",
                     "施工品質の一貫性は保証されない",
-                    "紹介料が見積もりに上乗せされている",
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <X className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
@@ -475,6 +475,104 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════ AFTER SERVICE SECTION ═══════════════════ */}
+        <section id="afterservice" className="py-16 md:py-24 bg-gradient-warm">
+          <div className="container">
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+                <Wrench className="h-4 w-4" />
+                充実のアフターサービス
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3">
+                設置後も安心。<span className="text-primary">6つの保証・サポート</span>
+              </h2>
+              <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
+                「設置したら終わり」ではありません。ダイマツは施工後も長期にわたり、お客様の太陽光システムを守り続けます。
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+              {[
+                {
+                  icon: <Clock className="h-7 w-7" />,
+                  title: "定期点検（訪問）",
+                  tag: "予防・維持",
+                  desc: "1年目・4年目・9年目に専門スタッフが訪問。不具合を早期発見し、発電ロスを防ぎます。",
+                  color: "text-blue-600",
+                  bg: "bg-blue-50",
+                },
+                {
+                  icon: <Zap className="h-7 w-7" />,
+                  title: "駆けつけ＋技術相談",
+                  tag: "トラブル対応",
+                  desc: "期間制限なし・無償対応。急なトラブルや操作の疑問にもプロが迅速に駆けつけます。",
+                  color: "text-yellow-600",
+                  bg: "bg-yellow-50",
+                },
+                {
+                  icon: <ShieldCheck className="h-7 w-7" />,
+                  title: "施工保証（3年）",
+                  tag: "独自保証",
+                  desc: "ダイマツ独自の3年長期保証。施工不備などが原因のトラブルに対し、最大1,000万円まで保証。",
+                  color: "text-green-600",
+                  bg: "bg-green-50",
+                },
+                {
+                  icon: <Shield className="h-7 w-7" />,
+                  title: "工事中保証",
+                  tag: "安心の賠償",
+                  desc: "万が一の事故による怪我や物への損害を賠償。最大1億円までカバーし、家屋を守ります。",
+                  color: "text-purple-600",
+                  bg: "bg-purple-50",
+                },
+                {
+                  icon: <Leaf className="h-7 w-7" />,
+                  title: "自然災害補償",
+                  tag: "災害対策",
+                  desc: "落雷・風災・雪災などの自然災害に対応。面倒な火災保険の申請サポートも行います。",
+                  color: "text-teal-600",
+                  bg: "bg-teal-50",
+                },
+                {
+                  icon: <BadgeCheck className="h-7 w-7" />,
+                  title: "24時間監視システム",
+                  tag: "見守り",
+                  desc: "遠隔監視システムを提供。24時間365日エラーを検知し、即座に通知・対応します。",
+                  color: "text-indigo-600",
+                  bg: "bg-indigo-50",
+                },
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-5 md:p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`${item.bg} ${item.color} p-2.5 rounded-xl`}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <span className={`text-[10px] font-bold ${item.color} ${item.bg} px-2 py-0.5 rounded`}>{item.tag}</span>
+                      <h3 className="text-base font-bold text-gray-800 mt-0.5">{item.title}</h3>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 max-w-3xl mx-auto bg-white rounded-xl p-6 border border-orange-200 shadow-sm">
+              <div className="flex items-start gap-3">
+                <div className="bg-orange-50 p-2 rounded-full shrink-0 mt-0.5">
+                  <Users className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-800 mb-1">他社設置の設備も一括管理OK</p>
+                  <p className="text-gray-600 text-sm">
+                    他社で設置された太陽光システムも、定期メンテナンス時に合わせて電圧の確認など簡易的な点検を行います。「設置業者と連絡が取れない」という方もお気軽にご相談ください。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -516,10 +614,10 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    世界トップクラスのシェアを持つカナダ発のメーカー。高い発電効率とコストパフォーマンスのバランスが抜群で、住宅用から産業用まで幅広く対応。25年の出力保証付き。
+                    世界トップクラスのシェアを持つカナダ発のメーカー。高い発電効率とコストパフォーマンスのバランスが抜群で、住宅用から産業用まで幅広く対応。業界最長クラスの<span className="font-bold text-primary">30年保証</span>付きで長期的な安心感も抜群です。
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {["コスパ抜群", "世界シェア上位", "25年保証", "高耐久"].map((tag, i) => (
+                    {["コスパ抜群", "世界シェア上位", "30年保証", "高耐久"].map((tag, i) => (
                       <span key={i} className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
                     ))}
                   </div>
@@ -545,10 +643,10 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    山口県に本社を置く国内トップメーカー。日本の住宅屋根に最適化された製品設計が強み。国内生産による品質管理の徹底と、手厚い保証体制が安心のポイントです。
+                    山口県に本社を置く国内トップメーカー。日本の住宅屋根に最適化された製品設計が強み。国内生産による品質管理の徹底と、手厚い保証体制が安心のポイント。さらに、他メーカーにはない<span className="font-bold text-red-600">雨漏り保証10年</span>が付帯しており、屋根への設置に不安がある方にも安心です。
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {["国内生産", "日本の屋根に最適", "手厚い保証", "高品質"].map((tag, i) => (
+                    {["国内生産", "日本の屋根に最適", "雨漏り保証10年", "高品質"].map((tag, i) => (
                       <span key={i} className="bg-red-50 text-red-700 px-3 py-1 rounded-full text-xs font-medium">{tag}</span>
                     ))}
                   </div>
@@ -797,6 +895,7 @@ export default function Home() {
                 {[
                   { id: "cost", label: "なぜ安い？" },
                   { id: "guarantee", label: "安心の保証" },
+                  { id: "afterservice", label: "アフターサービス" },
                   { id: "makers", label: "おすすめメーカー" },
                   { id: "simulator", label: "簡易シミュレーション" },
                   { id: "recommend", label: "推奨業者" },

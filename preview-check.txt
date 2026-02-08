@@ -1,0 +1,8 @@
+Preview Check Results:
+1. "紹介料が見積もりに上乗せされている" - REMOVED (only 3 items in the list now)
+2. Canadian Solar - 30年保証 added, tag updated from "25年保証" to "30年保証"
+3. Choshu Industry - 雨漏り保証10年 added, tag updated from "手厚い保証" to "雨漏り保証10年"
+4. After-service section with 6 items added between guarantee and manufacturer sections
+5. Navigation updated with "アフター" link in header and "アフターサービス" in footer
+6. "他社設置の設備も一括管理OK" note added at bottom of after-service section
+7. All 23 vitest tests passing

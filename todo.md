@@ -39,3 +39,7 @@
 - [x] Update contact form section with brighter design
 - [x] Update footer with brighter design
 - [x] Add celebrity/media placeholder section for future use
+- [x] Remove "紹介料が見積もりに上乗せされている" text with X mark
+- [x] Update Canadian Solar info with 30-year warranty
+- [x] Update Choshu Industry info with unique 10-year rain leak warranty
+- [x] Add comprehensive after-service/warranty section based on Daimatsu flyer (6 services)
