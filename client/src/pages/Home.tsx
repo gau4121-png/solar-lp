@@ -449,7 +449,7 @@ export default function Home() {
               <div className="relative hidden lg:flex items-center justify-center">
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full relative">
                   {/* DR Subsidy Countdown Badge - Desktop */}
-                  <div className="absolute -top-8 -right-8 hidden lg:block">
+                  <div className="absolute -bottom-8 -right-8 hidden lg:block z-20">
                     <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-2xl p-6 shadow-2xl border-3 border-red-400 w-72">
                       <div className="flex items-center gap-2 mb-3">
                         <AlertTriangle className="h-6 w-6 animate-pulse" />
@@ -469,7 +469,7 @@ export default function Home() {
                   </div>
                   
                   {/* DR Subsidy Countdown Badge - Mobile */}
-                  <div className="absolute -top-6 -right-4 lg:hidden">
+                  <div className="absolute -bottom-6 -right-4 lg:hidden z-20">
                     <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl p-4 shadow-xl border-2 border-red-400 w-56">
                       <div className="flex items-center gap-1.5 mb-2">
                         <AlertTriangle className="h-5 w-5 animate-pulse" />
