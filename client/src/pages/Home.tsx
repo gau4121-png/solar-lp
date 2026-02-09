@@ -395,7 +395,7 @@ export default function Home() {
           </div>
           
           <div className="container relative z-10 py-12 md:py-20">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative">
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-6 items-center relative">
               {/* Left: Text Content */}
               <div className="text-center lg:text-left">
                 {/* Badges */}
@@ -445,9 +445,32 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Middle: DR Subsidy Badge */}
+              <div className="hidden lg:flex items-center justify-center">
+                <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-3xl p-8 shadow-2xl border-4 border-red-400 w-full h-full flex flex-col justify-center items-center min-h-96">
+                  <div className="flex items-center gap-3 mb-4">
+                    <AlertTriangle className="h-8 w-8 animate-pulse" />
+                    <span className="text-2xl font-bold">DR補助金</span>
+                  </div>
+                  <div className="text-5xl font-black mb-6 text-center">最大<span className="text-yellow-300 text-6xl">60万円</span></div>
+                  <div className="flex flex-col items-center gap-3 bg-white/20 rounded-2xl p-6 w-full">
+                    <span className="text-white/90 text-lg font-semibold">残り時間</span>
+                    <div className="flex items-center gap-3 text-2xl font-mono font-bold">
+                      <span className="bg-white/30 rounded-lg px-4 py-2 min-w-16 text-center" id="dr-days-hero">0</span>
+                      <span className="text-white/80 text-lg">日</span>
+                      <span className="bg-white/30 rounded-lg px-4 py-2 min-w-16 text-center" id="dr-hours-hero">0</span>
+                      <span className="text-white/80 text-lg">時間</span>
+                      <span className="bg-white/30 rounded-lg px-4 py-2 min-w-16 text-center" id="dr-minutes-hero">0</span>
+                      <span className="text-white/80 text-lg">分</span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-red-100 mt-6 text-center">※年度末の申請期限までのカウントダウンです。予算消化により早期終了する場合があります。</p>
+                </div>
+              </div>
+
               {/* Right: Phone CTA card (image is now background) */}
               <div className="relative hidden lg:flex items-center justify-center">
-                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full relative">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 w-full relative">
                   <div className="text-center">
                     <div className="bg-primary rounded-full p-4 mx-auto w-fit mb-4">
                       <Phone className="h-8 w-8 text-white" />
