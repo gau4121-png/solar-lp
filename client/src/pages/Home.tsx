@@ -450,7 +450,7 @@ export default function Home() {
               </div>
 
               {/* Right: DR Badge and Phone Card Stack */}
-              <div className="hidden lg:flex flex-col gap-6 items-center justify-center">
+              <div className="flex flex-col gap-6 items-center justify-center">
                 <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-3xl p-8 shadow-2xl border-4 border-red-400 w-full flex flex-col justify-center items-center">
                   <div className="flex items-center gap-3 mb-4">
                     <AlertTriangle className="h-8 w-8 animate-pulse" />
