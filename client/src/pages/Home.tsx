@@ -99,6 +99,49 @@ function MiniCountdown() {
   );
 }
 
+/* ─── Large DR Badge Countdown ─── */
+function DRBadgeCountdown() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
+
+  useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const deadlineYear = currentMonth >= 3 ? currentYear + 1 : currentYear;
+    const deadline = new Date(deadlineYear, 2, 31, 23, 59, 59);
+
+    const update = () => {
+      const diff = deadline.getTime() - Date.now();
+      if (diff <= 0) return;
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+      });
+    };
+    update();
+    const timer = setInterval(update, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const daysEl = document.getElementById('dr-days');
+    const hoursEl = document.getElementById('dr-hours');
+    const minutesEl = document.getElementById('dr-minutes');
+    const daysMobileEl = document.getElementById('dr-days-mobile');
+    const hoursMobileEl = document.getElementById('dr-hours-mobile');
+    const minutesMobileEl = document.getElementById('dr-minutes-mobile');
+
+    if (daysEl) daysEl.textContent = String(timeLeft.days);
+    if (hoursEl) hoursEl.textContent = String(timeLeft.hours);
+    if (minutesEl) minutesEl.textContent = String(timeLeft.minutes);
+    if (daysMobileEl) daysMobileEl.textContent = String(timeLeft.days);
+    if (hoursMobileEl) hoursMobileEl.textContent = String(timeLeft.hours);
+    if (minutesMobileEl) minutesMobileEl.textContent = String(timeLeft.minutes);
+  }, [timeLeft]);
+
+  return null;
+}
+
 /* ─── Subsidy Countdown Timer & Urgency Banner ─── */
 function SubsidyCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -221,6 +264,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white">
+      <DRBadgeCountdown />
 
       {/* ═══════════════════ TOP BAR ═══════════════════ */}
       <div className="bg-primary text-white text-center py-1.5 text-xs sm:text-sm font-medium">
@@ -404,21 +448,43 @@ export default function Home() {
               {/* Right: Phone CTA card (image is now background) */}
               <div className="relative hidden lg:flex items-center justify-center">
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full relative">
-                  {/* DR Subsidy Countdown Badge */}
-                  <div className="absolute -top-6 -right-6 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl p-3 shadow-lg border-2 border-red-400 max-w-xs">
-                    <div className="flex items-center gap-1.5 mb-1.5">
-                      <AlertTriangle className="h-4 w-4 animate-pulse" />
-                      <span className="text-xs font-bold">DR補助金</span>
+                  {/* DR Subsidy Countdown Badge - Desktop */}
+                  <div className="absolute -top-8 -right-8 hidden lg:block">
+                    <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-2xl p-6 shadow-2xl border-3 border-red-400 w-72">
+                      <div className="flex items-center gap-2 mb-3">
+                        <AlertTriangle className="h-6 w-6 animate-pulse" />
+                        <span className="text-lg font-bold">DR補助金</span>
+                      </div>
+                      <div className="text-3xl font-black mb-4">最大<span className="text-yellow-300 text-4xl">60万円</span></div>
+                      <div className="flex items-center gap-2 text-lg font-mono font-bold bg-white/20 rounded-lg p-3">
+                        <span className="text-white/80">残り</span>
+                        <span className="bg-white/30 rounded px-2 py-1 font-bold text-xl min-w-12 text-center" id="dr-days">0</span>
+                        <span className="text-white/80">日</span>
+                        <span className="bg-white/30 rounded px-2 py-1 font-bold text-xl min-w-12 text-center" id="dr-hours">0</span>
+                        <span className="text-white/80">時間</span>
+                        <span className="bg-white/30 rounded px-2 py-1 font-bold text-xl min-w-12 text-center" id="dr-minutes">0</span>
+                        <span className="text-white/80">分</span>
+                      </div>
                     </div>
-                    <div className="text-sm font-bold mb-1.5">最大<span className="text-yellow-300 text-lg">60万円</span></div>
-                    <div className="flex items-center gap-1 text-xs font-mono">
-                      <span>残り</span>
-                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
-                      <span>日</span>
-                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
-                      <span>時間</span>
-                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
-                      <span>分</span>
+                  </div>
+                  
+                  {/* DR Subsidy Countdown Badge - Mobile */}
+                  <div className="absolute -top-6 -right-4 lg:hidden">
+                    <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl p-4 shadow-xl border-2 border-red-400 w-56">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <AlertTriangle className="h-5 w-5 animate-pulse" />
+                        <span className="text-sm font-bold">DR補助金</span>
+                      </div>
+                      <div className="text-2xl font-black mb-3">最大<span className="text-yellow-300 text-3xl">60万円</span></div>
+                      <div className="flex items-center gap-1 text-sm font-mono font-bold bg-white/20 rounded-lg p-2">
+                        <span className="text-white/80 text-xs">残り</span>
+                        <span className="bg-white/30 rounded px-1.5 py-0.5 font-bold text-base min-w-10 text-center" id="dr-days-mobile">0</span>
+                        <span className="text-white/80 text-xs">日</span>
+                        <span className="bg-white/30 rounded px-1.5 py-0.5 font-bold text-base min-w-10 text-center" id="dr-hours-mobile">0</span>
+                        <span className="text-white/80 text-xs">時間</span>
+                        <span className="bg-white/30 rounded px-1.5 py-0.5 font-bold text-base min-w-10 text-center" id="dr-minutes-mobile">0</span>
+                        <span className="text-white/80 text-xs">分</span>
+                      </div>
                     </div>
                   </div>
                   <div className="text-center">
