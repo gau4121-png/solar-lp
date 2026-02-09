@@ -403,7 +403,24 @@ export default function Home() {
 
               {/* Right: Phone CTA card (image is now background) */}
               <div className="relative hidden lg:flex items-center justify-center">
-                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 max-w-sm w-full relative">
+                  {/* DR Subsidy Countdown Badge */}
+                  <div className="absolute -top-6 -right-6 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-xl p-3 shadow-lg border-2 border-red-400 max-w-xs">
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <AlertTriangle className="h-4 w-4 animate-pulse" />
+                      <span className="text-xs font-bold">DR補助金</span>
+                    </div>
+                    <div className="text-sm font-bold mb-1.5">最大<span className="text-yellow-300 text-lg">60万円</span></div>
+                    <div className="flex items-center gap-1 text-xs font-mono">
+                      <span>残り</span>
+                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
+                      <span>日</span>
+                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
+                      <span>時間</span>
+                      <span className="bg-white/20 rounded px-1 py-0.5 font-bold">○</span>
+                      <span>分</span>
+                    </div>
+                  </div>
                   <div className="text-center">
                     <div className="bg-primary rounded-full p-4 mx-auto w-fit mb-4">
                       <Phone className="h-8 w-8 text-white" />
@@ -412,10 +429,16 @@ export default function Home() {
                     <a href="tel:0484869274" className="text-3xl font-black text-gray-800 hover:text-primary transition-colors">048-486-9274</a>
                     <p className="text-xs text-gray-400 mt-2">受付時間 9:00〜18:00（年中無休）</p>
                     <div className="border-t border-gray-200 mt-4 pt-4">
-                      <p className="text-sm text-gray-600 font-medium">取扱メーカー</p>
-                      <div className="flex items-center justify-center gap-4 mt-3">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 object-contain" />
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-7 object-contain" />
+                      <p className="text-sm text-gray-600 font-medium mb-3">全メーカー対応</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-center gap-2">
+                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 object-contain" />
+                          <span className="text-sm font-medium text-gray-700">Canadian Solar</span>
+                        </div>
+                        <div className="flex items-center justify-center gap-2">
+                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-9 object-contain" />
+                          <span className="text-sm font-medium text-gray-700">長州産業</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -432,19 +455,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ MINI DR COUNTDOWN BANNER ═══ */}
-        <div className="bg-red-600 text-white py-3">
-          <div className="container">
-            <button onClick={() => scrollToSection('subsidy')} className="w-full flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 hover:opacity-90 transition-opacity cursor-pointer">
-              <div className="flex items-center gap-2">
-                <AlertTriangle className="h-4 w-4 animate-pulse" />
-                <span className="font-bold text-sm sm:text-base">DR補助金（最大<span className="text-yellow-300">60万円</span>）申請受付中</span>
-              </div>
-              <MiniCountdown />
-              <span className="text-xs sm:text-sm text-red-200 underline underline-offset-2">詳しく見る →</span>
-            </button>
-          </div>
-        </div>
+
 
         {/* ═══════════════════ COST STRUCTURE SECTION ═══════════════════ */}
         <section id="cost" className="py-16 md:py-24 bg-gradient-warm">
@@ -471,8 +482,7 @@ export default function Home() {
                 <span>左右にスワイプして比較</span>
                 <ChevronRight className="h-4 w-4 animate-pulse" />
               </div>
-              <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
-              <div className="overflow-x-auto">
+              <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-x-auto">
                 <table className="w-full border-collapse min-w-[700px]">
                   <thead>
                     <tr>
@@ -550,7 +560,6 @@ export default function Home() {
                     ))}
                   </tbody>
                 </table>
-              </div>
               </div>
             </div>
 
