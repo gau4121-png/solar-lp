@@ -119,24 +119,28 @@ function DRBadgeCountdown() {
       });
     };
     update();
-    const timer = setInterval(update, 60000);
+    const timer = setInterval(update, 1000); // Update every second for real-time countdown
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    const daysEl = document.getElementById('dr-days');
-    const hoursEl = document.getElementById('dr-hours');
-    const minutesEl = document.getElementById('dr-minutes');
-    const daysMobileEl = document.getElementById('dr-days-mobile');
-    const hoursMobileEl = document.getElementById('dr-hours-mobile');
-    const minutesMobileEl = document.getElementById('dr-minutes-mobile');
-
-    if (daysEl) daysEl.textContent = String(timeLeft.days);
-    if (hoursEl) hoursEl.textContent = String(timeLeft.hours);
-    if (minutesEl) minutesEl.textContent = String(timeLeft.minutes);
-    if (daysMobileEl) daysMobileEl.textContent = String(timeLeft.days);
-    if (hoursMobileEl) hoursMobileEl.textContent = String(timeLeft.hours);
-    if (minutesMobileEl) minutesMobileEl.textContent = String(timeLeft.minutes);
+    // Update all countdown elements
+    const elements = [
+      { id: 'dr-days', value: timeLeft.days },
+      { id: 'dr-hours', value: timeLeft.hours },
+      { id: 'dr-minutes', value: timeLeft.minutes },
+      { id: 'dr-days-mobile', value: timeLeft.days },
+      { id: 'dr-hours-mobile', value: timeLeft.hours },
+      { id: 'dr-minutes-mobile', value: timeLeft.minutes },
+      { id: 'dr-days-hero', value: timeLeft.days },
+      { id: 'dr-hours-hero', value: timeLeft.hours },
+      { id: 'dr-minutes-hero', value: timeLeft.minutes },
+    ];
+    
+    elements.forEach(({ id, value }) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(value);
+    });
   }, [timeLeft]);
 
   return null;
@@ -395,7 +399,7 @@ export default function Home() {
           </div>
           
           <div className="container relative z-10 py-12 md:py-20">
-            <div className="grid lg:grid-cols-3 gap-8 lg:gap-6 items-center relative">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative">
               {/* Left: Text Content */}
               <div className="text-center lg:text-left">
                 {/* Badges */}
@@ -445,9 +449,9 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Middle: DR Subsidy Badge */}
-              <div className="hidden lg:flex items-center justify-center">
-                <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-3xl p-8 shadow-2xl border-4 border-red-400 w-full h-full flex flex-col justify-center items-center min-h-96">
+              {/* Right: DR Badge and Phone Card Stack */}
+              <div className="hidden lg:flex flex-col gap-6 items-center justify-center">
+                <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-3xl p-8 shadow-2xl border-4 border-red-400 w-full flex flex-col justify-center items-center">
                   <div className="flex items-center gap-3 mb-4">
                     <AlertTriangle className="h-8 w-8 animate-pulse" />
                     <span className="text-2xl font-bold">DR補助金</span>
@@ -466,10 +470,7 @@ export default function Home() {
                   </div>
                   <p className="text-xs text-red-100 mt-6 text-center">※年度末の申請期限までのカウントダウンです。予算消化により早期終了する場合があります。</p>
                 </div>
-              </div>
-
-              {/* Right: Phone CTA card (image is now background) */}
-              <div className="relative hidden lg:flex items-center justify-center">
+                {/* Phone CTA card */}
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-orange-200 w-full relative">
                   <div className="text-center">
                     <div className="bg-primary rounded-full p-4 mx-auto w-fit mb-4">
