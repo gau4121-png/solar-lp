@@ -118,3 +118,7 @@
 - [x] Verify WebP format support and fallbacks
 - [x] Write and run vitest tests for LazyImage component
 - [x] Write and run vitest tests for image optimization utilities
+- [x] Configure Netlify to redirect all traffic to Manus hosting
+- [x] Update netlify.toml with 301 redirect to daimatsu-solar.manus.space
+- [x] Push redirect configuration to GitHub
+- [x] Verify Netlify auto-deploy triggers
