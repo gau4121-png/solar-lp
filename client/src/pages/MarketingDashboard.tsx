@@ -1,16 +1,70 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle2, Instagram, MapPin, PenTool, ExternalLink, Copy } from "lucide-react";
+import { CheckCircle2, Instagram, MapPin, PenTool, ExternalLink, Copy, TrendingUp, Users, BarChart3, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
+import { useEffect, useState } from "react";
 
 export default function MarketingDashboard() {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success("コピーしました！");
   };
+
+  // Fetch analytics data
+  const { data: realtimeData, isLoading: realtimeLoading } = trpc.analytics.getRealtimeUsers.useQuery();
+  const { data: trafficData, isLoading: trafficLoading } = trpc.analytics.getTrafficMetrics.useQuery();
+  const { data: conversionData, isLoading: conversionLoading } = trpc.analytics.getConversionMetrics.useQuery();
+  const { data: engagementData, isLoading: engagementLoading } = trpc.analytics.getEngagementMetrics.useQuery();
+  const { data: sourceData, isLoading: sourceLoading } = trpc.analytics.getTrafficBySource.useQuery();
+
+  // Calculate metrics from traffic data
+  const [metrics, setMetrics] = useState({
+    totalUsers: 0,
+    totalSessions: 0,
+    totalPageViews: 0,
+    conversionRate: 0,
+    avgSessionDuration: 0,
+    bounceRate: 0,
+  });
+
+  useEffect(() => {
+    if (trafficData && engagementData) {
+      const rows = (trafficData as any)?.rows || [];
+      const totalPageViews = rows.reduce((sum: number, row: any) => {
+        const pageViews = row.metricValues?.[2]?.value || 0;
+        return sum + parseInt(pageViews, 10);
+      }, 0);
+
+      const totalSessions = rows.reduce((sum: number, row: any) => {
+        const sessions = row.metricValues?.[1]?.value || 0;
+        return sum + parseInt(sessions, 10);
+      }, 0);
+
+      const totalUsers = rows.reduce((sum: number, row: any) => {
+        const users = row.metricValues?.[0]?.value || 0;
+        return sum + parseInt(users, 10);
+      }, 0);
+
+      const engagementRows = (engagementData as any)?.rows || [];
+      const avgSessionDuration = engagementRows[0]?.metricValues?.[0]?.value || 0;
+      const bounceRate = engagementRows[0]?.metricValues?.[1]?.value || 0;
+
+      const conversionRate = totalSessions > 0 ? ((totalPageViews / totalSessions) * 100).toFixed(2) : "0";
+
+      setMetrics({
+        totalUsers,
+        totalSessions,
+        totalPageViews,
+        conversionRate: parseFloat(conversionRate as string),
+        avgSessionDuration: parseFloat(avgSessionDuration as string),
+        bounceRate: parseFloat(bounceRate as string),
+      });
+    }
+  }, [trafficData, engagementData]);
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
@@ -95,22 +149,16 @@ export default function MarketingDashboard() {
         </div>
 
         {/* Main Content Tabs */}
-        <Tabs defaultValue="action-plan" className="space-y-6">
+        <Tabs defaultValue="performance" className="space-y-6">
           <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 h-auto p-1 bg-slate-200 rounded-xl">
             <TabsTrigger value="action-plan" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
               📅 週間アクションプラン
             </TabsTrigger>
-            <TabsTrigger value="templates" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
-              📝 投稿テンプレート集
-            </TabsTrigger>
-            <TabsTrigger value="resources" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
-              🔗 お役立ちリンク
-            </TabsTrigger>
             <TabsTrigger value="performance" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
               📊 パフォーマンス分析
             </TabsTrigger>
-            <TabsTrigger value="competitors" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
-              🕵️ 競合モニタリング
+            <TabsTrigger value="templates" className="py-3 rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              📝 投稿テンプレート集
             </TabsTrigger>
           </TabsList>
 
@@ -197,38 +245,139 @@ export default function MarketingDashboard() {
 
           {/* Performance Tab */}
           <TabsContent value="performance">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-slate-500">訪問者数 (Users)</CardTitle>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-slate-500">訪問者数 (Users)</CardTitle>
+                    <Users className="h-4 w-4 text-slate-400" />
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">計測中</div>
-                  <p className="text-xs text-slate-500 mt-1">目標目安: 月間 1,000 PV</p>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {trafficLoading ? "読込中..." : metrics.totalUsers.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">過去7日間</p>
                 </CardContent>
               </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-slate-500">セッション数</CardTitle>
+                    <BarChart3 className="h-4 w-4 text-slate-400" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {trafficLoading ? "読込中..." : metrics.totalSessions.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">過去7日間</p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-slate-500">ページビュー</CardTitle>
+                    <TrendingUp className="h-4 w-4 text-slate-400" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {trafficLoading ? "読込中..." : metrics.totalPageViews.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">過去7日間</p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-slate-500">平均滞在時間</CardTitle>
+                    <Clock className="h-4 w-4 text-slate-400" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {engagementLoading ? "読込中..." : `${Math.round(metrics.avgSessionDuration)}秒`}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">セッションあたり</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Key Metrics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-slate-500">コンバージョン率 (CVR)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">計測中</div>
-                  <p className="text-xs text-slate-500 mt-1">目標目安: 1.0% 以上</p>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {conversionLoading ? "読込中..." : `${metrics.conversionRate.toFixed(2)}%`}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">目標: 1.0% 以上</p>
                 </CardContent>
               </Card>
+
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-slate-500">エンゲージメント</CardTitle>
+                  <CardTitle className="text-sm font-medium text-slate-500">直帰率 (Bounce Rate)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">計測中</div>
-                  <p className="text-xs text-slate-500 mt-1">滞在時間や読了率など</p>
+                  <div className="text-3xl font-bold text-slate-900">
+                    {engagementLoading ? "読込中..." : `${metrics.bounceRate.toFixed(2)}%`}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1">低いほど良い</p>
                 </CardContent>
               </Card>
             </div>
 
+            {/* Traffic by Source */}
+            <Card>
+              <CardHeader>
+                <CardTitle>トラフィックソース別分析（過去30日）</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {sourceLoading ? (
+                    <p className="text-slate-500">読込中...</p>
+                  ) : (
+                    ((sourceData as any)?.rows || []).map((row: any, idx: number) => {
+                      const source = row.dimensionValues?.[0]?.value || "不明";
+                      const sessions = parseInt(row.metricValues?.[0]?.value || "0", 10);
+                      const totalSessions = ((sourceData as any)?.rows || []).reduce(
+                        (sum: number, r: any) => sum + parseInt(r.metricValues?.[0]?.value || "0", 10),
+                        0
+                      );
+                      const percentage = totalSessions > 0 ? ((sessions / totalSessions) * 100).toFixed(1) : "0";
+
+                      return (
+                        <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                          <div>
+                            <div className="font-medium text-slate-700">{source}</div>
+                            <div className="text-sm text-slate-500">{sessions.toLocaleString()} セッション</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="font-bold text-slate-900">{percentage}%</div>
+                            <div className="w-24 h-2 bg-slate-200 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-orange-500 rounded-full"
+                                style={{ width: `${percentage}%` }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Channel Specific Analysis */}
-            <h3 className="text-xl font-bold text-slate-800 mb-4">チャンネル別パフォーマンス</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-4 mt-8">チャンネル別パフォーマンス</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {/* Instagram Stats */}
               <Card className="border-t-4 border-t-pink-500">
@@ -299,312 +448,68 @@ export default function MarketingDashboard() {
                     <div className="text-sm font-medium text-slate-600">平均掲載順位</div>
                     <p className="text-xs text-slate-400">狙ったキーワードでの順位</p>
                   </div>
-                  <Button variant="outline" className="w-full mt-2 text-green-600 border-green-200 hover:bg-green-50" onClick={() => window.open('https://search.google.com/search-console', '_blank')}>
+                  <Button variant="outline" className="w-full mt-2 text-green-600 border-green-200 hover:bg-green-50" onClick={() => window.open('https://search.google.com/search-console/', '_blank')}>
                     Search Consoleを確認
                   </Button>
                 </CardContent>
               </Card>
             </div>
-
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle>分析ツールへのアクセス</CardTitle>
-                <CardDescription>
-                  より詳細なデータは、以下の公式ツールから確認してください。
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <a href="https://analytics.google.com/" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
-                        <svg className="h-6 w-6 text-orange-600" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-                        </svg>
-                      </div>
-                      <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-orange-500 transition-colors" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Google Analytics</h3>
-                    <p className="text-sm text-slate-500">アクセス数、ユーザー属性、行動フローなどの詳細分析</p>
-                  </a>
-                  
-                  <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
-                        <svg className="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                        </svg>
-                      </div>
-                      <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-1 group-hover:text-blue-600 transition-colors">Search Console</h3>
-                    <p className="text-sm text-slate-500">検索キーワード、掲載順位、クリック数などのSEO分析</p>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Competitor Monitoring Tab */}
-          <TabsContent value="competitors">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {/* Market Watch */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-blue-500" />
-                    市場定点観測（Googleマップ）
-                  </CardTitle>
-                  <CardDescription>
-                    「地域名 + サービス名」で検索し、自社の順位と競合の動きを確認しましょう。
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-4 bg-slate-50 rounded-lg border">
-                    <div className="font-medium mb-2">チェックすべき検索キーワード</div>
-                    <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+太陽光発電', '_blank')}>
-                        <span>🔍 埼玉 太陽光発電</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+蓄電池', '_blank')}>
-                        <span>🔍 埼玉 蓄電池</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.google.com/maps/search/埼玉+太陽光+業者', '_blank')}>
-                        <span>🔍 埼玉 太陽光 業者</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="text-sm text-slate-600">
-                    <span className="font-bold">👀 チェックポイント:</span>
-                    <ul className="list-disc list-inside mt-1 space-y-1 text-slate-500">
-                      <li>上位3位（MEO枠）に入っているか？</li>
-                      <li>新しい口コミが増えている競合はいないか？</li>
-                      <li>競合が「キャンペーン」などの投稿をしていないか？</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* SNS Watch */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Instagram className="h-5 w-5 text-pink-500" />
-                    トレンド観測（Instagram）
-                  </CardTitle>
-                  <CardDescription>
-                    ハッシュタグ検索で、今どんな投稿が人気なのか（ユーザーの関心）を探りましょう。
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-4 bg-slate-50 rounded-lg border">
-                    <div className="font-medium mb-2">チェックすべきハッシュタグ</div>
-                    <div className="space-y-2">
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/埼玉太陽光/', '_blank')}>
-                        <span>#埼玉太陽光</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/電気代削減/', '_blank')}>
-                        <span>#電気代削減</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                      <Button variant="outline" className="w-full justify-between" onClick={() => window.open('https://www.instagram.com/explore/tags/太陽光発電メリット/', '_blank')}>
-                        <span>#太陽光発電メリット</span>
-                        <ExternalLink className="h-4 w-4 text-slate-400" />
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="text-sm text-slate-600">
-                    <span className="font-bold">👀 チェックポイント:</span>
-                    <ul className="list-disc list-inside mt-1 space-y-1 text-slate-500">
-                      <li>「発見」タブで上位に来ている投稿のデザインは？</li>
-                      <li>競合他社がどんなリール動画を上げているか？</li>
-                      <li>ユーザーがどんな疑問（悩み）を投稿しているか？</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Competitor Comparison Framework */}
-            <Card>
-              <CardHeader>
-                <CardTitle>競合比較フレームワーク</CardTitle>
-                <CardDescription>
-                  競合の強み・弱みを分析し、自社の「勝ち筋」を見つけるためのメモ欄です。
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm text-left">
-                    <thead className="text-xs text-slate-500 uppercase bg-slate-50">
-                      <tr>
-                        <th className="px-4 py-3 rounded-tl-lg">競合タイプ</th>
-                        <th className="px-4 py-3">主な特徴（強み）</th>
-                        <th className="px-4 py-3">弱点（攻めどころ）</th>
-                        <th className="px-4 py-3 rounded-tr-lg">対策アクション</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      <tr className="bg-white">
-                        <td className="px-4 py-3 font-medium text-slate-900">大手家電量販店</td>
-                        <td className="px-4 py-3 text-slate-600">知名度、ポイント還元</td>
-                        <td className="px-4 py-3 text-slate-600">施工が下請け任せ、担当が変わる</td>
-                        <td className="px-4 py-3 text-slate-600">「自社施工」「顔が見える安心感」を強調</td>
-                      </tr>
-                      <tr className="bg-white">
-                        <td className="px-4 py-3 font-medium text-slate-900">訪問販売会社</td>
-                        <td className="px-4 py-3 text-slate-600">営業力、即決させる勢い</td>
-                        <td className="px-4 py-3 text-slate-600">価格が高い、強引な勧誘</td>
-                        <td className="px-4 py-3 text-slate-600">「適正価格」「しつこい営業なし」を訴求</td>
-                      </tr>
-                      <tr className="bg-white">
-                        <td className="px-4 py-3 font-medium text-slate-900">地元のライバル店</td>
-                        <td className="px-4 py-3 text-slate-600">地域密着、OB客の多さ</td>
-                        <td className="px-4 py-3 text-slate-600">Web発信が弱い場合が多い</td>
-                        <td className="px-4 py-3 text-slate-600">Webでの情報量と透明性で差別化</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
           </TabsContent>
 
           {/* Templates Tab */}
           <TabsContent value="templates">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Instagram Template */}
-              <Card>
-                <CardHeader className="bg-pink-50 border-b border-pink-100">
-                  <CardTitle className="text-pink-700 flex items-center gap-2">
-                    <Instagram className="h-5 w-5" /> Instagram投稿用
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium text-slate-700 mb-1 block">キャプション（本文）</label>
-                      <div className="bg-slate-50 p-4 rounded-md border text-sm text-slate-600 whitespace-pre-wrap font-mono">
-{`⚠️その見積もり、本当に適正ですか？
-
-「太陽光なんてどこも同じでしょ？」
-と思っていると、実は数十万円も損しているかもしれません...💦
-
-大手サイトや訪問販売には、
-実は「見えないコスト」が含まれていることが多いんです。
-
-✅ 訪問販売の人件費
-✅ 一括見積もりサイトへの紹介料
-
-これらが上乗せされているかも...？
-
-賢い人は選んでいる「第3の選択肢」。
-地元・埼玉の施工店だからできる
-「適正価格」と「正直な提案」があります。
-
-👇失敗しない選び方はプロフィールのリンクから！
-@daimatsu_solar
-
-#埼玉太陽光 #太陽光発電 #蓄電池 #電気代削減 #マイホーム記録 #埼玉ママ #節約術`}
-                      </div>
-                    </div>
-                    <Button className="w-full" variant="outline" onClick={() => copyToClipboard(`⚠️その見積もり、本当に適正ですか？\n\n「太陽光なんてどこも同じでしょ？」\nと思っていると、実は数十万円も損しているかもしれません...💦\n\n大手サイトや訪問販売には、\n実は「見えないコスト」が含まれていることが多いんです。\n\n✅ 訪問販売の人件費\n✅ 一括見積もりサイトへの紹介料\n\nこれらが上乗せされているかも...？\n\n賢い人は選んでいる「第3の選択肢」。\n地元・埼玉の施工店だからできる\n「適正価格」と「正直な提案」があります。\n\n👇失敗しない選び方はプロフィールのリンクから！\n@daimatsu_solar\n\n#埼玉太陽光 #太陽光発電 #蓄電池 #電気代削減 #マイホーム記録 #埼玉ママ #節約術`)}>
-                      <Copy className="mr-2 h-4 w-4" /> テキストをコピー
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Google Maps Template */}
-              <Card>
-                <CardHeader className="bg-blue-50 border-b border-blue-100">
-                  <CardTitle className="text-blue-700 flex items-center gap-2">
-                    <MapPin className="h-5 w-5" /> Googleマップ最新情報用
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium text-slate-700 mb-1 block">投稿本文</label>
-                      <div className="bg-slate-50 p-4 rounded-md border text-sm text-slate-600 whitespace-pre-wrap font-mono">
-{`【太陽光・蓄電池の「賢い選び方」ガイド公開！】
-
-こんにちは、株式会社ダイマツです☀️
-
-「太陽光を検討しているけど、どこに頼めばいいかわからない...」
-「訪問販売が来たけど、これって高いの？安いの？」
-
-そんなお悩みをお持ちの方へ。
-業界の裏側を知り尽くしたプロが教える、
-「失敗しない業者選びのポイント」をまとめた特設ページを公開しました！
-
-✅ 一括見積もりサイトのメリット・デメリット
-✅ 訪問販売の注意点
-✅ 賢い人が選ぶ「第3の選択肢」とは？
-
-30秒でできる「電気代削減シミュレーション」もついています。
-ぜひ一度ご覧ください！
-
-👇詳細はこちら（「詳細」ボタンを設定）
-https://solar-lp.manus.space/`}
-                      </div>
-                    </div>
-                    <Button className="w-full" variant="outline" onClick={() => copyToClipboard(`【太陽光・蓄電池の「賢い選び方」ガイド公開！】\n\nこんにちは、株式会社ダイマツです☀️\n\n「太陽光を検討しているけど、どこに頼めばいいかわからない...」\n「訪問販売が来たけど、これって高いの？安いの？」\n\nそんなお悩みをお持ちの方へ。\n業界の裏側を知り尽くしたプロが教える、\n「失敗しない業者選びのポイント」をまとめた特設ページを公開しました！\n\n✅ 一括見積もりサイトのメリット・デメリット\n✅ 訪問販売の注意点\n✅ 賢い人が選ぶ「第3の選択肢」とは？\n\n30秒でできる「電気代削減シミュレーション」もついています。\nぜひ一度ご覧ください！\n\n👇詳細はこちら（「詳細」ボタンを設定）\nhttps://solar-lp.manus.space/`)}>
-                      <Copy className="mr-2 h-4 w-4" /> テキストをコピー
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          {/* Resources Tab */}
-          <TabsContent value="resources">
             <Card>
               <CardHeader>
-                <CardTitle>お役立ちリンク集</CardTitle>
+                <CardTitle>投稿テンプレート集</CardTitle>
                 <CardDescription>
-                  日々の業務でよく使うサイトへのショートカットです。
+                  各チャンネルで使えるテンプレートを用意しました。コピーしてカスタマイズしてください。
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  <a href="https://daimatsu.link/wp-admin/edit.php" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-slate-100 rounded-lg group-hover:bg-slate-200 transition-colors">
-                        <PenTool className="h-6 w-6 text-slate-600" />
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <h3 className="font-bold text-slate-800 mb-1">WordPress管理画面</h3>
-                    <p className="text-sm text-slate-500">ブログの更新はこちらから</p>
-                  </a>
+              <CardContent className="space-y-6">
+                {/* Instagram Template */}
+                <div className="border-l-4 border-pink-500 pl-4">
+                  <h4 className="font-bold text-slate-800 mb-2">📱 Instagram リール用シナリオ</h4>
+                  <div className="bg-slate-50 p-4 rounded-lg text-sm text-slate-700 mb-3 font-mono">
+                    <p className="mb-2">「その見積もり、高くないですか？」</p>
+                    <p className="mb-2">太陽光・蓄電池の見積もりは、業者によって100万円以上の差が出ることも。</p>
+                    <p className="mb-2">✅ 自社施工だから中間マージン0円</p>
+                    <p className="mb-2">✅ 地域密着15年以上の信頼</p>
+                    <p>プロフィールのリンクから「無料シミュレーション」をチェック！</p>
+                  </div>
+                  <Button size="sm" variant="outline" onClick={() => copyToClipboard("「その見積もり、高くないですか？」\n\n太陽光・蓄電池の見積もりは、業者によって100万円以上の差が出ることも。\n\n✅ 自社施工だから中間マージン0円\n✅ 地域密着15年以上の信頼\n\nプロフィールのリンクから「無料シミュレーション」をチェック！")}>
+                    <Copy className="h-4 w-4 mr-2" />
+                    コピー
+                  </Button>
+                </div>
 
-                  <a href="https://business.google.com/" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                        <MapPin className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <h3 className="font-bold text-slate-800 mb-1">Googleビジネスプロフィール</h3>
-                    <p className="text-sm text-slate-500">口コミ返信・最新情報投稿</p>
-                  </a>
+                {/* Google Maps Template */}
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-bold text-slate-800 mb-2">🗺️ Googleマップ 最新情報用テンプレート</h4>
+                  <div className="bg-slate-50 p-4 rounded-lg text-sm text-slate-700 mb-3 font-mono">
+                    <p className="mb-2">「失敗しない業者選びガイド」を公開しました</p>
+                    <p className="mb-2">朝霞・新座エリアで太陽光・蓄電池をお考えの方へ</p>
+                    <p className="mb-2">4つの購入ルートを徹底比較し、最適な選択をサポートします。</p>
+                    <p>詳しくはプロフィールのウェブサイトをご覧ください。</p>
+                  </div>
+                  <Button size="sm" variant="outline" onClick={() => copyToClipboard("「失敗しない業者選びガイド」を公開しました\n\n朝霞・新座エリアで太陽光・蓄電池をお考えの方へ\n\n4つの購入ルートを徹底比較し、最適な選択をサポートします。\n\n詳しくはプロフィールのウェブサイトをご覧ください。")}>
+                    <Copy className="h-4 w-4 mr-2" />
+                    コピー
+                  </Button>
+                </div>
 
-                  <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="block p-6 bg-white border rounded-xl hover:shadow-md transition-shadow group">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-pink-50 rounded-lg group-hover:bg-pink-100 transition-colors">
-                        <Instagram className="h-6 w-6 text-pink-600" />
-                      </div>
-                      <ExternalLink className="h-4 w-4 text-slate-400" />
-                    </div>
-                    <h3 className="font-bold text-slate-800 mb-1">Instagram</h3>
-                    <p className="text-sm text-slate-500">投稿・DM確認</p>
-                  </a>
+                {/* Blog Template */}
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h4 className="font-bold text-slate-800 mb-2">📝 ブログ記事 冒頭テンプレート</h4>
+                  <div className="bg-slate-50 p-4 rounded-lg text-sm text-slate-700 mb-3 font-mono">
+                    <p className="mb-2">太陽光・蓄電池の導入を検討されている方へ</p>
+                    <p className="mb-2">「どの業者を選べば失敗しないのか」という悩みをお持ちではないでしょうか？</p>
+                    <p className="mb-2">本記事では、15年以上の施工経験から、業者選びの重要なポイントを解説します。</p>
+                    <p>👉 無料シミュレーションで適正価格をチェック</p>
+                  </div>
+                  <Button size="sm" variant="outline" onClick={() => copyToClipboard("太陽光・蓄電池の導入を検討されている方へ\n\n「どの業者を選べば失敗しないのか」という悩みをお持ちではないでしょうか？\n\n本記事では、15年以上の施工経験から、業者選びの重要なポイントを解説します。\n\n👉 無料シミュレーションで適正価格をチェック")}>
+                    <Copy className="h-4 w-4 mr-2" />
+                    コピー
+                  </Button>
                 </div>
               </CardContent>
             </Card>
