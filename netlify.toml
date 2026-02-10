@@ -5,16 +5,12 @@
 [functions]
   directory = "dist"
 
-# Serve static files locally, redirect HTML routes to Manus hosting
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
+# SPA routing: serve index.html for all routes except static assets
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  conditions = { NOT = [{"x-path" = "/assets/*"}] }
 
 [env]
   DATABASE_URL = ""
