@@ -1,6 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { LazyImage } from "@/components/LazyImage";
 import { Check, ChevronRight, ChevronLeft, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 // ContactForm removed - using simple phone/email buttons instead
@@ -342,10 +343,11 @@ export default function Home() {
         <section className="relative overflow-hidden">
           {/* Bright solar panel background image */}
           <div className="absolute inset-0 z-0">
-            <img 
+            <LazyImage 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/LbCMdnEwKLiOykQY.jpg" 
               alt="明るい太陽光パネルと青空" 
               className="w-full h-full object-cover"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/40" />
           </div>
@@ -414,8 +416,8 @@ export default function Home() {
                     <div className="border-t border-gray-200 mt-4 pt-4">
                       <p className="text-sm text-gray-600 font-medium">取扱メーカー</p>
                       <div className="flex items-center justify-center gap-4 mt-3">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 object-contain" />
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-7 object-contain" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 object-contain" loading="lazy" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-7 object-contain" loading="lazy" />
                       </div>
                     </div>
                   </div>
@@ -758,7 +760,7 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" loading="lazy" />
                       </div>
                       <div>
                         <span className="text-xs text-primary font-bold bg-orange-50 px-2 py-0.5 rounded">海外メーカー No.1</span>
@@ -787,7 +789,7 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" loading="lazy" />
                       </div>
                       <div>
                         <span className="text-xs text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">国産メーカー No.1</span>
@@ -876,18 +878,14 @@ export default function Home() {
                 <Card className="border-0 shadow-lg hover:shadow-xl transition-all overflow-hidden bg-white">
                   <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-400" />
                   <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/jItEswMBiAPMQEyd.png"
-                      alt="EP CUBE 蓄電池ラインナップ 6.6kWh・9.9kWh・13.3kWh"
-                      className="w-full h-full object-contain p-4"
-                    />
+                    <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/jItEswMBiAPMQEyd.png" alt="EP CUBE 蓄電池ラインナップ 6.6kWh・9.9kWh・13.3kWh" className="w-full h-full object-contain p-4" loading="lazy" />
                     <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-0.5 rounded text-xs font-bold">iF DESIGN AWARD</div>
                   </div>
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
-                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" />
+                          <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-8 w-auto object-contain" loading="lazy" />
                         </div>
                         <div>
                           <span className="text-xs text-green-600 font-bold bg-green-50 px-2 py-0.5 rounded">ハイブリッド蓄電池</span>
@@ -940,7 +938,7 @@ export default function Home() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm">
-                          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" />
+                          <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-8 w-auto object-contain" loading="lazy" />
                         </div>
                         <div>
                           <span className="text-xs text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">国産蓄電池</span>
@@ -1011,11 +1009,7 @@ export default function Home() {
               {/* ─── EP CUBE Detail Gallery ─── */}
               <div className="mt-8 max-w-4xl mx-auto">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-                  <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/poLqkHmmKUsngjvZ.png"
-                    alt="EP CUBE 製品詳細 ― パワコン・蓄電池一体型、15年製品保証"
-                    className="w-full h-auto"
-                  />
+                  <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/poLqkHmmKUsngjvZ.png" alt="EP CUBE 製品詳細 ― パワコン・蓄電池一体型、15年製品保証" className="w-full h-auto" loading="lazy" />
                 </div>
                 <p className="text-center text-xs text-gray-500 mt-3">※ 画像出典：カナディアンソーラー製品カタログより</p>
               </div>
@@ -1119,11 +1113,7 @@ export default function Home() {
             {/* Product Hero Image - パワコン */}
             <div className="max-w-5xl mx-auto mb-12">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/QZWglCQSqmBdvUCV.png"
-                  alt="ニチコン トライブリッドパワコン® 設置イメージ"
-                  className="w-full h-64 md:h-80 object-cover object-top"
-                />
+                <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/QZWglCQSqmBdvUCV.png" alt="ニチコン トライブリッドパワコン® 設置イメージ" className="w-full h-64 md:h-80 object-cover object-top" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-white font-bold text-lg md:text-xl">トライブリッドパワコン®</p>
@@ -1228,11 +1218,7 @@ export default function Home() {
               {/* Battery Unit & Install Gallery */}
               <div className="mt-10 grid md:grid-cols-2 gap-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                  <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/uLxBVlgbKzPuMGkn.png"
-                    alt="ニチコン 蓄電池ユニット／増設ユニット"
-                    className="w-full h-56 md:h-64 object-cover"
-                  />
+                  <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/uLxBVlgbKzPuMGkn.png" alt="ニチコン 蓄電池ユニット／増設ユニット" className="w-full h-56 md:h-64 object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <p className="text-white font-bold">蓄電池ユニット／増設ユニット</p>
@@ -1240,11 +1226,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                  <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/aYFQeDCmbioBwdAX.png"
-                    alt="トライブリッド蓄電システム 設置イメージ"
-                    className="w-full h-56 md:h-64 object-cover object-top"
-                  />
+                  <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/aYFQeDCmbioBwdAX.png" alt="トライブリッド蓄電システム 設置イメージ" className="w-full h-56 md:h-64 object-cover object-top" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <p className="text-white font-bold">システム設置イメージ</p>
@@ -1345,13 +1327,13 @@ export default function Home() {
                     <th className="p-4 text-left bg-gray-50 border-b-2 border-gray-200 w-1/4 font-bold text-gray-700">比較項目</th>
                     <th className="p-4 text-center border-b-2 border-primary/30 w-[37.5%]">
                       <div className="flex items-center justify-center gap-2">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 w-auto" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/orAhzQqnymRdtVfq.png" alt="Canadian Solar" className="h-6 w-auto" loading="lazy" />
                         <span className="font-bold text-gray-800">カナディアンソーラー</span>
                       </div>
                     </th>
                     <th className="p-4 text-center border-b-2 border-red-300 w-[37.5%]">
                       <div className="flex items-center justify-center gap-2">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-6 w-auto" />
+                        <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/yCPfWyOCYLZGzWqd.png" alt="長州産業" className="h-6 w-auto" loading="lazy" />
                         <span className="font-bold text-gray-800">長州産業</span>
                       </div>
                     </th>
@@ -1788,7 +1770,7 @@ export default function Home() {
         {/* ═══════════════════ SIMULATOR SECTION ═══════════════════ */}
         <section id="simulator" className="py-16 md:py-24 bg-secondary text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-10">
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/PonDGGtMRvWKIfcR.jpg" alt="Background" className="w-full h-full object-cover" />
+            <LazyImage src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663229898008/PonDGGtMRvWKIfcR.jpg" alt="Background" className="w-full h-full object-cover" loading="lazy" />
           </div>
           <div className="container relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">

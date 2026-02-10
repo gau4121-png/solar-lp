@@ -108,3 +108,13 @@
 - [x] Remove ContactForm component and replace with phone/email buttons
 - [x] Rebuild static dist folder for Netlify
 - [x] Create new dist.zip for download (v2 with phone/email buttons)
+- [x] Implement LazyImage component with Intersection Observer
+- [x] Replace all img tags with LazyImage component in Home.tsx
+- [x] Create OptimizedImage component with WebP support
+- [x] Create image optimization utilities (responsive sizes, format detection)
+- [x] Create performance monitoring utilities for Core Web Vitals
+- [x] Create usePerformanceMonitoring hook for React components
+- [x] Test lazy loading on all images
+- [x] Verify WebP format support and fallbacks
+- [x] Write and run vitest tests for LazyImage component
+- [x] Write and run vitest tests for image optimization utilities
