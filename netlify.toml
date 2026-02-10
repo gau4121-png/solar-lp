@@ -5,12 +5,7 @@
 [functions]
   directory = "dist"
 
-# SPA routing: serve index.html for all routes except static assets
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = { NOT = [{"x-path" = "/assets/*"}] }
+# Using _redirects file for SPA routing
 
 [env]
   DATABASE_URL = ""
