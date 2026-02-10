@@ -5,12 +5,16 @@
 [functions]
   directory = "dist"
 
-# Redirect all traffic to Manus hosting (帯域幅無制限)
+# Serve static files locally, redirect HTML routes to Manus hosting
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
-  to = "https://daimatsu-solar.manus.space/:splat"
-  status = 301
-  force = true
+  to = "/index.html"
+  status = 200
 
 [env]
   DATABASE_URL = ""
