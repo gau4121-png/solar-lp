@@ -14,10 +14,15 @@ export function AdminNotificationBadge() {
 
   const isAdmin = user?.role === "admin";
 
-  const { data } = trpc.contact.unreadCount.useQuery(undefined, {
+  const { data, error } = trpc.contact.unreadCount.useQuery(undefined, {
     enabled: isAdmin,
     refetchInterval: 30_000, // Poll every 30 seconds
   });
+
+  // Silently ignore permission errors for non-admin users
+  if (error && error.message.includes("10002")) {
+    return null;
+  }
 
   if (!isAdmin) return null;
 
