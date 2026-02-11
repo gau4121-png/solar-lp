@@ -1,4 +1,3 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LazyImage } from "@/components/LazyImage";
@@ -178,8 +177,6 @@ function SubsidyCountdown() {
 }
 
 export default function Home() {
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
