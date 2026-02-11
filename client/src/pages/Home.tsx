@@ -5,7 +5,6 @@ import { LazyImage } from "@/components/LazyImage";
 import { Check, ChevronRight, ChevronLeft, AlertTriangle, X, Calculator, ArrowRight, Phone, Menu, Shield, Users, Award, Star, Zap, Clock, MapPin, Wrench, ThumbsUp, BadgeCheck, ChevronDown, Building2, Crown, Sparkles, CircleDollarSign, Hammer, HeartHandshake, ShieldCheck, Factory, Globe, Leaf, Battery, BatteryCharging, Home as HomeIcon, Sun, CloudLightning, Smartphone, Banknote, TrendingDown, Gift, FileText } from "lucide-react";
 import { Simulator } from "@/components/Simulator";
 // ContactForm removed - using simple phone/email buttons instead
-import { AdminNotificationBadge } from "@/components/AdminNotificationBadge";
 import { useState, useEffect, useCallback, useRef } from "react";
 
 /* ─── Animated Counter Component ─── */
@@ -265,7 +264,6 @@ export default function Home() {
 
           {/* Desktop Right Actions */}
           <div className="hidden xl:flex items-center gap-3">
-            <AdminNotificationBadge />
             <a href="tel:0484869274" className="flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-primary transition-colors">
               <Phone className="h-4 w-4 text-primary" />
               048-486-9274
@@ -282,7 +280,6 @@ export default function Home() {
 
           {/* Mobile Right Actions */}
           <div className="flex xl:hidden items-center gap-2">
-            <AdminNotificationBadge />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="flex items-center justify-center h-10 w-10 rounded-lg hover:bg-orange-50 transition-colors"
