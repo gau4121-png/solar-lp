@@ -122,3 +122,16 @@
 - [x] Update netlify.toml with 301 redirect to daimatsu-solar.manus.space
 - [x] Push redirect configuration to GitHub
 - [x] Verify Netlify auto-deploy triggers
+- [x] Upgrade Netlify to Pro plan ($20/month)
+- [x] Restore daimatsu-lp-2026.netlify.app deployment
+- [x] Verify auto-publishing from GitHub is enabled
+- [ ] Confirm daimatsu-lp-2026.netlify.app is accessible
+- [ ] Verify Google Ads campaign is running
+- [ ] Monitor click-through rate and conversions
+- [ ] Diagnose Netlify deployment TypeError: Invalid URL error
+- [ ] Check Netlify build logs and configuration
+- [ ] Fix Vite base path configuration for Netlify
+- [ ] Update netlify.toml with correct SPA routing
+- [ ] Test Netlify URL (daimatsu-lp-2026.netlify.app) is fully functional
+- [ ] Verify all images and assets load correctly on Netlify
+- [ ] Confirm Google Ads can use Netlify URL
